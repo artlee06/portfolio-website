@@ -25,9 +25,9 @@ export function RotatingCards() {
 
   const renderCard = useCallback(() => {
     return is3D ? (
-      <CardContent title="3D Design" text="As well as 3D mediums for the future" Icon={CubeIcon} />
+      <CardContent text="As well as 3D mediums for the future" />
     ) : (
-      <CardContent title="2D Design" text="I design in 2D mediums for the here and now" Icon={Square3Stack3DIcon} />
+      <CardContent text="I design in 2D mediums for the here and now" />
     )
   }, [is3D])
 
@@ -98,7 +98,7 @@ export function RotatingCards() {
   )
 }
 
-const CardContent = memo(function CardContent({ title, text, Icon }) {
+const CardContent = memo(function CardContent({ text }: { text: string }) {
   return (
     <div className="p-6 space-y-4 bg-white max-w-auto">
       <p className="text-2xl md:text-3xl text-center">{text}</p>

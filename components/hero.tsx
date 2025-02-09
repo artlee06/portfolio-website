@@ -12,7 +12,7 @@ export function Hero() {
         <h2 className="text-lg sm:text-xl mb-3 sm:mb-4 font-lexend">Hello Arthur here!</h2>
         <div className="space-y-3 sm:space-y-4">
           <h1 className={`text-4xl sm:text-6xl font-medium leading-tight ${lexendMedium.className}`}>
-            <span className="text-[#787878]">I'm an</span>
+            <span className="text-[#787878]">I&apos;m an</span>
             <div className="relative block my-2 sm:my-4">
               <span className="relative z-10 bg-white px-3 py-1 sm:px-6 sm:py-3 border-2 border-black inline-block">
                 interdisciplinary designer

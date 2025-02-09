@@ -41,7 +41,7 @@ export function Projects() {
         <div className="mt-12 sm:mt-20 bg-gray-900 rounded-xl p-6 sm:p-12 text-center">
           <div className="inline-flex items-center gap-2 text-white mb-4 sm:mb-6">
             <Monitor className="w-5 h-5 sm:w-6 sm:h-6" />
-            <span className="font-lexend text-sm sm:text-base">There's more where that came from.</span>
+            <span className="font-lexend text-sm sm:text-base">There&apos;s more where that came from.</span>
           </div>
           <div>
             <Button variant="secondary" className="rounded-full font-lexend text-sm sm:text-base">
