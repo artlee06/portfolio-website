@@ -66,7 +66,7 @@ export default function AboutPage() {
             <div className="md:w-1/3 space-y-2 mb-8 md:mb-0">
               <h2 className="text-xl md:text-2xl lg:text-3xl">What I&apos;ve been up to</h2>
               <p className="text-gray-600 text-sm md:text-base">
-                Feel free to see my LinkedIn or CV for the nitty gritty.
+                Feel free to see my <a href="https://www.linkedin.com/in/arthur-lee-ying-kiu/" className="underline hover:text-gray-500">LinkedIn</a> or <a href="https://docs.google.com/document/d/10qsJp2QH7h2edsFe8jsu-SeaxIzKjpkWsQvCqNMaDSM/edit?usp=sharing" className="underline hover:text-gray-500">CV</a> for the nitty gritty.
               </p>
             </div>
             <div className="md:w-1/3">
