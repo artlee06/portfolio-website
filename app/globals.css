@@ -1,17 +1,44 @@
+:root {
+  --font-lexend: "Lexend", sans-serif;
+}
+
+body {
+  font-family: var(--font-lexend);
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@keyframes marquee {
-  0% {
-    transform: translateX(100%);
+@layer utilities {
+  .perspective {
+    perspective: 2000px;
   }
-  100% {
-    transform: translateX(-100%);
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  .rotate-y-180 {
+    transform: rotateY(180deg);
   }
 }
 
-.animate-marquee {
-  animation: marquee 20s linear infinite;
+/* Add smooth scrolling behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Prevent content shift during fixed positioning */
+.fixed-scroll-padding {
+  scroll-padding-top: 50vh;
+}
+
+.font-sans {
+  font-family: var(--font-lexend);
 }
 
