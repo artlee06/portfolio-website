@@ -1,7 +1,7 @@
 import { Nav } from "@/components/nav"
 import { Hero } from "@/components/hero"
 import { Projects } from "@/components/projects"
-import { Footer } from "@/components/footer"
+import { Footer } from "@/app/components/Footer"
 
 export default function Home() {
   return (
