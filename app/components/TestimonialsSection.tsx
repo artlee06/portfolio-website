@@ -25,7 +25,7 @@ const testimonials: Testimonial[] = [
       name: "Ari Widjanarko",
       role: "Design Lead",
       company: "IBM iX",
-      image: "/placeholder.svg?height=64&width=64", // Replace with actual image
+      image: "/images/Ari.png", // Replace with actual image
     },
   },
   {
@@ -35,7 +35,7 @@ const testimonials: Testimonial[] = [
       name: "Todd Oquist",
       role: "Senior UX Developer",
       company: "Indeed.com",
-      image: "/placeholder.svg?height=64&width=64", // Replace with actual image
+      image: "/images/Todd.png", // Replace with actual image
     },
   },
   {
@@ -45,7 +45,7 @@ const testimonials: Testimonial[] = [
       name: "Yun Chuan Ngin",
       role: "Senior Software Engineer",
       company: "Indeed.com",
-      image: "/placeholder.svg?height=64&width=64", // Replace with actual image
+      image: "/images/YC.png", // Replace with actual image
     },
   },
   {
@@ -55,7 +55,7 @@ const testimonials: Testimonial[] = [
       name: "Terezia Toth",
       role: "UX Content Designer",
       company: "Indeed.com",
-      image: "/placeholder.svg?height=64&width=64", // Replace with actual image
+      image: "/images/Terezia.png", // Replace with actual image
     },
   },
   {
@@ -65,7 +65,7 @@ const testimonials: Testimonial[] = [
       name: "Chris Roper",
       role: "UX Director",
       company: "Indeed.com",
-      image: "/placeholder.svg?height=64&width=64", // Replace with actual image
+      image: "/images/Chris.png", // Replace with actual image
     },
   },
   {
@@ -75,7 +75,7 @@ const testimonials: Testimonial[] = [
       name: "Sara Koay",
       role: "Senior UX researcher",
       company: "Indeed.com",
-      image: "/placeholder.svg?height=64&width=64", // Replace with actual image
+      image: "/images/Sara.png", // Replace with actual image
     },
   },
   {
@@ -85,7 +85,7 @@ const testimonials: Testimonial[] = [
       name: "Konrad Marzec",
       role: "Senior Product designer",
       company: "Indeed.com",
-      image: "/placeholder.svg?height=64&width=64", // Replace with actual image
+      image: "/images/Konrad.png", // Replace with actual image
     },
   },
   {
@@ -95,7 +95,7 @@ const testimonials: Testimonial[] = [
       name: "Jules Ang",
       role: "Produt Design Lead",
       company: "MoneySmart",
-      image: "/placeholder.svg?height=64&width=64", // Replace with actual image
+      image: "/images/Jules.png", // Replace with actual image
     },
   },
   {
@@ -105,7 +105,7 @@ const testimonials: Testimonial[] = [
       name: "Jeremy Hon",
       role: "CTO, cofounder",
       company: "StaffAny",
-      image: "/placeholder.svg?height=64&width=64", // Replace with actual image
+      image: "/images/Jeremy.png", // Replace with actual image
     },
   },
   {
@@ -115,7 +115,7 @@ const testimonials: Testimonial[] = [
       name: "Alvin Ng",
       role: "Lead Software Engineer",
       company: "BCG X",
-      image: "/placeholder.svg?height=64&width=64", // Replace with actual image
+      image: "/images/Alvin.png", // Replace with actual image
     },
   },
   // Add more testimonials
@@ -168,7 +168,7 @@ const TestimonialCard = memo(function TestimonialCard({
   return (
     <div className="w-[328px] md:w-[400px] lg:w-[500px] h-[450px] bg-white rounded-lg p-6 flex flex-col border border-gray-200 hover:border-gray-300 transition-colors">
       <p className="text-gray-600 line-clamp-[8] mb-4 flex-grow min-h-[240px]">{testimonial.text}</p>
-      {testimonial.text.length > 300 && (
+      {testimonial.text.length > 360 && (
         <Button variant="outline" className="self-start mt-auto mb-[24px]" onClick={() => onReadMore(testimonial)}>
           Read more
         </Button>
@@ -201,7 +201,7 @@ const TestimonialDialog = memo(function TestimonialDialog({
 
   return (
     <Dialog open={!!testimonial} onOpenChange={onClose}>
-      <DialogContent>
+      <DialogContent className="bg-white">
         <DialogHeader>
           <DialogTitle>Testimonial from {testimonial.author.name}</DialogTitle>
         </DialogHeader>
