@@ -1,40 +1,68 @@
-import { Linkedin, Mail } from "lucide-react"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Lexend } from "next/font/google"
+"use client"
 
-const lexendMedium = Lexend({ subsets: ["latin"], weight: "500" })
+import { ArrowDownIcon } from "@heroicons/react/24/outline"
+import { motion } from "framer-motion"
+import { AutoRotatingCube } from "./AutoRotatingCube"
 
 export function Hero() {
   return (
-    <section className="pt-20 pb-16 px-4 sm:pt-32 sm:pb-20 sm:px-6">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-lg sm:text-xl mb-3 sm:mb-4 font-lexend">Hello Arthur here!</h2>
-        <div className="space-y-3 sm:space-y-4">
-          <h1 className={`text-4xl sm:text-6xl font-medium leading-tight ${lexendMedium.className}`}>
-            <span className="text-[#787878]">I&apos;m an</span>
-            <div className="relative block my-2 sm:my-4">
-              <span className="relative z-10 bg-white px-3 py-1 sm:px-6 sm:py-3 border-2 border-black inline-block">
-                interdisciplinary designer
-              </span>
-              <div className="absolute inset-0 bg-black transform translate-x-1 translate-y-1 sm:translate-x-2 sm:translate-y-2 -z-10"></div>
-            </div>
-            <span className="text-[#787878]">who loves to tinker and create</span>
-          </h1>
+    <>
+      {/* Fixed background with grid pattern and fade effect */}
+      <div
+        className="fixed inset-0 w-screen h-screen pointer-events-none z-0"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, #2e2e2e 1px, transparent 1px),
+            linear-gradient(to bottom, #2e2e2e 1px, transparent 1px)
+          `,
+          backgroundSize: "40px 40px",
+          opacity: 0.4,
+          maskImage: "linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 50%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 50%, transparent 100%)",
+        }}
+      />
+
+      <section className="min-h-screen flex flex-col justify-start md:justify-center items-start md:items-center text-left md:text-center px-4 md:px-0 w-full mt-24 md:mt-0 relative z-10">
+        <div className="w-auto flex justify-start md:justify-center relative">
+          <AutoRotatingCube fastSpin={false} inverse={false} className="scale-75 md:scale-100" />
         </div>
-        <div className="mt-6 sm:mt-8 flex flex-wrap items-center gap-4">
-          <Button variant="outline" className="rounded-full font-lexend text-sm sm:text-base">
-            Read my CV
-          </Button>
-          <Link href="https://linkedin.com" className="p-2 hover:text-gray-600 transition-colors">
-            <Linkedin size={20} />
-          </Link>
-          <Link href="mailto:contact@example.com" className="p-2 hover:text-gray-600 transition-colors">
-            <Mail size={20} />
-          </Link>
+        <div className="mt-8 space-y-2 md:space-y-4 relative">
+          <motion.p
+            className="text-xl md:text-2xl text-[#2e2e2e]"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            Hi, I'm Arthur!
+          </motion.p>
+          <motion.h1
+            className="text-4xl md:text-5xl lg:text-6xl font-medium leading-snug"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <span className="text-gray-400">I'm an </span>
+            <span className="text-[#2e2e2e]">interdisciplinary designer&nbsp;</span>
+            <br className="hidden md:inline" />
+            <span className="text-gray-400 md:mt-2 inline-block">who loves to&nbsp;</span>
+            <span className="text-[#2e2e2e]">tinker and create</span>
+          </motion.h1>
+          <motion.div
+            className="w-full md:w-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <a
+              href="#case-studies"
+              className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#2e2e2e] text-white hover:bg-[#2e2e2e]/80 transition-colors mt-8"
+            >
+              <ArrowDownIcon className="w-6 h-6" />
+            </a>
+          </motion.div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   )
 }
 

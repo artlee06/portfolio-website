@@ -80,7 +80,7 @@ export function Footer() {
 
       {/* Copyright */}
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16">
-        <div className="text-sm text-gray-400 text-center">© Arthur Lee 2025. Made with lots of 🍵</div>
+        <div className="text-sm text-gray-400 text-center">© Arthur Lee 2024. Made with lots of ☕️</div>
       </div>
     </footer>
   )

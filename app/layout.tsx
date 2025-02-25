@@ -1,6 +1,7 @@
 import { Lexend } from "next/font/google"
 import "./globals.css"
-import type React from "react" // Import React
+import { Navigation } from "@/components/Navigation"
+import type { ReactNode } from "react"
 
 const lexend = Lexend({
   subsets: ["latin"],
@@ -8,14 +9,21 @@ const lexend = Lexend({
   variable: "--font-lexend",
 })
 
+export const metadata = {
+  generator: "v0.dev",
+}
+
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: ReactNode
 }) {
   return (
     <html lang="en" className={`${lexend.variable} font-sans`}>
-      <body className={`${lexend.variable} font-sans`}>{children}</body>
+      <body className={`${lexend.variable} font-sans antialiased`}>
+        <Navigation />
+        {children}
+      </body>
     </html>
   )
 }
