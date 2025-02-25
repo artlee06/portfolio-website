@@ -23,21 +23,41 @@ export function AutoRotatingCube({ inverse = false, className = "" }: AutoRotati
   const rotateY = useSpring(0, springConfig)
 
   useEffect(() => {
+    let isMounted = true;
+    let animationTimeout: NodeJS.Timeout;
+
     const rotateCube = async () => {
-      while (true) {
-        if (!isDragging) {
-          await controls.start({ rotateY: rotationRef.current + 810 }, { duration: 6, ease: [0.4, 0, 0.2, 1] })
-          rotationRef.current += 810
-        }
-        await new Promise((resolve) => setTimeout(resolve, 4000))
+      if (!isMounted) return;
+      
+      if (!isDragging) {
+        // Use a promise with then() instead of await to avoid issues
+        controls.start({ 
+          rotateY: rotationRef.current + 810 
+        }, { 
+          duration: 6, 
+          ease: [0.4, 0, 0.2, 1] 
+        }).then(() => {
+          if (isMounted) {
+            rotationRef.current += 810;
+            // Schedule the next animation after a delay
+            animationTimeout = setTimeout(rotateCube, 4000);
+          }
+        });
+      } else {
+        // If dragging, just wait and try again
+        animationTimeout = setTimeout(rotateCube, 1000);
       }
-    }
+    };
 
-    rotateCube()
+    // Start the animation loop after component mounts
+    animationTimeout = setTimeout(rotateCube, 100);
 
+    // Cleanup function
     return () => {
-      controls.stop()
-    }
+      isMounted = false;
+      clearTimeout(animationTimeout);
+      controls.stop();
+    };
   }, [controls, isDragging])
 
   const handleDragStart = (clientX: number) => {
