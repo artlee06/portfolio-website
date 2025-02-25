@@ -6,6 +6,12 @@ import { Square3Stack3DIcon, CubeIcon } from "@heroicons/react/24/outline"
 import { Cube } from "./Cube"
 import { AnimatePresence } from "framer-motion"
 
+interface CardContentProps {
+  title: string
+  text: string
+  Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>
+}
+
 export function RotatingCards() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [is3D, setIs3D] = useState(false)
@@ -98,7 +104,7 @@ export function RotatingCards() {
   )
 }
 
-const CardContent = memo(function CardContent({ title, text, Icon }) {
+const CardContent = memo(function CardContent({ title, text, Icon }: CardContentProps) {
   return (
     <div className="p-6 space-y-4 bg-white max-w-auto">
       <p className="text-2xl md:text-3xl text-center">{text}</p>

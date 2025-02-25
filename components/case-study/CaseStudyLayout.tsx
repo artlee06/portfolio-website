@@ -39,7 +39,7 @@ export function CaseStudyLayout({ children, title, subtitle, role, duration, res
     })
 
     return () => observer.current?.disconnect()
-  }, [])
+  }, [sections])
 
   return (
     <main className="min-h-screen bg-white text-[#2e2e2e] font-sans">

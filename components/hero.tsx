@@ -33,7 +33,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Hi, I'm Arthur!
+            Hi, I&apos;m Arthur!
           </motion.p>
           <motion.h1
             className="text-4xl md:text-5xl lg:text-6xl font-medium leading-snug"
@@ -41,7 +41,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="text-gray-400">I'm an </span>
+            <span className="text-gray-400">I&apos;m an </span>
             <span className="text-[#2e2e2e]">interdisciplinary designer&nbsp;</span>
             <br className="hidden md:inline" />
             <span className="text-gray-400 md:mt-2 inline-block">who loves to&nbsp;</span>
