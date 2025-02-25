@@ -19,28 +19,28 @@ const caseStudies: CaseStudy[] = [
     id: "project-1",
     title: "Project One",
     description: "A brief description of the first project to be added here",
-    imageUrl: "/placeholder.svg?height=400&width=600",
+    imageUrl: "/images/placeholder.svg",
     slug: "coming-soon",
   },
   {
     id: "project-2",
     title: "Project Two",
     description: "A brief description of the first project to be added here",
-    imageUrl: "/placeholder.svg?height=400&width=600",
+    imageUrl: "/images/placeholder.svg",
     slug: "coming-soon",
   },
   {
     id: "project-3",
     title: "Project Three",
     description: "A brief description of the first project to be added here",
-    imageUrl: "/placeholder.svg?height=400&width=600",
+    imageUrl: "/images/placeholder.svg",
     slug: "coming-soon",
   },
   {
     id: "project-4",
     title: "Project Four",
     description: "A brief description of the first project to be added here",
-    imageUrl: "/placeholder.svg?height=400&width=600",
+    imageUrl: "/images/placeholder.svg",
     slug: "coming-soon",
   },
 ]
@@ -117,7 +117,7 @@ function CaseStudyCard({
 
           {/* Image */}
           <div className="relative aspect-[16/9]">
-            <Image src={caseStudy.imageUrl || "/placeholder.svg"} alt={caseStudy.title} fill className="object-cover" />
+            <Image src={caseStudy.imageUrl || "/images/placeholder.svg"} alt={caseStudy.title} fill className="object-cover" />
           </div>
         </div>
 
