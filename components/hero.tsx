@@ -24,7 +24,7 @@ export function Hero() {
 
       <section className="min-h-screen flex flex-col justify-start md:justify-center items-start md:items-center text-left md:text-center px-4 md:px-0 w-full mt-24 md:mt-0 relative z-10">
         <div className="w-auto flex justify-start md:justify-center relative">
-          <AutoRotatingCube fastSpin={false} inverse={false} className="scale-75 md:scale-100" />
+          <AutoRotatingCube inverse={false} className="scale-75 md:scale-100" />
         </div>
         <div className="mt-8 space-y-2 md:space-y-4 relative">
           <motion.p
