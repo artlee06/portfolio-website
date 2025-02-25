@@ -4,7 +4,7 @@ import { HighlightCard } from "@/components/case-study/HighlightCard"
 import { NextProject } from "@/components/case-study/NextProject"
 import Image from "next/image"
 
-export default function CaseStudyPage({ params }: { params: { slug: string } }) {
+export default function CaseStudyPage() {
   // This is a placeholder. In a real implementation, you'd fetch the case study data based on the slug
   const caseStudy = {
     title: "Work Wellbeing Index",
@@ -30,7 +30,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
       <ContentSection id="problem" title="Problem">
         <div className="prose prose-gray max-w-none">
           <p className="text-lg text-gray-600">
-            Indeed's mission is to help people get jobs. While salary and benefits are crucial factors in job decisions,
+            Indeed&apos;s mission is to help people get jobs. While salary and benefits are crucial factors in job decisions,
             workplace culture and wellbeing significantly impact job satisfaction and retention. However, this
             information was not readily available to job seekers on Indeed.
           </p>

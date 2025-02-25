@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, useMemo } from "react"
 import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 import { Footer } from "@/components/Footer"
@@ -19,7 +19,9 @@ interface CaseStudyLayoutProps {
 export function CaseStudyLayout({ children, title, subtitle, role, duration, responsibilities }: CaseStudyLayoutProps) {
   const [activeSection, setActiveSection] = useState("")
   const observer = useRef<IntersectionObserver | null>(null)
-  const sections = ["problem", "highlights", "research", "solution", "outcomes", "retro"]
+  
+  // Wrap sections array in useMemo to prevent recreation on each render
+  const sections = useMemo(() => ["problem", "highlights", "research", "solution", "outcomes", "retro"], [])
 
   useEffect(() => {
     observer.current = new IntersectionObserver(
