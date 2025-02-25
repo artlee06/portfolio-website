@@ -10,9 +10,10 @@ import { cn } from "@/lib/utils"
 interface AutoRotatingCubeProps {
   inverse?: boolean
   className?: string
+  fastSpin?: boolean
 }
 
-export function AutoRotatingCube({ inverse = false, className = "" }: AutoRotatingCubeProps) {
+export function AutoRotatingCube({ inverse = false, className = "", fastSpin = false }: AutoRotatingCubeProps) {
   const icons = [Square3Stack3DIcon, CubeIcon, CodeBracketIcon, PaintBrushIcon]
   const controls = useAnimation()
   const rotationRef = useRef(0)
