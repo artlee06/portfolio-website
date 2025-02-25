@@ -1,10 +1,22 @@
 import Image from "next/image"
+import dynamic from "next/dynamic"
 import { ContactButton } from "../components/ContactButton"
-import { RotatingCards } from "../components/RotatingCards"
-import { TestimonialsSection } from "../components/TestimonialsSection"
-import { ContactCTA } from "../components/ContactCTA"
 import { Footer } from "../components/Footer"
-import { SkillsBanner } from "../components/SkillsBanner"
+import { ContactCTA } from "@/components/ContactCTA"
+
+// Dynamically import components with client-side dependencies
+const RotatingCards = dynamic(() => import("../components/RotatingCards").then((mod) => mod.RotatingCards), {
+  loading: () => <div className="h-40 w-full bg-gray-100 animate-pulse rounded-lg"></div>
+})
+const TestimonialsSection = dynamic(
+  () => import("../components/TestimonialsSection").then((mod) => mod.TestimonialsSection),
+  {
+    loading: () => <div className="h-60 w-full bg-gray-100 animate-pulse rounded-lg"></div>
+  }
+)
+const SkillsBanner = dynamic(() => import("../components/SkillsBanner").then((mod) => mod.SkillsBanner), {
+  loading: () => <div className="h-20 w-full bg-gray-100 animate-pulse rounded-lg"></div>
+})
 
 export default function AboutPage() {
   return (
@@ -66,7 +78,7 @@ export default function AboutPage() {
             <div className="md:w-1/3 space-y-2 mb-8 md:mb-0">
               <h2 className="text-xl md:text-2xl lg:text-3xl">What I&apos;ve been up to</h2>
               <p className="text-gray-600 text-sm md:text-base">
-                Feel free to see my <a href="https://www.linkedin.com/in/arthur-lee-ying-kiu/" className="underline hover:text-gray-500">LinkedIn</a> or <a href="https://docs.google.com/document/d/10qsJp2QH7h2edsFe8jsu-SeaxIzKjpkWsQvCqNMaDSM/edit?usp=sharing" className="underline hover:text-gray-500">CV</a> for the nitty gritty.
+                Feel free to see my LinkedIn or CV for the nitty gritty.
               </p>
             </div>
             <div className="md:w-1/3">
@@ -80,12 +92,6 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
-
-        {/* Commented out SkillsCard
-        <div className="mt-16 md:mt-24">
-          <SkillsCard />
-        </div>
-        */}
 
         {/* Testimonials Section */}
         <div className="mt-16 md:mt-24">
