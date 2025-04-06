@@ -7,7 +7,7 @@ import { TabsSection } from "@/components/case-study/TabsSection"
 import Image from "next/image"
 import { HeroSection } from "@/components/case-study/HeroSection"
 
-export default function CaseStudyPage({}: { params: { slug: string } }) {
+export default function CaseStudyPage() {
   // This is a placeholder. In a real implementation, you'd fetch the case study data based on the slug
   const caseStudy = {
     title: "Insight",
