@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useEffect, useRef, useState, useMemo } from "react"
+import { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 import { Footer } from "@/components/Footer"
@@ -19,20 +19,32 @@ interface CaseStudyLayoutProps {
 export function CaseStudyLayout({ children, title, subtitle, role, duration, responsibilities }: CaseStudyLayoutProps) {
   const [activeSection, setActiveSection] = useState("")
   const observer = useRef<IntersectionObserver | null>(null)
-  
-  // Wrap sections array in useMemo to prevent recreation on each render
-  const sections = useMemo(() => ["problem", "highlights", "research", "solution", "outcomes", "retro"], [])
+  const sections = ["problem", "highlights", "research", "evolution", "solution", "impact", "retro"]
+  const [isHeroPassed, setIsHeroPassed] = useState(false)
 
   useEffect(() => {
     observer.current = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id)
-          }
-        })
+        // Find the visible sections
+        const visibleEntries = entries.filter((entry) => entry.isIntersecting)
+
+        if (visibleEntries.length > 0) {
+          // Sort by their position in the document (top to bottom)
+          // This ensures we follow the natural order of sections
+          const sortedVisibleSections = visibleEntries
+            .map((entry) => entry.target.id)
+            .sort((a, b) => {
+              return sections.indexOf(a) - sections.indexOf(b)
+            })
+
+          // Select the first visible section in the natural order
+          setActiveSection(sortedVisibleSections[0])
+        }
       },
-      { threshold: 0.5 },
+      {
+        threshold: 0.2,
+        rootMargin: "-10% 0px -70% 0px", // Bias toward the top of the viewport
+      },
     )
 
     sections.forEach((section) => {
@@ -43,15 +55,54 @@ export function CaseStudyLayout({ children, title, subtitle, role, duration, res
     return () => observer.current?.disconnect()
   }, [sections])
 
+  useEffect(() => {
+    const handleScroll = () => {
+      // Assuming the hero section is approximately 100vh
+      const heroHeight = window.innerHeight
+      setIsHeroPassed(window.scrollY > heroHeight * 0.8) // Show nav after scrolling 80% of hero height
+    }
+
+    // Initial check
+    handleScroll()
+
+    // Add scroll listener
+    window.addEventListener("scroll", handleScroll, { passive: true })
+
+    // Cleanup
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  // Add this function after the handleScroll function
+  const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    e.preventDefault()
+    const element = document.getElementById(sectionId)
+    if (element) {
+      // Set the active section immediately to avoid flickering
+      setActiveSection(sectionId)
+
+      // Scroll to the element with smooth behavior
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      })
+
+      // Update URL without causing a page jump
+      window.history.pushState(null, "", `#${sectionId}`)
+    }
+  }
+
   return (
     <main className="min-h-screen bg-white text-[#2e2e2e] font-sans">
       {/* Sticky Navigation */}
-      <nav className="fixed top-32 right-8 z-40 hidden xl:block">
+      <nav
+        className={`fixed top-32 right-8 z-40 hidden xl:block transition-opacity duration-300 ${isHeroPassed ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+      >
         <ul className="space-y-4 w-48">
           {sections.map((section) => (
             <li key={section}>
               <a
                 href={`#${section}`}
+                onClick={(e) => handleAnchorClick(e, section)}
                 className={cn(
                   "block py-2 px-4 rounded-full text-sm transition-colors",
                   activeSection === section

@@ -1,5 +1,6 @@
 "use client"
 
+import React from "react"
 import { motion } from "framer-motion"
 
 interface HighlightCardProps {
@@ -8,7 +9,7 @@ interface HighlightCardProps {
   description: string
 }
 
-export function HighlightCard({ number, label, description }: HighlightCardProps) {
+export const HighlightCard = React.memo(function HighlightCard({ number, label, description }: HighlightCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -22,5 +23,5 @@ export function HighlightCard({ number, label, description }: HighlightCardProps
       <p className="text-gray-600">{description}</p>
     </motion.div>
   )
-}
+})
 

@@ -11,35 +11,37 @@ type CaseStudy = {
   title: string
   description: string
   imageUrl: string
+  videoUrl?: string
   slug: string
 }
 
 const caseStudies: CaseStudy[] = [
   {
     id: "project-1",
-    title: "Project One",
-    description: "A brief description of the first project to be added here",
-    imageUrl: "/images/placeholder.svg",
-    slug: "coming-soon",
+    title: "Insight",
+    description: "HDB BTO Unit Selection empowered by XR",
+    imageUrl: "/case-studies/insight/thumbnail.jpg",
+    videoUrl: "/case-studies/insight/Hero_square.mp4",
+    slug: "insight",
   },
   {
     id: "project-2",
     title: "Project Two",
-    description: "A brief description of the second project to be added here",
+    description: "A brief description of the first project to be added here",
     imageUrl: "/images/placeholder.svg",
     slug: "coming-soon",
   },
   {
     id: "project-3",
     title: "Project Three",
-    description: "A brief description of the third project to be added here",
+    description: "A brief description of the first project to be added here",
     imageUrl: "/images/placeholder.svg",
     slug: "coming-soon",
   },
   {
     id: "project-4",
     title: "Project Four",
-    description: "A brief description of the fourth project to be added here",
+    description: "A brief description of the first project to be added here",
     imageUrl: "/images/placeholder.svg",
     slug: "coming-soon",
   },
@@ -84,6 +86,7 @@ function CaseStudyCard({
   onHoverEnd: () => void
 }) {
   const isLarge = index === 0 || index === 3
+  const hasVideo = !!caseStudy.videoUrl
 
   return (
     <motion.div
@@ -104,20 +107,39 @@ function CaseStudyCard({
         <div className="relative bg-gray-100 rounded-lg overflow-hidden">
           {/* Title and Arrow - Always visible */}
           <div className="absolute top-6 left-6 right-6 z-20 flex justify-between items-start">
-            <p className="text-sm font-medium text-[#2e2e2e]">{caseStudy.title}</p>
+            <p className={`text-sm font-medium ${isHovered && hasVideo ? "text-white" : "text-[#2e2e2e]"}`}>
+              {caseStudy.title}
+            </p>
             <motion.div
               animate={{
                 rotate: isHovered ? 45 : 0,
               }}
               transition={{ duration: 0.2 }}
             >
-              <ArrowUpRight className="w-5 h-5 text-[#2e2e2e]" />
+              <ArrowUpRight className={`w-5 h-5 ${isHovered && hasVideo ? "text-white" : "text-[#2e2e2e]"}`} />
             </motion.div>
           </div>
 
-          {/* Image */}
+          {/* Image or Video */}
           <div className="relative aspect-[16/9]">
-            <Image src={caseStudy.imageUrl || "/images/placeholder.svg"} alt={caseStudy.title} fill className="object-cover" />
+            {isHovered && caseStudy.videoUrl ? (
+              <video
+                src={caseStudy.videoUrl}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            ) : (
+              <Image
+                src={caseStudy.imageUrl || "/placeholder.svg"}
+                alt={caseStudy.title}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-cover"
+              />
+            )}
           </div>
         </div>
 
