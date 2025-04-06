@@ -1,22 +1,8 @@
 import Image from "next/image"
-import dynamic from "next/dynamic"
 import { ContactButton } from "../components/ContactButton"
 import { Footer } from "../components/Footer"
 import { ContactCTA } from "@/components/ContactCTA"
-
-// Dynamically import components with client-side dependencies
-const RotatingCards = dynamic(() => import("../components/RotatingCards").then((mod) => mod.RotatingCards), {
-  loading: () => <div className="h-40 w-full bg-gray-100 animate-pulse rounded-lg"></div>
-})
-const TestimonialsSection = dynamic(
-  () => import("../components/TestimonialsSection").then((mod) => mod.TestimonialsSection),
-  {
-    loading: () => <div className="h-60 w-full bg-gray-100 animate-pulse rounded-lg"></div>
-  }
-)
-const SkillsBanner = dynamic(() => import("../components/SkillsBanner").then((mod) => mod.SkillsBanner), {
-  loading: () => <div className="h-20 w-full bg-gray-100 animate-pulse rounded-lg"></div>
-})
+import { AboutClientComponents } from "../components/AboutClientComponents"
 
 export default function AboutPage() {
   return (
@@ -28,7 +14,7 @@ export default function AboutPage() {
           <div className="relative max-w-[343px] w-full mx-auto md:mx-0 md:w-1/2 lg:w-2/5">
             <div className="relative aspect-[343/400] w-full">
               <Image
-                src="/images/profile.jpeg"
+                src="/profile.png"
                 alt="Profile picture"
                 fill
                 style={{
@@ -63,14 +49,8 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Skills and Tools Section */}
-        <div className="mt-16 md:mt-48">
-          <SkillsBanner />
-        </div>
-
-        <div>
-          <RotatingCards />
-        </div>
+        {/* Client Components Section */}
+        <AboutClientComponents />
 
         {/* Experience Section */}
         <div className="mt-16 md:mt-24">
@@ -91,11 +71,6 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Testimonials Section */}
-        <div className="mt-16 md:mt-24">
-          <TestimonialsSection />
         </div>
 
         {/* Contact CTA */}

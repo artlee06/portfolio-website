@@ -7,6 +7,8 @@ import { cn } from "@/lib/utils"
 
 export function Navigation() {
   const pathname = usePathname()
+  // Consider case study pages as part of the 'Work' section
+  const activePath = pathname.startsWith("/work/") ? "/work" : pathname
 
   return (
     <div className="fixed w-full bottom-8 md:bottom-auto md:top-8 z-50">
@@ -30,7 +32,7 @@ export function Navigation() {
               href="/about"
               className={cn(
                 "transition-colors px-6 py-4 md:px-8  rounded-full text-sm md:text-base",
-                pathname === "/about" ? "text-black bg-gray-100" : "text-gray-500 hover:text-black hover:bg-gray-100",
+                activePath === "/about" ? "text-black bg-gray-100" : "text-gray-500 hover:text-black hover:bg-gray-100",
               )}
             >
               About
@@ -41,7 +43,7 @@ export function Navigation() {
               href="/work"
               className={cn(
                 "transition-colors px-6 py-4 md:px-8 rounded-full text-sm md:text-base",
-                pathname === "/work" ? "text-black bg-gray-100" : "text-gray-500 hover:text-black hover:bg-gray-100",
+                activePath === "/work" ? "text-black bg-gray-100" : "text-gray-500 hover:text-black hover:bg-gray-100",
               )}
             >
               Work
@@ -52,7 +54,9 @@ export function Navigation() {
               href="/contact"
               className={cn(
                 "transition-colors px-6 py-4 md:px-8 rounded-full text-sm md:text-base",
-                pathname === "/contact" ? "text-black bg-gray-100" : "text-gray-500 hover:text-black hover:bg-gray-100",
+                activePath === "/contact"
+                  ? "text-black bg-gray-100"
+                  : "text-gray-500 hover:text-black hover:bg-gray-100",
               )}
             >
               Contact
