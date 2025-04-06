@@ -28,11 +28,11 @@ export function HeroSection() {
       if (viewportWidth <= 640) {
         // Mobile
         setScale(1)
-      } else if (viewportWidth <= 1024) {
-        // Tablet
+      } else if (viewportWidth <= 1920) {
+        // Tablet and smaller desktop
         setScale(1.2)
       } else {
-        // Desktop
+        // Desktop large
         setScale(1.6)
       }
     }
@@ -56,11 +56,11 @@ export function HeroSection() {
     <motion.div ref={containerRef} className="relative h-[100vh] overflow-hidden" style={{ backgroundColor }}>
       {/* Title and subtitle as one group at the top */}
       <motion.div
-        className="absolute top-[10%] md:top-[15%] left-0 w-full text-center z-10 px-4"
+        className="absolute top-[10%] md:top-[13%] left-0 w-full text-center z-10 px-4"
         style={{ y: textY, opacity }}
       >
         <h1 className="text-6xl md:text-8xl font-medium text-white drop-shadow-lg mb-2 md:mb-6">Insight</h1>
-        <p className="text-lg md:text-2xl text-white/80 font-light max-w-2xl mx-auto">
+        <p className="text-lg md:text-2xl text-white/80 font-regular max-w-2xl mx-auto">
           {/* Mobile version with line break */}
           <span className="md:hidden">
             HDB BTO Unit Selection <br />
@@ -72,7 +72,7 @@ export function HeroSection() {
       </motion.div>
 
       {/* VR Headset with dotted outline */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center mt-24 md:mt-16">
+      <div className="absolute inset-0 flex flex-col items-center justify-center mt-24 md:mt-80">
         <motion.div
           className="relative w-full max-w-4xl mx-auto"
           style={{
