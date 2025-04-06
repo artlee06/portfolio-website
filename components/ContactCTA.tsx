@@ -4,7 +4,7 @@ import { AutoRotatingCube } from "./AutoRotatingCube"
 export function ContactCTA() {
   return (
     <div className="w-full mx-auto md:max-w-none">
-      <div className="bg-[#2E2E2E] rounded-2xl p-12 text-center content-center" style={{ minHeight: "40vh" }}>
+      <div className="bg-[#2E2E2E] p-12 text-center content-center" style={{ minHeight: "40vh" }}>
         <div className="mb-8 flex flex-col items-center">
           <AutoRotatingCube inverse className="scale-75 md:scale-100" />
           <h2 className="text-white text-2xl md:text-3xl font-medium mt-8">
