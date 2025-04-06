@@ -7,7 +7,7 @@ import { TabsSection } from "@/components/case-study/TabsSection"
 import Image from "next/image"
 import { HeroSection } from "@/components/case-study/HeroSection"
 
-export default function CaseStudyPage({ params }: { params: { slug: string } }) {
+export default function CaseStudyPage({}: { params: { slug: string } }) {
   // This is a placeholder. In a real implementation, you'd fetch the case study data based on the slug
   const caseStudy = {
     title: "Insight",
@@ -44,7 +44,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
               </li>
               <li>
                 <strong>Generic showroom layouts</strong>: Showrooms only represent standard 3, 4, and 5-room flats,
-                which don't reflect the unique layouts of different BTO projects.
+                which don&apos;t reflect the unique layouts of different BTO projects.
               </li>
               <li>
                 <strong>Fragmented information</strong>: Factors like sunlight direction and proximity to amenities must
@@ -192,7 +192,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                         <div>
                           <p className="font-medium">Insight: Environmental Realism</p>
                           <p className="text-gray-600">
-                            Participants noted that the <strong>environment's realism</strong> needed improvement in
+                            Participants noted that the <strong>environment&apos;s realism</strong> needed improvement in
                             materials, lighting, and scale perception.
                           </p>
                           <p className="text-gray-600 mt-2">
@@ -206,15 +206,15 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                       <div className="flex flex-col">
                         <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
                           <Image
-                            src="/case-studies/insight/Usability-test.png"
-                            alt="Usability testing session with participants evaluating the XR prototype"
+                            src="/case-studies/insight/tutorial-tooltip-alt.jpeg"
+                            alt="Tutorial tooltip"
                             fill
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 400px, 600px"
                             className="object-cover"
                           />
                         </div>
                         <p className="text-sm text-gray-600 mt-2 text-center">
-                          Usability testing session with participants
+                          Tutorial tooltips immediately visible to users
                         </p>
                       </div>
                       <div className="flex flex-col">
@@ -243,7 +243,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
         <ContentSection id="evolution" title="Taking a moment" className="bg-gray-50">
           <div className="mb-12">
             <p className="text-lg text-gray-600 mb-6">
-              Before diving into our final solution, let's take a moment to appreciate how the prototype evolved. What
+              Before diving into our final solution, let&apos;s take a moment to appreciate how the prototype evolved. What
               began as a rough concept in ShapesXR transformed into a fully functional XR experience through multiple
               iterations and user feedback cycles.
             </p>
@@ -266,7 +266,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
             <p className="text-lg text-gray-600">Our XR prototype enables prospective homeowners to:</p>
             <ul className="text-lg text-gray-600 list-disc pl-6 space-y-2 mt-4">
               <li>
-                <strong>Explore the estate from a bird's-eye view</strong>
+                <strong>Explore the estate from a bird&apos;s-eye view</strong>
               </li>
               <li>
                 <strong>See unit availability</strong> and step inside <strong>life-size 3D models</strong>
@@ -336,8 +336,8 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
               <h3 className="text-xl font-medium mb-4">Setting the Right Expectations</h3>
               <div className="space-y-4 text-gray-600">
                 <p>
-                  Initially, our goal was to showcase XR's potential as a platform, but midway through, we shifted
-                  toward a competitive mindset, leading to disappointment when we didn't win.
+                  Initially, our goal was to showcase XR&apos;s potential as a platform, but midway through, we shifted
+                  toward a competitive mindset, leading to disappointment when we didn&apos;t win.
                 </p>
                 <p>
                   If winning was the goal, we would have needed to optimize for real-world adoption by prioritizing a{" "}
