@@ -44,7 +44,8 @@ const caseStudies: CaseStudy[] = [
     title: "ResumeBoost",
     description: "Helping Jobseekers Improve Their Resumes with AI",
     imageUrl: "/images/Thumbnail.jpg",
-    videoUrl: "/images/rb-case-study_thumbnail_hover.mp4",
+    videoUrl:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/rb-case-study_thumbnail_hover-WJ7rjwhTcjGkvm9J3rilovwUTI3vU6.mp4",
     slug: "resumeboost",
   },
 ]
@@ -173,7 +174,7 @@ function CaseStudyCard({
                 alt={caseStudy.title}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="object-cover border border-gray-300"
+                className="object-cover"
                 style={
                   isResumeBoost || (isMobile && caseStudy.id === "project-4")
                     ? { objectPosition: "10% center" }
