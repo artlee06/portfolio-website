@@ -51,4 +51,3 @@ export function useScrollFixed({ threshold = 0.5, duration = 1000 }: ScrollFixed
 
   return { ref: elementRef, isFixed, hasCompleted }
 }
-

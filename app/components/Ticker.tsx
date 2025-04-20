@@ -31,4 +31,3 @@ export function Ticker({ text, fontSize }: TickerProps) {
     </div>
   )
 }
-

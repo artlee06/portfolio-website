@@ -46,7 +46,7 @@ export const BentoGridItem = React.memo(function BentoGridItem({
 
   return (
     <motion.div
-      className={`bg-white rounded-lg overflow-hidden border border-gray-200 ${colSpanClass} ${rowSpanClass} ${className}`}
+      className={`bg-white overflow-hidden border border-gray-200 ${colSpanClass} ${rowSpanClass} ${className}`}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -54,19 +54,26 @@ export const BentoGridItem = React.memo(function BentoGridItem({
     >
       {videoUrl ? (
         <div className={`relative w-full h-0 ${aspectRatioClass}`}>
-          <iframe
-            src={
-              videoUrl.includes("vimeo.com")
-                ? videoUrl.replace("vimeo.com", "player.vimeo.com/video").replace("?share=copy", "")
-                : videoUrl
-            }
-            className="absolute top-0 left-0 w-full h-full"
-            frameBorder="0"
-            loading="lazy"
-            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
-            title="Insight - BTO Unit Selection"
-            allowFullScreen
-          ></iframe>
+          {videoUrl.includes("vimeo.com") ? (
+            <iframe
+              src={videoUrl.replace("vimeo.com", "player.vimeo.com/video").replace("?share=copy", "")}
+              className="absolute top-0 left-0 w-full h-full"
+              frameBorder="0"
+              loading="lazy"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+              title="Video content"
+              allowFullScreen
+            ></iframe>
+          ) : (
+            <video
+              src={videoUrl}
+              className="absolute top-0 left-0 w-full h-full object-cover"
+              autoPlay
+              loop
+              muted
+              playsInline
+            />
+          )}
         </div>
       ) : imageUrl ? (
         <div className={`relative w-full h-0 ${aspectRatioClass}`}>
@@ -104,4 +111,3 @@ export const BentoGrid = React.memo(function BentoGrid({
 
   return <div className={`${gridClasses[variant]} ${className}`}>{children}</div>
 })
-

@@ -22,7 +22,7 @@ export function TabsSection({ tabs, defaultValue, className = "" }: TabsSectionP
 
   return (
     <CaseStudyTabs defaultValue={activeTab} onValueChange={setActiveTab} className={`w-full ${className}`}>
-      <CaseStudyTabsList className="w-full mb-2">
+      <CaseStudyTabsList className="max-w-3xl mx-auto mb-2">
         {tabs.map((tab) => (
           <CaseStudyTabsTrigger key={tab.id} value={tab.id}>
             {tab.label}
@@ -38,4 +38,3 @@ export function TabsSection({ tabs, defaultValue, className = "" }: TabsSectionP
     </CaseStudyTabs>
   )
 }
-

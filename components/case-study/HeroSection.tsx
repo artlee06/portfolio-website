@@ -29,10 +29,10 @@ export function HeroSection() {
         // Mobile
         setScale(1)
       } else if (viewportWidth <= 1920) {
-        // Tablet and smaller desktop
+        // Tablet
         setScale(1.2)
       } else {
-        // Desktop large
+        // Desktop
         setScale(1.6)
       }
     }
@@ -105,7 +105,7 @@ export function HeroSection() {
                 preload="auto"
               >
                 <source
-                  src="/case-studies/insight/Hero_square.mp4"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Hero_square-RpWuD5v9oRCWYpy8U8gaQ79peuUuDQ.mp4"
                   type="video/mp4"
                 />
                 {/* Fallback for browsers that don't support video */}
@@ -220,4 +220,3 @@ function VRHeadsetDottedOutline({ scale }: { scale: number }) {
     </div>
   )
 }
-

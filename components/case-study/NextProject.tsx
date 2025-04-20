@@ -30,4 +30,3 @@ export function NextProject({ title, description, href }: NextProjectProps) {
     </div>
   )
 }
-

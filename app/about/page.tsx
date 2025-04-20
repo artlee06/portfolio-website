@@ -14,7 +14,7 @@ export default function AboutPage() {
           <div className="relative max-w-[343px] w-full mx-auto md:mx-0 md:w-1/2 lg:w-2/5">
             <div className="relative aspect-[343/400] w-full">
               <Image
-                src="/images/profile.jpeg"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Image%20427x427-gyaw9gFIeh1W55tn38J8QpyXnzdcrA.jpeg"
                 alt="Profile picture"
                 fill
                 style={{
@@ -35,7 +35,7 @@ export default function AboutPage() {
                 <h1 className="text-2xl md:text-3xl lg:text-4xl font-medium">Hi! I&apos;m Arthur Lee!</h1>
                 <p className="text-3xl md:text-4xl lg:text-5xl font-medium">I&apos;m a product designer who codes</p>
               </div>
-              <p className="text-sm md:text-md font-regular">
+              <p className="text-base font-regular">
                 I&apos;m currently at GovTech Singapore working on ResumeBoost, an AI resume enhancer and its related
                 products. I also love tinkering and creating for extended reality (XR).
               </p>
@@ -57,9 +57,7 @@ export default function AboutPage() {
           <div className="md:flex md:justify-between">
             <div className="md:w-1/3 space-y-2 mb-8 md:mb-0">
               <h2 className="text-xl md:text-2xl lg:text-3xl">What I&apos;ve been up to</h2>
-              <p className="text-gray-600 text-sm md:text-base">
-                Feel free to see my LinkedIn or CV for the nitty gritty.
-              </p>
+              <p className="text-gray-600 text-base">Feel free to see my LinkedIn or CV for the nitty gritty.</p>
             </div>
             <div className="md:w-1/3">
               <div className="space-y-8">
@@ -98,8 +96,7 @@ function ExperienceItem({
     <div className="space-y-1 border-b border-gray-200 pb-6 md:pb-0 md:border-b-0">
       <p className="text-xs text-gray-500">{date}</p>
       <p className="text-xl">{title}</p>
-      <p className="text-s">{company}</p>
+      <p className="text-base">{company}</p>
     </div>
   )
 }
-

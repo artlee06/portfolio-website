@@ -42,4 +42,3 @@ export function AboutClientComponents({ children }: AboutClientComponentsProps) 
     </>
   )
 }
-

@@ -1,7 +1,7 @@
 import { CaseStudyGrid } from "@/components/CaseStudyGrid"
 import { ContactCTA } from "@/components/ContactCTA"
 import { Footer } from "@/components/Footer"
-import { Hero } from "@/components/hero"
+import { Hero } from "@/components/Hero"
 
 export default function LandingPage() {
   return (
@@ -17,4 +17,3 @@ export default function LandingPage() {
     </main>
   )
 }
-

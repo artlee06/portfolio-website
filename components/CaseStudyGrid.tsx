@@ -4,15 +4,16 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 type CaseStudy = {
   id: string
   title: string
   description: string
-  imageUrl: string
+  imageUrl?: string
   videoUrl?: string
   slug: string
+  comingSoon?: boolean
 }
 
 const caseStudies: CaseStudy[] = [
@@ -20,30 +21,31 @@ const caseStudies: CaseStudy[] = [
     id: "project-1",
     title: "Insight",
     description: "HDB BTO Unit Selection empowered by XR",
-    imageUrl: "/case-studies/insight/thumbnail.jpg",
-    videoUrl: "/case-studies/insight/Hero_square.mp4",
+    imageUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Thumbnail-kb41xkIr89cyWG9KSwcr4WxuN8GFfn.jpeg",
+    videoUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Hero_square-RpWuD5v9oRCWYpy8U8gaQ79peuUuDQ.mp4",
     slug: "insight",
   },
   {
     id: "project-2",
     title: "Project Two",
-    description: "A brief description of the first project to be added here",
-    imageUrl: "/images/placeholder.svg",
+    description: "A brief description of the project to be added here",
+    comingSoon: true,
     slug: "coming-soon",
   },
   {
     id: "project-3",
     title: "Project Three",
-    description: "A brief description of the first project to be added here",
-    imageUrl: "/images/placeholder.svg",
+    description: "A brief description of the project to be added here",
+    comingSoon: true,
     slug: "coming-soon",
   },
   {
     id: "project-4",
-    title: "Project Four",
-    description: "A brief description of the first project to be added here",
-    imageUrl: "/images/placeholder.svg",
-    slug: "coming-soon",
+    title: "ResumeBoost",
+    description: "Helping Jobseekers Improve Their Resumes with AI",
+    imageUrl: "/images/Thumbnail.jpg",
+    videoUrl: "/images/rb-case-study_thumbnail_hover.mp4",
+    slug: "resumeboost",
   },
 ]
 
@@ -63,6 +65,7 @@ export function CaseStudyGrid() {
             isAnyHovered={hoveredId !== null}
             onHover={() => setHoveredId(study.id)}
             onHoverEnd={() => setHoveredId(null)}
+            textColorOnHover={study.id === "project-4" ? "text-[#2e2e2e]" : "text-white"}
           />
         ))}
       </div>
@@ -77,6 +80,7 @@ function CaseStudyCard({
   isAnyHovered,
   onHover,
   onHoverEnd,
+  textColorOnHover = "text-white",
 }: {
   caseStudy: CaseStudy
   index: number
@@ -84,9 +88,34 @@ function CaseStudyCard({
   isAnyHovered: boolean
   onHover: () => void
   onHoverEnd: () => void
+  textColorOnHover?: string
 }) {
   const isLarge = index === 0 || index === 3
   const hasVideo = !!caseStudy.videoUrl
+  const isFirstProject = index === 0
+  const isResumeBoost = caseStudy.id === "project-4"
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Check if we're on mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+
+    // Initial check
+    checkMobile()
+
+    // Add resize listener
+    window.addEventListener("resize", checkMobile)
+
+    // Cleanup
+    return () => window.removeEventListener("resize", checkMobile)
+  }, [])
+
+  // Get the URL for the case study - now all case studies are under /work/
+  const getUrl = () => {
+    return `/work/${caseStudy.slug}`
+  }
 
   return (
     <motion.div
@@ -98,16 +127,15 @@ function CaseStudyCard({
       }}
       transition={{ duration: 0.2 }}
     >
-      <Link
-        href={`/work/${caseStudy.slug}`}
-        className="block relative"
-        onMouseEnter={onHover}
-        onMouseLeave={onHoverEnd}
-      >
-        <div className="relative bg-gray-100 rounded-lg overflow-hidden">
+      <Link href={getUrl()} className="block relative" onMouseEnter={onHover} onMouseLeave={onHoverEnd}>
+        <div className="relative bg-gray-100 overflow-hidden">
           {/* Title and Arrow - Always visible */}
           <div className="absolute top-6 left-6 right-6 z-20 flex justify-between items-start">
-            <p className={`text-sm font-medium ${isHovered && hasVideo ? "text-white" : "text-[#2e2e2e]"}`}>
+            <p
+              className={`text-sm font-medium ${
+                (isHovered || (isMobile && isFirstProject)) && hasVideo ? textColorOnHover : "text-[#2e2e2e]"
+              }`}
+            >
               {caseStudy.title}
             </p>
             <motion.div
@@ -116,13 +144,17 @@ function CaseStudyCard({
               }}
               transition={{ duration: 0.2 }}
             >
-              <ArrowUpRight className={`w-5 h-5 ${isHovered && hasVideo ? "text-white" : "text-[#2e2e2e]"}`} />
+              <ArrowUpRight
+                className={`w-5 h-5 ${
+                  (isHovered || (isMobile && isFirstProject)) && hasVideo ? textColorOnHover : "text-[#2e2e2e]"
+                }`}
+              />
             </motion.div>
           </div>
 
           {/* Image or Video */}
-          <div className="relative aspect-[16/9]">
-            {isHovered && caseStudy.videoUrl ? (
+          <div className={`relative ${isMobile ? "aspect-square" : "aspect-[16/9]"}`}>
+            {(isHovered || (isMobile && isFirstProject)) && caseStudy.videoUrl ? (
               <video
                 src={caseStudy.videoUrl}
                 autoPlay
@@ -131,13 +163,22 @@ function CaseStudyCard({
                 playsInline
                 className="absolute inset-0 w-full h-full object-cover"
               />
+            ) : caseStudy.comingSoon ? (
+              <div className="absolute inset-0 w-full h-full flex items-center justify-center bg-gray-50">
+                <p className="text-xl font-medium text-center text-gray-500">Coming Soon</p>
+              </div>
             ) : (
               <Image
                 src={caseStudy.imageUrl || "/placeholder.svg"}
                 alt={caseStudy.title}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="object-cover"
+                className="object-cover border border-gray-300"
+                style={
+                  isResumeBoost || (isMobile && caseStudy.id === "project-4")
+                    ? { objectPosition: "10% center" }
+                    : undefined
+                }
               />
             )}
           </div>
@@ -150,7 +191,7 @@ function CaseStudyCard({
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 10 }}
-              className="absolute top-full left-0 right-0 mt-4 text-center px-6 z-50 bg-white p-4"
+              className="absolute top-full left-0 right-0 mt-4 text-center px-6 z-[100] bg-white p-4"
             >
               <p className="text-lg md:text-xl text-[#2e2e2e]">{caseStudy.description}</p>
             </motion.div>
@@ -160,4 +201,3 @@ function CaseStudyCard({
     </motion.div>
   )
 }
-

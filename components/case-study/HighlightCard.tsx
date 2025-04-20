@@ -16,7 +16,7 @@ export const HighlightCard = React.memo(function HighlightCard({ number, label, 
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="bg-white p-6 rounded-lg border border-gray-200"
+      className="bg-white p-6 border border-gray-200"
     >
       <div className="text-4xl md:text-5xl font-medium mb-2">{number}</div>
       <div className="text-lg font-medium mb-2">{label}</div>
@@ -24,4 +24,3 @@ export const HighlightCard = React.memo(function HighlightCard({ number, label, 
     </motion.div>
   )
 })
-

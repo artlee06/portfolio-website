@@ -1,5 +1,6 @@
 :root {
   --font-lexend: "Lexend", sans-serif;
+  --font-inter: "Inter", sans-serif;
 }
 
 body {
@@ -42,3 +43,19 @@ html {
   font-family: var(--font-lexend);
 }
 
+.font-inter {
+  font-family: var(--font-inter);
+}
+
+/* Apply Inter font to case study body text */
+.case-study-content p {
+  font-family: var(--font-inter);
+  font-size: 1rem; /* 16px */
+  line-height: 1.5;
+}
+
+.case-study-content li {
+  font-family: var(--font-inter);
+  font-size: 1rem; /* 16px */
+  line-height: 1.5;
+}

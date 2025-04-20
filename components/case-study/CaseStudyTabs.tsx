@@ -12,7 +12,7 @@ const CaseStudyTabsList = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <TabsPrimitive.List
     ref={ref}
-    className={cn("inline-flex items-center justify-start space-x-6 mb-2", className)}
+    className={cn("flex w-full items-center justify-start space-x-6 mb-2 max-w-3xl mx-auto", className)}
     {...props}
   />
 ))
@@ -49,4 +49,3 @@ const CaseStudyTabsContent = React.forwardRef<
 CaseStudyTabsContent.displayName = "CaseStudyTabsContent"
 
 export { CaseStudyTabs, CaseStudyTabsList, CaseStudyTabsTrigger, CaseStudyTabsContent }
-

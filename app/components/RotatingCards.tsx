@@ -6,11 +6,6 @@ import { Square3Stack3DIcon, CubeIcon } from "@heroicons/react/24/outline"
 import { Cube } from "./Cube"
 import { AnimatePresence } from "framer-motion"
 
-interface CardContentProps {
-  text: string
-  Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>
-}
-
 export function RotatingCards() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [is3D, setIs3D] = useState(false)
@@ -30,9 +25,9 @@ export function RotatingCards() {
 
   const renderCard = useCallback(() => {
     return is3D ? (
-      <CardContent text="As well as 3D mediums for the future" Icon={CubeIcon} />
+      <CardContent title="3D Design" text="As well as 3D mediums for the future" Icon={CubeIcon} />
     ) : (
-      <CardContent text="I design in 2D mediums for the here and now" Icon={Square3Stack3DIcon} />
+      <CardContent title="2D Design" text="I design in 2D mediums for the here and now" Icon={Square3Stack3DIcon} />
     )
   }, [is3D])
 
@@ -103,11 +98,10 @@ export function RotatingCards() {
   )
 }
 
-const CardContent = memo(function CardContent({ text }: CardContentProps) {
+const CardContent = memo(function CardContent({ title, text, Icon }) {
   return (
     <div className="p-6 space-y-4 bg-white max-w-auto">
       <p className="text-2xl md:text-3xl text-center">{text}</p>
     </div>
   )
 })
-

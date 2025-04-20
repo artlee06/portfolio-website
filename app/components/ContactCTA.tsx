@@ -6,7 +6,7 @@ import { Square3Stack3DIcon, CubeIcon, CodeBracketIcon, PaintBrushIcon } from "@
 export function ContactCTA() {
   return (
     <div className="w-full mx-auto md:max-w-none">
-      <div className="bg-[#2E2E2E] rounded-2xl p-12 text-center content-center" style={{ minHeight: "40vh" }}>
+      <div className="bg-[#2E2E2E] p-12 text-center content-center" style={{ minHeight: "60vh" }}>
         <div className="mb-8">
           <AutoRotatingCube />
           <h2 className="text-white text-2xl md:text-3xl font-medium mt-4">
@@ -21,7 +21,7 @@ export function ContactCTA() {
             Email me
           </a>
           <a
-            href="https://linkedin.com/in/yourprofile"
+            href="https://www.linkedin.com/in/arthur-lee-ying-kiu/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center px-6 py-2 rounded-full bg-transparent border border-white text-white hover:bg-white/10 transition-colors"
@@ -60,4 +60,3 @@ function AutoRotatingCube() {
     </div>
   )
 }
-

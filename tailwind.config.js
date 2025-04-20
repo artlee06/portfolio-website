@@ -1,3 +1,4 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
   content: [
@@ -6,12 +7,14 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "app/**/*.{ts,tsx}",
     "components/**/*.{ts,tsx}",
+    "*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
       fontFamily: {
         sans: ["var(--font-lexend)"],
         lexend: ["var(--font-lexend)"],
+        inter: ["var(--font-inter)"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -57,4 +60,3 @@ module.exports = {
   },
   plugins: [require("tailwindcss-animate")],
 }
-

@@ -1,4 +1,4 @@
-import { Lexend } from "next/font/google"
+import { Lexend, Inter } from "next/font/google"
 import "./globals.css"
 import { Navigation } from "@/components/Navigation"
 import type { ReactNode } from "react"
@@ -7,6 +7,12 @@ const lexend = Lexend({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-lexend",
+})
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
 })
 
 export const metadata = {
@@ -19,7 +25,7 @@ export default function RootLayout({
   children: ReactNode
 }) {
   return (
-    <html lang="en" className={`${lexend.variable} font-sans`}>
+    <html lang="en" className={`${lexend.variable} ${inter.variable}`}>
       <body className={`${lexend.variable} font-sans antialiased`}>
         <Navigation />
         {children}
@@ -27,4 +33,3 @@ export default function RootLayout({
     </html>
   )
 }
-

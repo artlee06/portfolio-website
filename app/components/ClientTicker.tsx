@@ -12,4 +12,3 @@ export function ClientTicker() {
 
   return <Ticker text="Thank you for reading!" fontSize={fontSize} />
 }
-

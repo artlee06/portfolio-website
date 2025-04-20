@@ -133,4 +133,3 @@ const TickerRow = React.memo(function TickerRow({
     </div>
   )
 })
-

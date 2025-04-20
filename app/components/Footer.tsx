@@ -12,7 +12,7 @@ export function Footer() {
           <div className="flex md:flex-col justify-between md:justify-start items-center md:items-start">
             <div className="h-12 w-12 md:h-[72px] md:w-[72px] mb-6">
               <Image
-                src="/images/Logo.png"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Personal_website_4.0-3dwBeVSf2Q2mZH2E6V15YMYuVvHifo.png"
                 alt="Arthur Lee logo"
                 width={72}
                 height={72}
@@ -85,4 +85,3 @@ export function Footer() {
     </footer>
   )
 }
-

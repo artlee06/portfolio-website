@@ -50,4 +50,3 @@ const CubeFace = memo(function CubeFace({ Icon, rotation }: CubeFaceProps) {
     </div>
   )
 })
-
