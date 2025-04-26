@@ -25,7 +25,7 @@ const testimonials: Testimonial[] = [
       name: "Ari Widjanarko",
       role: "Design Lead",
       company: "IBM iX",
-      image: "/placeholder.svg?height=64&width=64", // Replace with actual image
+      image: "/testimonials/Ari Portfolio Image.webp", // Replace with actual image
     },
   },
   {
@@ -35,7 +35,7 @@ const testimonials: Testimonial[] = [
       name: "Todd Oquist",
       role: "Senior UX Developer",
       company: "Indeed.com",
-      image: "/placeholder.svg?height=64&width=64", // Replace with actual image
+      image: "/testimonials/Todd.webp", // Replace with actual image
     },
   },
   {
@@ -45,7 +45,7 @@ const testimonials: Testimonial[] = [
       name: "Yun Chuan Ngin",
       role: "Senior Software Engineer",
       company: "Indeed.com",
-      image: "/placeholder.svg?height=64&width=64", // Replace with actual image
+      image: "/testimonials/YC.webp", // Replace with actual image
     },
   },
   {
@@ -55,7 +55,7 @@ const testimonials: Testimonial[] = [
       name: "Terezia Toth",
       role: "UX Content Designer",
       company: "Indeed.com",
-      image: "/placeholder.svg?height=64&width=64", // Replace with actual image
+      image: "/testimonials/Terezia.webp", // Replace with actual image
     },
   },
   {
@@ -65,7 +65,7 @@ const testimonials: Testimonial[] = [
       name: "Chris Roper",
       role: "UX Director",
       company: "Indeed.com",
-      image: "/placeholder.svg?height=64&width=64", // Replace with actual image
+      image: "/testimonials/Chris Portfolio Image.webp", // Replace with actual image
     },
   },
   {
@@ -75,7 +75,7 @@ const testimonials: Testimonial[] = [
       name: "Sara Koay",
       role: "Senior UX researcher",
       company: "Indeed.com",
-      image: "/placeholder.svg?height=64&width=64", // Replace with actual image
+      image: "/testimonials/Sara.webp", // Replace with actual image
     },
   },
   {
@@ -85,7 +85,7 @@ const testimonials: Testimonial[] = [
       name: "Konrad Marzec",
       role: "Senior Product designer",
       company: "Indeed.com",
-      image: "/placeholder.svg?height=64&width=64", // Replace with actual image
+      image: "/testimonials/Konrad-Portfolio-Image.webp", // Replace with actual image
     },
   },
   {
@@ -95,7 +95,7 @@ const testimonials: Testimonial[] = [
       name: "Jules Ang",
       role: "Produt Design Lead",
       company: "MoneySmart",
-      image: "/placeholder.svg?height=64&width=64", // Replace with actual image
+      image: "/testimonials/Jules-Portfolio-Image.webp", // Replace with actual image
     },
   },
   {
@@ -105,7 +105,7 @@ const testimonials: Testimonial[] = [
       name: "Jeremy Hon",
       role: "CTO, cofounder",
       company: "StaffAny",
-      image: "/placeholder.svg?height=64&width=64", // Replace with actual image
+      image: "/testimonials/Jeremy-Portfolio-Image.webp", // Replace with actual image
     },
   },
   {
@@ -115,7 +115,7 @@ const testimonials: Testimonial[] = [
       name: "Alvin Ng",
       role: "Lead Software Engineer",
       company: "BCG X",
-      image: "/placeholder.svg?height=64&width=64", // Replace with actual image
+      image: "/testimonials/Alvin Portfolio Image.webp", // Replace with actual image
     },
   },
   // Add more testimonials

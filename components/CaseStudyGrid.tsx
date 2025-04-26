@@ -21,8 +21,8 @@ const caseStudies: CaseStudy[] = [
     id: "project-1",
     title: "Insight",
     description: "HDB BTO Unit Selection empowered by XR",
-    imageUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Thumbnail-kb41xkIr89cyWG9KSwcr4WxuN8GFfn.jpeg",
-    videoUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Hero_square-RpWuD5v9oRCWYpy8U8gaQ79peuUuDQ.mp4",
+    imageUrl: "/case-studies/insight/Thumbnail.webp",
+    videoUrl: "/case-studies/insight/Hero_square.mp4",
     slug: "insight",
   },
   {
@@ -43,9 +43,8 @@ const caseStudies: CaseStudy[] = [
     id: "project-4",
     title: "ResumeBoost",
     description: "Helping Jobseekers Improve Their Resumes with AI",
-    imageUrl: "/images/Thumbnail.jpg",
-    videoUrl:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/rb-case-study_thumbnail_hover-WJ7rjwhTcjGkvm9J3rilovwUTI3vU6.mp4",
+    imageUrl: "/case-studies/resumeboost/Thumbnail.webp",
+    videoUrl: "/case-studies/resumeboost/rb-case-study_thumbnail_hover.mp4",
     slug: "resumeboost",
   },
 ]
