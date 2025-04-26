@@ -104,10 +104,7 @@ export function HeroSection() {
                 className="absolute inset-0 w-full h-full object-cover"
                 preload="auto"
               >
-                <source
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Hero_square-RpWuD5v9oRCWYpy8U8gaQ79peuUuDQ.mp4"
-                  type="video/mp4"
-                />
+                <source src="/case-studies/insight/Hero_square.mp4" type="video/mp4" />
                 {/* Fallback for browsers that don't support video */}
                 <Image
                   src="/placeholder.svg?height=600&width=600"

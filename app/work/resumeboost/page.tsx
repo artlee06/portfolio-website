@@ -100,7 +100,7 @@ export default function ResumeBoostCaseStudyPage() {
                     <MediaContainer className="mt-12">
                       <div className="relative aspect-[16/9] w-full max-w-3xl mx-auto overflow-hidden">
                         <Image
-                          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Discovery.jpg-pN0CDIqGJKqb2kFedRNSmDTb6SFKmF.jpeg"
+                          src="/case-studies/resumeboost/Discovery.webp"
                           alt="Discovery research showing interviews with 9 hiring managers and 4 successful career switchers"
                           fill
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 800px, 1200px"
@@ -146,9 +146,7 @@ export default function ResumeBoostCaseStudyPage() {
                     <div className="mt-16 w-full max-w-3xl mx-auto">
                       <div className="bg-gray-100 p-8 md:p-10">
                         <h3 className="text-xl md:text-2xl font-light font-lexend mb-8">
-                          "The "tell us about you" part is good. Changed things up a little and made my personal
-                          statement more appealing. Organised resume settings, from personal details to projects to
-                          experience. Clean interface."
+                          {`The "tell us about you" part is good. Changed things up a little and made my personal statement more appealing. Organised resume settings, from personal details to projects to experience. Clean interface.`}
                         </h3>
                         <div className="flex items-center gap-4">
                           <div className="bg-gray-300 rounded-full w-12 h-12 flex items-center justify-center">
@@ -188,7 +186,7 @@ export default function ResumeBoostCaseStudyPage() {
             {/* Simplified User Flow Section */}
             <IterationSection
               title="Simplified User Flow"
-              videoSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/UserFlow%20MP4%20April%2020%202025-jTJ1gW1Ulc6R5GFesGcoZsQmi7Hjt7.mp4"
+              videoSrc="/case-studies/resumeboost/UserFlow_Key_Iteration.mp4"
             >
               <p className="text-lg text-gray-600 mb-4">
                 Originally, the process involved multiple steps, making it cumbersome for users. Based on feedback, we
@@ -210,7 +208,7 @@ export default function ResumeBoostCaseStudyPage() {
             {/* Refining the Rewrite Flow Section */}
             <IterationSection
               title="Refining the Rewrite Flow"
-              videoSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Rewrites%20Key%20Iteration-gK2WGY1eVgqMb7gXYJfwueNNhcxIBU.mp4"
+              videoSrc="/case-studies/resumeboost/Rewrites Key Iteration.mp4"
               isReversed={true}
             >
               <p className="text-lg text-gray-600 mb-4">
@@ -237,7 +235,7 @@ export default function ResumeBoostCaseStudyPage() {
             {/* Scaling to MyCareersFuture Section */}
             <IterationSection
               title="Scaling to MyCareersFuture (MCF)"
-              videoSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/MCF%20Integration%20Key%20Iteration-L4XugQGwc682tDYrSFfeL9faKqE7N8.mp4"
+              videoSrc="/case-studies/resumeboost/MCF Integration Key Iteration.mp4"
             >
               <p className="text-lg text-gray-600 mb-4">
                 After validating our approach in the standalone product, we worked with MCF to integrate these learnings
@@ -283,25 +281,25 @@ export default function ResumeBoostCaseStudyPage() {
           <BentoGrid variant="solution">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <BentoGridItem
-                imageUrl="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Bento_placeholder.jpg-jxNDPD64D1FUNowKce5XEAEplhVpZ6.jpeg"
+                imageUrl="/case-studies/resumeboost/Bento_placeholder.webp"
                 alt="Resume overview showing a professional resume with education and experience sections"
                 aspectRatio="16:9"
               />
               <BentoGridItem
-                imageUrl="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Bento_export_formats.jpg-uL3b1m2bcCWDmYVi23v05hjO7aX6jc.jpeg"
+                imageUrl="/case-studies/resumeboost/Bento_export_formats.webp"
                 alt="Export formats interface showing different resume template options"
                 aspectRatio="16:9"
               />
             </div>
 
             <BentoGridItem
-              videoUrl="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Bento%20Tailor%20Resume%20Demo%20%281%29-6UqhFlmvZRueF0hUnneqfDXKuitV2j.mp4"
+              videoUrl="/case-studies/resumeboost/Bento_Tailor_Resume_Demo.mp4"
               alt="Resume tailoring interface demonstration showing how to tailor a resume to a job description"
               aspectRatio="square"
             />
 
             <BentoGridItem
-              imageUrl="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Bento_Restructure.jpg-8kmmAmy8IN4P2TUXiw6K5uTx8WD5NP.jpeg"
+              imageUrl="/case-studies/resumeboost/Bento_Restructure.webp"
               alt="Resume restructuring interface showing original bullet points and AI-enhanced restructured descriptions"
               aspectRatio="16:9"
             />
@@ -332,31 +330,31 @@ export default function ResumeBoostCaseStudyPage() {
                 {/* Testimonial 1 */}
                 <div className="bg-gray-100 p-8 md:p-10">
                   <h3 className="text-xl md:text-2xl font-light font-lexend mb-8">
-                    "The UI is very clean and fast. Suggestions for the points are very Singaporean human like. In fact
-                    I accepted most of the revisions! Much better than the chatGPTs I'm using at work"
+                   {`"The UI is very clean and fast. Suggestions for the points are very Singaporean human like. In fact
+                    I accepted most of the revisions! Much better than the chatGPTs I'm using at work"`}
                   </h3>
                 </div>
 
                 {/* Testimonial 2 */}
                 <div className="bg-gray-100 p-8 md:p-10">
                   <h3 className="text-xl md:text-2xl font-light font-lexend mb-8">
-                    "I like that the feedback is categorised by theme and everything is very clear with icons and bolded
-                    keywords so its easier to work on"
+                    {`"I like that the feedback is categorised by theme and everything is very clear with icons and bolded
+                    keywords so its easier to work on`}"
                   </h3>
                 </div>
 
                 {/* Testimonial 3 */}
                 <div className="bg-gray-100 p-8 md:p-10">
                   <h3 className="text-xl md:text-2xl font-light font-lexend mb-8">
-                    "Before that I only receive 1 or 2 but after this ResumeBoost I get quite frequent calls back as
-                    long as they have downloaded the resume the call back percentage is about 70%"
+                    {`"Before that I only receive 1 or 2 but after this ResumeBoost I get quite frequent calls back as
+                    long as they have downloaded the resume the call back percentage is about 70%"`}
                   </h3>
                 </div>
 
                 {/* Testimonial 4 */}
                 <div className="bg-gray-100 p-8 md:p-10">
                   <h3 className="text-xl md:text-2xl font-light font-lexend mb-8">
-                    "I just wanna say I love the tool and amazing job!!"
+                    {`"I just wanna say I love the tool and amazing job!!"`}
                   </h3>
                 </div>
               </div>

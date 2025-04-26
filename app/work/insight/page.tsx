@@ -46,7 +46,7 @@ export default function InsightCaseStudyPage() {
               </li>
               <li>
                 <strong>Generic showroom layouts</strong>: Showrooms only represent standard 3, 4, and 5-room flats,
-                which don't reflect the unique layouts of different BTO projects.
+                which don&apos;t reflect the unique layouts of different BTO projects.
               </li>
               <li>
                 <strong>Fragmented information</strong>: Factors like sunlight direction and proximity to amenities must
@@ -133,7 +133,7 @@ export default function InsightCaseStudyPage() {
                     <div className="flex flex-col items-center mt-16 w-full">
                       <div className="relative aspect-[16/9] w-full overflow-hidden">
                         <Image
-                          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Conducting%20concept%20test-zlNBq7HbetIG0OEVImHCmWeiyqLyiF.png"
+                          src="/case-studies/insight/Conducting-concept-test.webp"
                           alt="Concept testing with ShapesXR prototype showing optional finishings interface"
                           fill
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 800px, 1200px"
@@ -189,7 +189,7 @@ export default function InsightCaseStudyPage() {
                         <div>
                           <Subheader>Insight: Environmental Realism</Subheader>
                           <p className="text-gray-600">
-                            Participants noted that the <strong>environment's realism</strong> needed improvement in
+                            Participants noted that the <strong>environment&apos;s realism</strong> needed improvement in
                             materials, lighting, and scale perception.
                           </p>
                           <p className="text-gray-600 mt-2">
@@ -203,7 +203,7 @@ export default function InsightCaseStudyPage() {
                       <div className="flex flex-col">
                         <div className="relative aspect-[4/3] overflow-hidden">
                           <Image
-                            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Usability%20test.png-q3exYvKEjFBxQ0vRQrZrUkq72jtJkf.jpeg"
+                            src="/case-studies/insight/Usability Test.webp"
                             alt="Usability testing session with participants evaluating the XR prototype"
                             fill
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 400px, 600px"
@@ -217,7 +217,7 @@ export default function InsightCaseStudyPage() {
                       <div className="flex flex-col">
                         <div className="relative aspect-[4/3] overflow-hidden">
                           <Image
-                            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Newly%20added%20minimap-bBNhZdcbBlj1ZoOC2P2ra4vAwhyx3u.jpeg"
+                            src="/case-studies/insight/Newly-added-minimap.webp"
                             alt="Improved Unity prototype with minimap and control panel for better navigation"
                             fill
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 400px, 600px"
@@ -241,7 +241,7 @@ export default function InsightCaseStudyPage() {
           <div className="mb-12">
             <div className="prose prose-gray max-w-3xl mx-auto mb-6">
               <p className="text-lg text-gray-600">
-                Before diving into our final solution, let's take a moment to appreciate how the prototype evolved. What
+                Before diving into our final solution, let&apos;s take a moment to appreciate how the prototype evolved. What
                 began as a rough concept in ShapesXR transformed into a fully functional XR experience through multiple
                 iterations and user feedback cycles.
               </p>
@@ -265,7 +265,7 @@ export default function InsightCaseStudyPage() {
             <p className="text-lg text-gray-600">Our XR prototype enables prospective homeowners to:</p>
             <ul className="text-lg text-gray-600 list-disc pl-6 space-y-2 mt-4">
               <li>
-                <strong>Explore the estate from a bird's-eye view</strong>
+                <strong>Explore the estate from a bird&apos;s-eye view</strong>
               </li>
               <li>
                 <strong>See unit availability</strong> and step inside <strong>life-size 3D models</strong>
@@ -282,12 +282,12 @@ export default function InsightCaseStudyPage() {
             {/* First row: 2 16:9 placeholders side by side */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <BentoGridItem
-                imageUrl="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Bird%27seyeview-fTmPkHrgfmDBQJZp92UZIKe1tS1pZ3.jpeg"
+                imageUrl="/case-studies/insight/Birdseyeview.webp"
                 alt="Bird's-eye view of the estate with block selection UI"
                 aspectRatio="16:9"
               />
               <BentoGridItem
-                imageUrl="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Sunlight%20view-HfYaCaSygPvBSrgJW3RN946CaNiHy1.jpeg"
+                imageUrl="/case-studies/insight/Sunlight-view.webp"
                 alt="Sunlight simulation showing direct and indirect sunlight on buildings"
                 aspectRatio="16:9"
               />
@@ -295,14 +295,14 @@ export default function InsightCaseStudyPage() {
 
             {/* Second row: 1 square placeholder that fills the full width */}
             <BentoGridItem
-              imageUrl="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lifesize%20view-LvTmESFkgpZRcUvU87bU4qxRzrDzRa.jpeg"
+              imageUrl="/case-studies/insight/Lifesize-view.webp"
               alt="Life-size view inside a unit showing sunlight through windows"
               aspectRatio="square"
             />
 
             {/* Third row: 1 16:9 placeholder that fills the full width */}
             <BentoGridItem
-              imageUrl="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Amenities%20view-IhPjy2auTUJOafxigBVpJSH7GAqo0J.jpeg"
+              imageUrl="/case-studies/insight/Amenities-view.webp"
               alt="Nearby amenities information showing future school locations"
               aspectRatio="16:9"
             />
@@ -335,8 +335,8 @@ export default function InsightCaseStudyPage() {
               <Subheader>Setting the Right Expectations</Subheader>
               <div className="space-y-4 text-gray-600">
                 <p className="text-base">
-                  Initially, our goal was to showcase XR's potential as a platform, but midway through, we shifted
-                  toward a competitive mindset, leading to disappointment when we didn't win.
+                  Initially, our goal was to showcase XR&apos;s potential as a platform, but midway through, we shifted
+                  toward a competitive mindset, leading to disappointment when we didn&apos;t win.
                 </p>
                 <p className="text-base">
                   If winning was the goal, we would have needed to optimize for real-world adoption by prioritizing a{" "}
@@ -369,7 +369,7 @@ export default function InsightCaseStudyPage() {
                   technological ambition with user needs.
                 </p>
                 <p className="text-base">
-                  While we didn't win the hackathon, the experience and knowledge gained were invaluable, and the
+                  While we didn&apos;t win the hackathon, the experience and knowledge gained were invaluable, and the
                   positive feedback from users validated our approach to solving a real-world problem.
                 </p>
               </div>
