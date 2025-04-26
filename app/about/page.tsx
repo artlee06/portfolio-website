@@ -14,7 +14,7 @@ export default function AboutPage() {
           <div className="relative max-w-[343px] w-full mx-auto md:mx-0 md:w-1/2 lg:w-2/5">
             <div className="relative aspect-[343/400] w-full">
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Image%20427x427-gyaw9gFIeh1W55tn38J8QpyXnzdcrA.jpeg"
+                src="/profile.jpeg"
                 alt="Profile picture"
                 fill
                 style={{

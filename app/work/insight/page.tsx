@@ -133,7 +133,7 @@ export default function InsightCaseStudyPage() {
                     <div className="flex flex-col items-center mt-16 w-full">
                       <div className="relative aspect-[16/9] w-full overflow-hidden">
                         <Image
-                          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Conducting%20concept%20test-zlNBq7HbetIG0OEVImHCmWeiyqLyiF.png"
+                          src="/case-studies/insight/Conducting-concept-test.webp"
                           alt="Concept testing with ShapesXR prototype showing optional finishings interface"
                           fill
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 800px, 1200px"
@@ -203,7 +203,7 @@ export default function InsightCaseStudyPage() {
                       <div className="flex flex-col">
                         <div className="relative aspect-[4/3] overflow-hidden">
                           <Image
-                            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Usability%20test.png-q3exYvKEjFBxQ0vRQrZrUkq72jtJkf.jpeg"
+                            src="/case-studies/insight/Usability Test.webp"
                             alt="Usability testing session with participants evaluating the XR prototype"
                             fill
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 400px, 600px"
@@ -217,7 +217,7 @@ export default function InsightCaseStudyPage() {
                       <div className="flex flex-col">
                         <div className="relative aspect-[4/3] overflow-hidden">
                           <Image
-                            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Newly%20added%20minimap-bBNhZdcbBlj1ZoOC2P2ra4vAwhyx3u.jpeg"
+                            src="/case-studies/insight/Newly-added-minimap.webp"
                             alt="Improved Unity prototype with minimap and control panel for better navigation"
                             fill
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 400px, 600px"
@@ -282,12 +282,12 @@ export default function InsightCaseStudyPage() {
             {/* First row: 2 16:9 placeholders side by side */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <BentoGridItem
-                imageUrl="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Bird%27seyeview-fTmPkHrgfmDBQJZp92UZIKe1tS1pZ3.jpeg"
+                imageUrl="/case-studies/insight/Birdseyeview.webp"
                 alt="Bird's-eye view of the estate with block selection UI"
                 aspectRatio="16:9"
               />
               <BentoGridItem
-                imageUrl="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Sunlight%20view-HfYaCaSygPvBSrgJW3RN946CaNiHy1.jpeg"
+                imageUrl="/case-studies/insight/Sunlight-view.webp"
                 alt="Sunlight simulation showing direct and indirect sunlight on buildings"
                 aspectRatio="16:9"
               />
@@ -295,14 +295,14 @@ export default function InsightCaseStudyPage() {
 
             {/* Second row: 1 square placeholder that fills the full width */}
             <BentoGridItem
-              imageUrl="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lifesize%20view-LvTmESFkgpZRcUvU87bU4qxRzrDzRa.jpeg"
+              imageUrl="/case-studies/insight/Lifesize-view.webp"
               alt="Life-size view inside a unit showing sunlight through windows"
               aspectRatio="square"
             />
 
             {/* Third row: 1 16:9 placeholder that fills the full width */}
             <BentoGridItem
-              imageUrl="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Amenities%20view-IhPjy2auTUJOafxigBVpJSH7GAqo0J.jpeg"
+              imageUrl="/case-studies/insight/Amenities-view.webp"
               alt="Nearby amenities information showing future school locations"
               aspectRatio="16:9"
             />
