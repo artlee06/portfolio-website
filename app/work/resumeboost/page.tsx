@@ -146,9 +146,7 @@ export default function ResumeBoostCaseStudyPage() {
                     <div className="mt-16 w-full max-w-3xl mx-auto">
                       <div className="bg-gray-100 p-8 md:p-10">
                         <h3 className="text-xl md:text-2xl font-light font-lexend mb-8">
-                          "The "tell us about you" part is good. Changed things up a little and made my personal
-                          statement more appealing. Organised resume settings, from personal details to projects to
-                          experience. Clean interface."
+                          {`The "tell us about you" part is good. Changed things up a little and made my personal statement more appealing. Organised resume settings, from personal details to projects to experience. Clean interface.`}
                         </h3>
                         <div className="flex items-center gap-4">
                           <div className="bg-gray-300 rounded-full w-12 h-12 flex items-center justify-center">
@@ -332,31 +330,31 @@ export default function ResumeBoostCaseStudyPage() {
                 {/* Testimonial 1 */}
                 <div className="bg-gray-100 p-8 md:p-10">
                   <h3 className="text-xl md:text-2xl font-light font-lexend mb-8">
-                    "The UI is very clean and fast. Suggestions for the points are very Singaporean human like. In fact
-                    I accepted most of the revisions! Much better than the chatGPTs I'm using at work"
+                   {`"The UI is very clean and fast. Suggestions for the points are very Singaporean human like. In fact
+                    I accepted most of the revisions! Much better than the chatGPTs I'm using at work"`}
                   </h3>
                 </div>
 
                 {/* Testimonial 2 */}
                 <div className="bg-gray-100 p-8 md:p-10">
                   <h3 className="text-xl md:text-2xl font-light font-lexend mb-8">
-                    "I like that the feedback is categorised by theme and everything is very clear with icons and bolded
-                    keywords so its easier to work on"
+                    {`"I like that the feedback is categorised by theme and everything is very clear with icons and bolded
+                    keywords so its easier to work on`}"
                   </h3>
                 </div>
 
                 {/* Testimonial 3 */}
                 <div className="bg-gray-100 p-8 md:p-10">
                   <h3 className="text-xl md:text-2xl font-light font-lexend mb-8">
-                    "Before that I only receive 1 or 2 but after this ResumeBoost I get quite frequent calls back as
-                    long as they have downloaded the resume the call back percentage is about 70%"
+                    {`"Before that I only receive 1 or 2 but after this ResumeBoost I get quite frequent calls back as
+                    long as they have downloaded the resume the call back percentage is about 70%"`}
                   </h3>
                 </div>
 
                 {/* Testimonial 4 */}
                 <div className="bg-gray-100 p-8 md:p-10">
                   <h3 className="text-xl md:text-2xl font-light font-lexend mb-8">
-                    "I just wanna say I love the tool and amazing job!!"
+                    {`"I just wanna say I love the tool and amazing job!!"`}
                   </h3>
                 </div>
               </div>

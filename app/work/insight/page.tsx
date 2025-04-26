@@ -46,7 +46,7 @@ export default function InsightCaseStudyPage() {
               </li>
               <li>
                 <strong>Generic showroom layouts</strong>: Showrooms only represent standard 3, 4, and 5-room flats,
-                which don't reflect the unique layouts of different BTO projects.
+                which don&apos;t reflect the unique layouts of different BTO projects.
               </li>
               <li>
                 <strong>Fragmented information</strong>: Factors like sunlight direction and proximity to amenities must
@@ -189,7 +189,7 @@ export default function InsightCaseStudyPage() {
                         <div>
                           <Subheader>Insight: Environmental Realism</Subheader>
                           <p className="text-gray-600">
-                            Participants noted that the <strong>environment's realism</strong> needed improvement in
+                            Participants noted that the <strong>environment&apos;s realism</strong> needed improvement in
                             materials, lighting, and scale perception.
                           </p>
                           <p className="text-gray-600 mt-2">
@@ -241,7 +241,7 @@ export default function InsightCaseStudyPage() {
           <div className="mb-12">
             <div className="prose prose-gray max-w-3xl mx-auto mb-6">
               <p className="text-lg text-gray-600">
-                Before diving into our final solution, let's take a moment to appreciate how the prototype evolved. What
+                Before diving into our final solution, let&apos;s take a moment to appreciate how the prototype evolved. What
                 began as a rough concept in ShapesXR transformed into a fully functional XR experience through multiple
                 iterations and user feedback cycles.
               </p>
@@ -265,7 +265,7 @@ export default function InsightCaseStudyPage() {
             <p className="text-lg text-gray-600">Our XR prototype enables prospective homeowners to:</p>
             <ul className="text-lg text-gray-600 list-disc pl-6 space-y-2 mt-4">
               <li>
-                <strong>Explore the estate from a bird's-eye view</strong>
+                <strong>Explore the estate from a bird&apos;s-eye view</strong>
               </li>
               <li>
                 <strong>See unit availability</strong> and step inside <strong>life-size 3D models</strong>
@@ -335,8 +335,8 @@ export default function InsightCaseStudyPage() {
               <Subheader>Setting the Right Expectations</Subheader>
               <div className="space-y-4 text-gray-600">
                 <p className="text-base">
-                  Initially, our goal was to showcase XR's potential as a platform, but midway through, we shifted
-                  toward a competitive mindset, leading to disappointment when we didn't win.
+                  Initially, our goal was to showcase XR&apos;s potential as a platform, but midway through, we shifted
+                  toward a competitive mindset, leading to disappointment when we didn&apos;t win.
                 </p>
                 <p className="text-base">
                   If winning was the goal, we would have needed to optimize for real-world adoption by prioritizing a{" "}
@@ -369,7 +369,7 @@ export default function InsightCaseStudyPage() {
                   technological ambition with user needs.
                 </p>
                 <p className="text-base">
-                  While we didn't win the hackathon, the experience and knowledge gained were invaluable, and the
+                  While we didn&apos;t win the hackathon, the experience and knowledge gained were invaluable, and the
                   positive feedback from users validated our approach to solving a real-world problem.
                 </p>
               </div>

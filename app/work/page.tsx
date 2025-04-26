@@ -131,7 +131,6 @@ const experiments = [
 export default function WorkPage() {
   const [activeTab, setActiveTab] = useState<"case-studies" | "experiments">("case-studies")
   const [hoveredId, setHoveredId] = useState<string | null>(null)
-  const router = useRouter()
   const searchParams = useSearchParams()
 
   // Set active tab based on URL hash
