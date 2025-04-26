@@ -57,7 +57,7 @@ export function ResumeBoostHero() {
       <div className="absolute inset-0 w-full h-full flex items-center justify-center">
         <div className="relative w-[90%] h-auto max-w-6xl mx-auto">
           <Image
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-6AIOcIw5TZJYuqOuap8XevF3pwAufN.png"
+            src="/case-studies/resumeboost/resumeboost-hero.png"
             alt="ResumeBoost interface showing resume analysis"
             width={1200}
             height={675}
@@ -73,7 +73,7 @@ export function ResumeBoostHero() {
             animate="visible"
           >
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-3Q4wQmdsokeQIRnUZ5GCBh7CUIfPNy.png"
+              src="/case-studies/resumeboost/resumeboost-feedback-card.png"
               alt="ResumeBoost feedback card showing suggested improvements"
               width={450}
               height={350}
@@ -89,7 +89,7 @@ export function ResumeBoostHero() {
             animate="visible"
           >
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1GrgLw9lmrzlHIr1GVkGBTA2aVsHAP.png"
+              src="/case-studies/resumeboost/resumeboost-resume-template.png"
               alt="Resume template example"
               width={450}
               height={600}

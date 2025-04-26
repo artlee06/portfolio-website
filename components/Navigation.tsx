@@ -19,7 +19,7 @@ export function Navigation() {
             <Link href="/" className="block px-4 py-2 md:px-8 md:py-2 rounded-full hover:bg-gray-100">
               <div className="flex items-center justify-center">
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-9DkSNtE16nDtf776sR7UgjM5G2iIAp.png"
+                  src="/Logo Frame.svg"
                   alt="Arthur Lee logo"
                   width={32}
                   height={32}
