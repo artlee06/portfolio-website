@@ -4,7 +4,7 @@ import type React from "react"
 
 import { useEffect, useRef, useState } from "react"
 import { motion, useAnimation, useSpring } from "framer-motion"
-import { Square3Stack3DIcon, CubeIcon, CodeBracketIcon, PaintBrushIcon } from "@heroicons/react/24/outline"
+import { Code2, PenTool, Boxes, Layers3 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 interface AutoRotatingCubeProps {
@@ -13,7 +13,7 @@ interface AutoRotatingCubeProps {
 }
 
 export function AutoRotatingCube({ inverse = false, className = "" }: AutoRotatingCubeProps) {
-  const icons = [Square3Stack3DIcon, CubeIcon, CodeBracketIcon, PaintBrushIcon]
+  const icons = [Layers3, Boxes, Code2, PenTool]
   const controls = useAnimation()
   const rotationRef = useRef(0)
   const [isDragging, setIsDragging] = useState(false)

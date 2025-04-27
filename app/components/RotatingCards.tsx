@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect, useCallback, memo } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
-import { Square3Stack3DIcon, CubeIcon } from "@heroicons/react/24/outline"
+import { Boxes, Layers3 } from "lucide-react"
 import { Cube } from "./Cube"
 import { AnimatePresence } from "framer-motion"
 
@@ -81,13 +81,13 @@ export function RotatingCards() {
           <div className="flex flex-col md:flex-row gap-8 items-center">
             <div className="w-full md:w-1/2">
               <div className="border border-gray-900 rounded-lg p-6">
-                <Square3Stack3DIcon className="w-8 h-8" />
+                <Layers3 className="w-8 h-8" />
                 <p>I design in 2D mediums for the here and now</p>
               </div>
             </div>
             <div className="w-full md:w-1/2">
               <div className="border border-gray-900 rounded-lg p-6">
-                <CubeIcon className="w-8 h-8" />
+                <Boxes className="w-8 h-8" />
                 <p>As well as 3D mediums for the future</p>
               </div>
             </div>

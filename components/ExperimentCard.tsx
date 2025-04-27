@@ -4,8 +4,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
-import { useState, useEffect } from "react"
 import { Linkedin, Twitter, Instagram } from "lucide-react"
+
 import { cn } from "@/lib/utils"
 
 type Experiment = {
@@ -16,7 +16,7 @@ type Experiment = {
   platform: string
   date: string
   link: string
-  aspectRatio?: "square" | "16:9"
+  aspectRatio: "square" | "16:9"
 }
 
 interface ExperimentCardProps {
@@ -28,25 +28,9 @@ interface ExperimentCardProps {
 }
 
 export function ExperimentCard({ experiment, isHovered, isAnyHovered, onHover, onHoverEnd }: ExperimentCardProps) {
-  const [isMobile, setIsMobile] = useState(false)
   const aspectRatio = experiment.aspectRatio || "square"
   const is16by9 = aspectRatio === "16:9"
 
-  // // Check if we're on mobile //TODO: Remove this once we're sure the card is responsive
-  // useEffect(() => {
-  //   const checkMobile = () => {
-  //     setIsMobile(window.innerWidth < 768)
-  //   }
-
-  //   // Initial check
-  //   checkMobile()
-
-  //   // Add resize listener
-  //   window.addEventListener("resize", checkMobile)
-
-  //   // Cleanup
-  //   return () => window.removeEventListener("resize", checkMobile)
-  // }, [])
 
   // Get platform icon
   const getPlatformIcon = () => {
@@ -91,7 +75,7 @@ export function ExperimentCard({ experiment, isHovered, isAnyHovered, onHover, o
         onMouseEnter={onHover}
         onMouseLeave={onHoverEnd}
       >
-        <div className="relative bg-[#2A2A2A] overflow-hidden h-full border border-[#3A3A3A] group">
+        <div className="relative bg-[#2A2A2A] overflow-hidden h-full group">
           {/* Image Container - For 16:9 content, we add padding and a background pattern */}
           <div className="absolute inset-0 flex items-center justify-center">
             {is16by9 && (
@@ -125,16 +109,19 @@ export function ExperimentCard({ experiment, isHovered, isAnyHovered, onHover, o
           </div>
 
           {/* Top Gradient Overlay */}
-          <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/70 to-transparent z-20" />
+          <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/80 to-transparent z-20" />
 
           {/* Bottom Gradient Overlay */}
-          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/70 to-transparent z-20" />
+          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/80 to-transparent z-20" />
 
-          {/* Title and Platform Icon - Always visible */}
-          <div className="absolute top-6 left-6 right-6 z-30 flex justify-between items-start">
-            <div className="flex items-center gap-2">
-              {getPlatformIcon()}
-              <p className="text-sm font-medium text-white">{experiment.title}</p>
+          {/* Title, Platform Icon and Date in a flex column layout */}
+          <div className="absolute top-6 left-6 right-6 z-30 flex justify-between">
+            <div className="flex flex-col gap-1">
+              <div className="flex flex-col items-start gap-4">
+                {getPlatformIcon()}
+                <p className="text-sm font-medium text-white max-w-[90%]">{experiment.title}</p>
+              </div>
+              <p className="text-xs text-white">{experiment.date}</p>
             </div>
             <motion.div
               animate={{
@@ -144,11 +131,6 @@ export function ExperimentCard({ experiment, isHovered, isAnyHovered, onHover, o
             >
               <ArrowUpRight className="w-5 h-5 text-[#00ffbfe6]" />
             </motion.div>
-          </div>
-
-          {/* Date */}
-          <div className="absolute top-14 left-6 z-30">
-            <p className="text-xs text-white">{experiment.date}</p>
           </div>
 
           {/* Description at bottom */}

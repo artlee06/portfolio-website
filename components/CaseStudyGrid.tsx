@@ -14,6 +14,8 @@ type CaseStudy = {
   videoUrl?: string
   slug: string
   comingSoon?: boolean
+  thumbnailTextColor: string
+  thumbnailTextColorOnHover: string
 }
 
 const caseStudies: CaseStudy[] = [
@@ -24,20 +26,28 @@ const caseStudies: CaseStudy[] = [
     imageUrl: "/case-studies/insight/Thumbnail.webp",
     videoUrl: "/case-studies/insight/Hero_square.mp4",
     slug: "insight",
+    thumbnailTextColor: "text-[#2e2e2e]",
+    thumbnailTextColorOnHover: "text-white",
   },
   {
     id: "project-2",
-    title: "Project Two",
-    description: "A brief description of the project to be added here",
-    comingSoon: true,
+    title: "Nursing Registration",
+    description: "(Coming soon) Designing user-friendly and efficient registration for foreign nurses in Singapore",
+    imageUrl: "/case-studies/prs/thumbnail.webp",
     slug: "coming-soon",
+    comingSoon: true,
+    thumbnailTextColor: "text-[#2e2e2e]",
+    thumbnailTextColorOnHover: "text-[#2e2e2e]",
   },
   {
     id: "project-3",
-    title: "Project Three",
-    description: "A brief description of the project to be added here",
-    comingSoon: true,
+    title: "FocusTime",
+    description: "(Coming soon) The pomodoro technique reimagined for XR. Clinched runner up at XR Design Challenge 2024",
+    imageUrl: "/case-studies/focustime/thumbnail.webp",
     slug: "coming-soon",
+    comingSoon: true,
+    thumbnailTextColor: "text-white",
+    thumbnailTextColorOnHover: "text-white",
   },
   {
     id: "project-4",
@@ -46,6 +56,8 @@ const caseStudies: CaseStudy[] = [
     imageUrl: "/case-studies/resumeboost/Thumbnail.webp",
     videoUrl: "/case-studies/resumeboost/rb-case-study_thumbnail_hover.mp4",
     slug: "resumeboost",
+    thumbnailTextColor: "text-[#2e2e2e]",
+    thumbnailTextColorOnHover: "text-[#2e2e2e]",
   },
 ]
 
@@ -53,7 +65,7 @@ export function CaseStudyGrid() {
   const [hoveredId, setHoveredId] = useState<string | null>(null)
 
   return (
-    <section id="case-studies" className="pt-16 md:pt-24 pb-8 md:pb-8">
+    <section id="case-studies" className="pt-8 md:pt-24 pb-8 md:pb-8">
       <h2 className="text-3xl md:text-4xl font-medium mb-12 text-left md:text-center">Featured Work</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {caseStudies.map((study, index) => (
@@ -65,7 +77,8 @@ export function CaseStudyGrid() {
             isAnyHovered={hoveredId !== null}
             onHover={() => setHoveredId(study.id)}
             onHoverEnd={() => setHoveredId(null)}
-            textColorOnHover={study.id === "project-4" ? "text-[#2e2e2e]" : "text-white"}
+            textColorOnHover={study.thumbnailTextColorOnHover}
+            textColor={study.thumbnailTextColor}
           />
         ))}
       </div>
@@ -80,7 +93,8 @@ function CaseStudyCard({
   isAnyHovered,
   onHover,
   onHoverEnd,
-  textColorOnHover = "text-white",
+  textColorOnHover,
+  textColor,
 }: {
   caseStudy: CaseStudy
   index: number
@@ -88,10 +102,10 @@ function CaseStudyCard({
   isAnyHovered: boolean
   onHover: () => void
   onHoverEnd: () => void
-  textColorOnHover?: string
+  textColorOnHover: string
+  textColor: string
 }) {
   const isLarge = index === 0 || index === 3
-  const hasVideo = !!caseStudy.videoUrl
   const isFirstProject = index === 0
   const isResumeBoost = caseStudy.id === "project-4"
   const [isMobile, setIsMobile] = useState(false)
@@ -129,27 +143,34 @@ function CaseStudyCard({
     >
       <Link href={getUrl()} className="block relative" onMouseEnter={onHover} onMouseLeave={onHoverEnd}>
         <div className="relative bg-gray-100 overflow-hidden">
-          {/* Title and Arrow - Always visible */}
-          <div className="absolute top-6 left-6 right-6 z-20 flex justify-between items-start">
+          <div className="absolute top-6 left-6 right-6 z-20 flex justify-between items-center">
             <p
               className={`text-sm font-medium ${
-                (isHovered || (isMobile && isFirstProject)) && hasVideo ? textColorOnHover : "text-[#2e2e2e]"
+                isHovered ? textColorOnHover : textColor
               }`}
             >
               {caseStudy.title}
             </p>
-            <motion.div
-              animate={{
-                rotate: isHovered ? 45 : 0,
-              }}
-              transition={{ duration: 0.2 }}
-            >
-              <ArrowUpRight
-                className={`w-5 h-5 ${
-                  (isHovered || (isMobile && isFirstProject)) && hasVideo ? textColorOnHover : "text-[#2e2e2e]"
-                }`}
-              />
-            </motion.div>
+            <div>
+              {caseStudy.comingSoon ? (
+                <span className="px-2 py-1 text-xs font-medium rounded-full bg-gray-200 text-gray-500">
+                  Coming Soon
+                </span>
+              ) : (
+                <motion.div
+                  animate={{
+                    rotate: isHovered ? 45 : 0,
+                  }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <ArrowUpRight
+                    className={`w-5 h-5 ${
+                      isHovered ? textColorOnHover : textColor
+                    }`}
+                  />
+                </motion.div>
+              )}
+            </div>
           </div>
 
           {/* Image or Video */}
@@ -163,10 +184,6 @@ function CaseStudyCard({
                 playsInline
                 className="absolute inset-0 w-full h-full object-cover"
               />
-            ) : caseStudy.comingSoon ? (
-              <div className="absolute inset-0 w-full h-full flex items-center justify-center bg-gray-50">
-                <p className="text-xl font-medium text-center text-gray-500">Coming Soon</p>
-              </div>
             ) : (
               <Image
                 src={caseStudy.imageUrl || "/placeholder.svg"}

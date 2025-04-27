@@ -379,9 +379,9 @@ export default function InsightCaseStudyPage() {
 
         {/* Other sections remain the same */}
         <NextProject
-          title="Project Two"
-          description="An overview of the second project, highlighting its unique aspects."
-          href="/work/coming-soon"
+          title="ResumeBoost"
+          description="Helping Jobseekers Improve Their Resumes with AI"
+          href="/work/resumeboost"
         />
       </CaseStudyLayout>
     </>
