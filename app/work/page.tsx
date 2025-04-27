@@ -7,7 +7,6 @@ import { ExperimentCard } from "@/components/ExperimentCard"
 import { useRouter, useSearchParams } from "next/navigation"
 import { cn } from "@/lib/utils"
 
-// Sample case study data
 const caseStudies = [
   {
     id: "project-1",
@@ -16,20 +15,26 @@ const caseStudies = [
     imageUrl: "/case-studies/insight/Thumbnail.webp",
     videoUrl: "/case-studies/insight/Hero_square.mp4",
     slug: "insight",
+    thumbnailTextColor: "text-[#2e2e2e]",
+    thumbnailTextColorOnHover: "text-white",
   },
   {
     id: "project-2",
-    title: "Project Two",
-    description: "A brief description of the project",
-    comingSoon: true,
+    title: "Registration for Foreign Nurses",
+    description: "(Coming soon) Designing user-friendly and efficient registration for foreign nurses in Singapore",
+    imageUrl: "/case-studies/prs/thumbnail.webp",
     slug: "coming-soon",
+    thumbnailTextColor: "text-[#2e2e2e]",
+    thumbnailTextColorOnHover: "text-[#2e2e2e]",
   },
   {
     id: "project-3",
-    title: "Project Three",
-    description: "A brief description of the project",
-    comingSoon: true,
+    title: "FocusTime",
+    description: "(Coming soon) The pomodoro technique reimagined for XR. Clinched runner up at XR Design Challenge 2024",
+    imageUrl: "/case-studies/focustime/thumbnail.webp",
     slug: "coming-soon",
+    thumbnailTextColor: "text-white",
+    thumbnailTextColorOnHover: "text-white",
   },
   {
     id: "project-4",
@@ -38,6 +43,8 @@ const caseStudies = [
     imageUrl: "/case-studies/resumeboost/Thumbnail.webp",
     videoUrl: "/case-studies/resumeboost/rb-case-study_thumbnail_hover.mp4",
     slug: "resumeboost",
+    thumbnailTextColor: "text-[#2e2e2e]",
+    thumbnailTextColorOnHover: "text-[#2e2e2e]",
   },
 ]
 
@@ -240,6 +247,8 @@ export default function WorkPage() {
                 isAnyHovered={hoveredId !== null}
                 onHover={() => setHoveredId(study.id)}
                 onHoverEnd={() => setHoveredId(null)}
+                textColorOnHover={study.thumbnailTextColorOnHover}
+                textColor={study.thumbnailTextColor}
               />
             ))}
           </div>

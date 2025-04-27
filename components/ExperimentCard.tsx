@@ -16,7 +16,7 @@ type Experiment = {
   platform: string
   date: string
   link: string
-  aspectRatio?: "square" | "16:9"
+  aspectRatio: "square" | "16:9"
 }
 
 interface ExperimentCardProps {

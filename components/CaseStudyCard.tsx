@@ -24,7 +24,8 @@ interface CaseStudyCardProps {
   isAnyHovered?: boolean
   onHover?: () => void
   onHoverEnd?: () => void
-  textColorOnHover?: string
+  textColorOnHover: string
+  textColor: string
 }
 
 export function CaseStudyCard({
@@ -35,7 +36,8 @@ export function CaseStudyCard({
   isAnyHovered: externalIsAnyHovered,
   onHover,
   onHoverEnd,
-  textColorOnHover = "text-white",
+  textColorOnHover,
+  textColor,
 }: CaseStudyCardProps) {
   // Internal hover state (used when external state is not provided)
   const [internalIsHovered, setInternalIsHovered] = useState(false)
@@ -108,7 +110,7 @@ export function CaseStudyCard({
           <div className="absolute top-6 left-6 right-6 z-20 flex justify-between items-start">
             <p
               className={`text-sm font-medium ${
-                (isHovered || (isMobile && isFirstProject)) && hasVideo ? textColorOnHover : "text-[#2e2e2e]"
+                isHovered ? textColorOnHover : textColor
               }`}
             >
               {caseStudy.title}
@@ -121,7 +123,7 @@ export function CaseStudyCard({
             >
               <ArrowUpRight
                 className={`w-5 h-5 ${
-                  (isHovered || (isMobile && isFirstProject)) && hasVideo ? textColorOnHover : "text-[#2e2e2e]"
+                  isHovered ? textColorOnHover : textColor
                 }`}
               />
             </motion.div>
