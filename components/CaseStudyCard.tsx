@@ -47,7 +47,6 @@ export function CaseStudyCard({
   const isHovered = externalIsHovered !== undefined ? externalIsHovered : internalIsHovered
   const isAnyHovered = externalIsAnyHovered !== undefined ? externalIsAnyHovered : false
 
-  const hasVideo = !!caseStudy.videoUrl
   const isFirstProject = caseStudy.id === "project-1"
   const isResumeBoost = caseStudy.slug === "resumeboost"
 

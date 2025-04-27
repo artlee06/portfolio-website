@@ -339,7 +339,7 @@ export default function ResumeBoostCaseStudyPage() {
                 <div className="bg-gray-100 p-8 md:p-10">
                   <h3 className="text-xl md:text-2xl font-light font-lexend mb-8">
                     {`"I like that the feedback is categorised by theme and everything is very clear with icons and bolded
-                    keywords so its easier to work on`}"
+                    keywords so its easier to work on"`}
                   </h3>
                 </div>
 

@@ -4,8 +4,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
-import { useState, useEffect } from "react"
 import { Linkedin, Twitter, Instagram } from "lucide-react"
+
 import { cn } from "@/lib/utils"
 
 type Experiment = {
@@ -28,25 +28,9 @@ interface ExperimentCardProps {
 }
 
 export function ExperimentCard({ experiment, isHovered, isAnyHovered, onHover, onHoverEnd }: ExperimentCardProps) {
-  const [isMobile, setIsMobile] = useState(false)
   const aspectRatio = experiment.aspectRatio || "square"
   const is16by9 = aspectRatio === "16:9"
 
-  // // Check if we're on mobile //TODO: Remove this once we're sure the card is responsive
-  // useEffect(() => {
-  //   const checkMobile = () => {
-  //     setIsMobile(window.innerWidth < 768)
-  //   }
-
-  //   // Initial check
-  //   checkMobile()
-
-  //   // Add resize listener
-  //   window.addEventListener("resize", checkMobile)
-
-  //   // Cleanup
-  //   return () => window.removeEventListener("resize", checkMobile)
-  // }, [])
 
   // Get platform icon
   const getPlatformIcon = () => {

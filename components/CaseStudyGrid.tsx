@@ -106,7 +106,6 @@ function CaseStudyCard({
   textColor: string
 }) {
   const isLarge = index === 0 || index === 3
-  const hasVideo = !!caseStudy.videoUrl
   const isFirstProject = index === 0
   const isResumeBoost = caseStudy.id === "project-4"
   const [isMobile, setIsMobile] = useState(false)

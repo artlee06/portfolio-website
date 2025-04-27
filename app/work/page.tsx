@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { CaseStudyCard } from "@/components/CaseStudyCard"
 import { Footer } from "@/components/Footer"
 import { ExperimentCard } from "@/components/ExperimentCard"
-import { useRouter, useSearchParams } from "next/navigation"
+import { useSearchParams } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { GridBackground } from "@/components/GridBackground"
 
