@@ -3,10 +3,13 @@ import { ContactButton } from "../components/ContactButton"
 import { Footer } from "../components/Footer"
 import { ContactCTA } from "@/components/ContactCTA"
 import { AboutClientComponents } from "../components/AboutClientComponents"
+import { GridBackground } from "@/components/GridBackground"
 
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-white text-black font-sans">
+      <GridBackground opacity={0.2} />
+      
       <div className="max-w-7xl px-4 md:px-8 lg:px-16 mx-auto">
         {/* Top Section */}
         <div className="md:flex md:items-center md:justify-between md:space-x-8 lg:space-x-16 pt-8 md:pt-48">

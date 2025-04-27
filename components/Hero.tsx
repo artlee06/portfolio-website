@@ -3,28 +3,16 @@
 import { ArrowDownIcon } from "@heroicons/react/24/outline"
 import { motion } from "framer-motion"
 import { AutoRotatingCube } from "./AutoRotatingCube"
+import { GridBackground } from "./GridBackground"
 
 export function Hero() {
   return (
     <>
-      {/* Fixed background with grid pattern and fade effect */}
-      <div
-        className="fixed inset-0 w-screen h-screen pointer-events-none z-0"
-        style={{
-          backgroundImage: `
-            linear-gradient(to right, #2e2e2e 1px, transparent 1px),
-            linear-gradient(to bottom, #2e2e2e 1px, transparent 1px)
-          `,
-          backgroundSize: "40px 40px",
-          opacity: 0.4,
-          maskImage: "linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 50%, transparent 100%)",
-          WebkitMaskImage: "linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 50%, transparent 100%)",
-        }}
-      />
+      <GridBackground />
 
       <section className="min-h-screen flex flex-col justify-start md:justify-center items-start md:items-center text-left md:text-center px-4 md:px-0 w-full mt-24 md:mt-0 relative z-10">
         <div className="w-auto flex justify-start md:justify-center relative">
-          <AutoRotatingCube fastSpin={false} inverse={false} className="scale-75 md:scale-100" />
+          <AutoRotatingCube className="scale-75 md:scale-100" />
         </div>
         <div className="mt-8 space-y-2 md:space-y-4 relative">
           <motion.p

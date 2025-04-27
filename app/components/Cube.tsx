@@ -2,7 +2,7 @@
 
 import { memo } from "react"
 import { motion, useTransform, type MotionValue } from "framer-motion"
-import { Square3Stack3DIcon, CubeIcon } from "@heroicons/react/24/outline"
+import { Boxes, Layers3 } from "lucide-react"
 
 interface CubeProps {
   rotate: MotionValue<number>
@@ -21,19 +21,19 @@ export const Cube = memo(function Cube({ rotate }: CubeProps) {
         }}
         transition={{ type: "spring", stiffness: 100, damping: 20 }}
       >
-        <CubeFace Icon={Square3Stack3DIcon} rotation="rotateY(0deg)" />
+        <CubeFace Icon={Layers3} rotation="rotateY(0deg)" />
         <CubeFace rotation="rotateY(180deg)" />
         <CubeFace rotation="rotateY(90deg)" />
         <CubeFace rotation="rotateY(-90deg)" />
         <CubeFace rotation="rotateX(90deg)" />
-        <CubeFace Icon={CubeIcon} rotation="rotateX(-90deg)" />
+        <CubeFace Icon={Boxes} rotation="rotateX(-90deg)" />
       </motion.div>
     </div>
   )
 })
 
 interface CubeFaceProps {
-  Icon?: typeof Square3Stack3DIcon
+  Icon?: typeof Layers3 | typeof Boxes
   rotation: string
 }
 
@@ -46,7 +46,7 @@ const CubeFace = memo(function CubeFace({ Icon, rotation }: CubeFaceProps) {
         backfaceVisibility: "hidden",
       }}
     >
-      {Icon && <Icon className={`w-16 h-16 z-10 ${Icon === CubeIcon ? "rotate-180" : ""}`} />}
+      {Icon && <Icon className={`w-16 h-16 z-10 ${Icon === Boxes ? "rotate-180" : ""}`} />}
     </div>
   )
 })

@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer"
 import { ExperimentCard } from "@/components/ExperimentCard"
 import { useRouter, useSearchParams } from "next/navigation"
 import { cn } from "@/lib/utils"
+import { GridBackground } from "@/components/GridBackground"
 
 const caseStudies = [
   {
@@ -207,6 +208,12 @@ export default function WorkPage() {
         activeTab === "experiments" ? "bg-[#1E1E1E] text-white" : "bg-white text-[#2e2e2e]",
       )}
     >
+      {/* Add GridBackground with conditional opacity based on active tab */}
+      <GridBackground 
+        opacity={0.2}
+        color={activeTab === "experiments" ? "#00ffbfe6" : "#2e2e2e"}
+      />
+      
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 pt-8 md:pt-32 pb-16">
         {/* Tab Navigation */}
         <div className="flex space-x-8 mb-6">
@@ -261,8 +268,8 @@ export default function WorkPage() {
               className="absolute inset-0 -z-10"
               style={{
                 backgroundImage: `
-                  linear-gradient(to right, rgba(0, 255, 191, 0.1) 1px, transparent 1px),
-                  linear-gradient(to bottom, rgba(0, 255, 191, 0.1) 1px, transparent 1px)
+                  linear-gradient(to right, #00ffbfe6 1px, transparent 1px),
+                  linear-gradient(to bottom, #00ffbfe6 1px, transparent 1px)
                 `,
                 backgroundSize: "40px 40px",
               }}

@@ -65,7 +65,7 @@ export function CaseStudyGrid() {
   const [hoveredId, setHoveredId] = useState<string | null>(null)
 
   return (
-    <section id="case-studies" className="pt-16 md:pt-24 pb-8 md:pb-8">
+    <section id="case-studies" className="pt-8 md:pt-24 pb-8 md:pb-8">
       <h2 className="text-3xl md:text-4xl font-medium mb-12 text-left md:text-center">Featured Work</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {caseStudies.map((study, index) => (
