@@ -107,7 +107,7 @@ export function CaseStudyCard({
       >
         <div className="relative bg-gray-100 overflow-hidden h-full">
           {/* Title and Arrow - Always visible */}
-          <div className="absolute top-6 left-6 right-6 z-20 flex justify-between items-start">
+          <div className="absolute top-6 left-6 right-6 z-20 flex justify-between items-center">
             <p
               className={`text-sm font-medium ${
                 isHovered ? textColorOnHover : textColor
@@ -115,28 +115,32 @@ export function CaseStudyCard({
             >
               {caseStudy.title}
             </p>
-            <motion.div
-              animate={{
-                rotate: isHovered ? 45 : 0,
-              }}
-              transition={{ duration: 0.2 }}
-            >
-              <ArrowUpRight
-                className={`w-5 h-5 ${
-                  isHovered ? textColorOnHover : textColor
-                }`}
-              />
-            </motion.div>
+           <div>
+              {caseStudy.comingSoon ? (
+                <span className="px-2 py-1 text-xs font-medium rounded-full bg-gray-200 text-gray-500">
+                  Coming Soon
+                </span>
+              ) : (
+                <motion.div
+                  animate={{
+                    rotate: isHovered ? 45 : 0,
+                  }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <ArrowUpRight
+                    className={`w-5 h-5 ${
+                      isHovered ? textColorOnHover : textColor
+                    }`}
+                  />
+                </motion.div>
+              )}
+            </div>
           </div>
 
           {/* Image or Video */}
           <div className="absolute inset-0">
             {(isHovered || (isMobile && isFirstProject)) && caseStudy.videoUrl ? (
               <video src={caseStudy.videoUrl} autoPlay loop muted playsInline className="w-full h-full object-cover" />
-            ) : caseStudy.comingSoon ? (
-              <div className="w-full h-full flex items-center justify-center bg-gray-50">
-                <p className="text-xl font-medium text-center text-gray-500">Coming Soon</p>
-              </div>
             ) : (
               <Image
                 src={caseStudy.imageUrl || "/placeholder.svg"}
