@@ -31,7 +31,7 @@ const caseStudies: CaseStudy[] = [
   },
   {
     id: "project-2",
-    title: "Registration for Foreign Nurses",
+    title: "Nursing Registration",
     description: "(Coming soon) Designing user-friendly and efficient registration for foreign nurses in Singapore",
     imageUrl: "/case-studies/prs/thumbnail.webp",
     slug: "coming-soon",
