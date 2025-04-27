@@ -74,7 +74,7 @@ export default function ResumeBoostCaseStudyPage() {
             tabs={[
               {
                 id: "discovery",
-                label: "Discovery Research",
+                label: "Discovery",
                 content: (
                   <div>
                     <div className="prose prose-gray max-w-3xl mx-auto">
