@@ -16,7 +16,7 @@ export function Navigation() {
       <nav className="mx-auto max-w-fit p-2 rounded-full backdrop-blur-md bg-white/70 border border-gray-300/20 shadow-lg">
         <ul className="flex items-center gap-2 md:gap-4 text-base">
           <li>
-            <Link href="/" className="block px-4 py-2 md:px-8 md:py-2 rounded-full hover:bg-gray-100">
+            <Link href="/" className="block px-4 py-2 md:px-8 md:py-3 rounded-full hover:bg-gray-100">
               <div className="flex items-center justify-center">
                 <Image
                   src="/Logo Frame.svg"

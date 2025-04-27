@@ -210,7 +210,7 @@ export default function WorkPage() {
     >
       {/* Add GridBackground with conditional opacity based on active tab */}
       <GridBackground 
-        opacity={0.2}
+        opacity={0.25}
         color={activeTab === "experiments" ? "#00ffbfe6" : "#2e2e2e"}
       />
       
