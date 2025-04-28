@@ -1,10 +1,10 @@
 "use client"
 
-import { useState, useCallback, memo } from "react"
+import { useState, useCallback, memo, useRef, useEffect } from "react"
 import Image from "next/image"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
+import { cn } from "@/lib/utils"
 
 type Testimonial = {
   id: number
@@ -110,7 +110,7 @@ const testimonials: Testimonial[] = [
   },
   {
     id: 10,
-    text: "Arthur is a fantastic software engineering intern with an eclectic combination of persistence, initiative and research skills. I had the pleasure of coaching and guiding Arthur for his internship in NodeFlair. During his short stint with us, he displayed exceptional creativity and competence in handling Reactjs. The forms logic that he was responsible for wasn’t trivial, yet he managed to complete it under pressure. Arthur also displayed teamwork and cooperation by helping other interns around him. On top of it, he is naturally curious about programming and software, which often prompted healthy technical conversations where everyone learns. I am proud of Arthur’s work and talent. He will certainly make a valuable addition to any technical team that values persistence and creativity.",
+    text: "Arthur is a fantastic software engineering intern with an eclectic combination of persistence, initiative and research skills. I had the pleasure of coaching and guiding Arthur for his internship in NodeFlair. During his short stint with us, he displayed exceptional creativity and competence in handling Reactjs. The forms logic that he was responsible for wasn't trivial, yet he managed to complete it under pressure. Arthur also displayed teamwork and cooperation by helping other interns around him. On top of it, he is naturally curious about programming and software, which often prompted healthy technical conversations where everyone learns. I am proud of Arthur's work and talent. He will certainly make a valuable addition to any technical team that values persistence and creativity.",
     author: {
       name: "Alvin Ng",
       role: "Lead Software Engineer",
@@ -125,6 +125,10 @@ const DEFAULT_IMAGE_URL = "/placeholder.svg?height=64&width=64"
 
 export function TestimonialsSection() {
   const [selectedTestimonial, setSelectedTestimonial] = useState<Testimonial | null>(null)
+  const topRowRef = useRef<HTMLDivElement>(null)
+  const bottomRowRef = useRef<HTMLDivElement>(null)
+  const desktopRowRef = useRef<HTMLDivElement>(null)
+  const [isPaused, setIsPaused] = useState(false)
 
   const handleOpenTestimonial = useCallback((testimonial: Testimonial) => {
     setSelectedTestimonial(testimonial)
@@ -134,60 +138,201 @@ export function TestimonialsSection() {
     setSelectedTestimonial(null)
   }, [])
 
+  // Split testimonials into two rows for mobile view
+  const topRowTestimonials = testimonials.slice(0, Math.ceil(testimonials.length / 2))
+  const bottomRowTestimonials = testimonials.slice(Math.ceil(testimonials.length / 2))
+
+  useEffect(() => {
+    // Auto-scroll animation
+    const scrollTopRow = () => {
+      if (topRowRef.current && !isPaused) {
+        topRowRef.current.scrollLeft += 1
+        if (topRowRef.current.scrollLeft >= (topRowRef.current.scrollWidth - topRowRef.current.clientWidth)) {
+          topRowRef.current.scrollLeft = 0
+        }
+      }
+    }
+
+    const scrollBottomRow = () => {
+      if (bottomRowRef.current && !isPaused) {
+        bottomRowRef.current.scrollLeft -= 1
+        if (bottomRowRef.current.scrollLeft <= 0) {
+          bottomRowRef.current.scrollLeft = bottomRowRef.current.scrollWidth - bottomRowRef.current.clientWidth
+        }
+      }
+    }
+    
+    const scrollDesktopRow = () => {
+      if (desktopRowRef.current && !isPaused) {
+        desktopRowRef.current.scrollLeft += 1
+        if (desktopRowRef.current.scrollLeft >= (desktopRowRef.current.scrollWidth - desktopRowRef.current.clientWidth)) {
+          desktopRowRef.current.scrollLeft = 0
+        }
+      }
+    }
+
+    const topInterval = setInterval(scrollTopRow, 30)
+    const bottomInterval = setInterval(scrollBottomRow, 30)
+    const desktopInterval = setInterval(scrollDesktopRow, 30)
+
+    return () => {
+      clearInterval(topInterval)
+      clearInterval(bottomInterval)
+      clearInterval(desktopInterval)
+    }
+  }, [isPaused])
+
   return (
-    <>
-      <div className="w-full max-w-[343px] mx-auto md:max-w-none">
-        <h2 className="text-xl md:text-2xl font-medium mb-6">What others say</h2>
-        <Carousel
-          opts={{
-            align: "start",
-          }}
-          className="w-full"
+    <section className="w-full my-20 px-4 md:px-8 lg:px-12 overflow-hidden">
+      <h2 className="text-4xl font-bold text-center mb-16">What people are saying</h2>
+      
+      <div className="hidden md:block">
+        {/* Desktop view - single row */}
+        <div 
+          ref={desktopRowRef}
+          className="flex overflow-x-auto scrollbar-hide" 
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          style={{ scrollBehavior: 'smooth' }}
         >
-          <CarouselContent className="pl-4">
+          <div className="flex gap-6 py-4">
             {testimonials.map((testimonial) => (
-              <CarouselItem key={testimonial.id} className="md:basis-auto lg:basis-auto">
-                <TestimonialCard testimonial={testimonial} onReadMore={handleOpenTestimonial} />
-              </CarouselItem>
+              <TestimonialCard 
+                key={testimonial.id} 
+                testimonial={testimonial} 
+                onReadMore={handleOpenTestimonial} 
+              />
             ))}
-          </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
-        </Carousel>
+            {/* Duplicate first few cards for continuous scrolling effect */}
+            {testimonials.slice(0, 3).map((testimonial) => (
+              <TestimonialCard 
+                key={`duplicate-${testimonial.id}`} 
+                testimonial={testimonial} 
+                onReadMore={handleOpenTestimonial} 
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+      
+      <div className="md:hidden">
+        {/* Mobile view - two rows with opposite directions */}
+        <div 
+          ref={topRowRef}
+          className="flex overflow-x-auto scrollbar-hide mb-6" 
+          onMouseEnter={() => setIsPaused(true)}
+          onTouchStart={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onTouchEnd={() => setIsPaused(false)}
+          style={{ scrollBehavior: 'smooth' }}
+        >
+          <div className="flex gap-4 py-2">
+            {topRowTestimonials.map((testimonial) => (
+              <TestimonialCard 
+                key={testimonial.id} 
+                testimonial={testimonial} 
+                onReadMore={handleOpenTestimonial}
+                isMobile={true}
+              />
+            ))}
+            {/* Duplicate first few cards for continuous scrolling effect */}
+            {topRowTestimonials.slice(0, 2).map((testimonial) => (
+              <TestimonialCard 
+                key={`duplicate-${testimonial.id}`} 
+                testimonial={testimonial} 
+                onReadMore={handleOpenTestimonial}
+                isMobile={true}
+              />
+            ))}
+          </div>
+        </div>
+        
+        <div 
+          ref={bottomRowRef}
+          className="flex overflow-x-auto scrollbar-hide" 
+          onMouseEnter={() => setIsPaused(true)}
+          onTouchStart={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onTouchEnd={() => setIsPaused(false)}
+          style={{ scrollBehavior: 'smooth' }}
+        >
+          <div className="flex gap-4 py-2">
+            {bottomRowTestimonials.map((testimonial) => (
+              <TestimonialCard 
+                key={testimonial.id} 
+                testimonial={testimonial} 
+                onReadMore={handleOpenTestimonial}
+                isMobile={true}
+              />
+            ))}
+            {/* Duplicate first few cards for continuous scrolling effect */}
+            {bottomRowTestimonials.slice(0, 2).map((testimonial) => (
+              <TestimonialCard 
+                key={`duplicate-${testimonial.id}`} 
+                testimonial={testimonial} 
+                onReadMore={handleOpenTestimonial}
+                isMobile={true}
+              />
+            ))}
+          </div>
+        </div>
       </div>
 
       <TestimonialDialog testimonial={selectedTestimonial} onClose={handleCloseTestimonial} />
-    </>
+    </section>
   )
 }
 
 const TestimonialCard = memo(function TestimonialCard({
   testimonial,
   onReadMore,
-}: { testimonial: Testimonial; onReadMore: (testimonial: Testimonial) => void }) {
+  isMobile = false,
+}: { 
+  testimonial: Testimonial; 
+  onReadMore: (testimonial: Testimonial) => void;
+  isMobile?: boolean;
+}) {
   return (
-    <div className="w-[328px] h-[328px] md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px] bg-white rounded-none p-6 flex flex-col border border-gray-200 hover:border-gray-300 transition-colors">
-      <p className="text-gray-600 line-clamp-[8] mb-4 flex-grow min-h-[240px]">{testimonial.text}</p>
-      {testimonial.text.length > 300 && (
+    <div 
+      className={cn(
+        "bg-gray-50 rounded-xl border border-gray-200 flex flex-col transition-all duration-300 hover:shadow-md",
+        isMobile 
+          ? "w-[280px] h-[280px] p-4" 
+          : "w-[400px] h-[250px] p-6"
+      )}
+    >
+      <p className={cn(
+        "text-gray-700 mb-4 flex-grow overflow-hidden",
+        isMobile ? "text-sm line-clamp-5" : "line-clamp-4"
+      )}>
+        "{testimonial.text}"
+      </p>
+      
+      {testimonial.text.length > (isMobile ? 180 : 240) && (
         <Button
           variant="outline"
-          className="self-start mt-auto mb-[24px] rounded-full"
+          className="self-start mt-auto mb-4 rounded-full text-sm"
           onClick={() => onReadMore(testimonial)}
         >
           Read more
         </Button>
       )}
-      <div className="flex items-center gap-4">
+      
+      <div className="flex items-center gap-3 mt-auto">
         <Image
           src={testimonial.author.image || DEFAULT_IMAGE_URL}
           alt={testimonial.author.name}
-          width={64}
-          height={64}
+          width={isMobile ? 40 : 48}
+          height={isMobile ? 40 : 48}
           className="rounded-full"
         />
         <div>
-          <p className="font-medium">{testimonial.author.name}</p>
-          <p className="text-sm text-gray-600">{testimonial.author.company}</p>
+          <p className={cn("font-medium", isMobile ? "text-sm" : "text-base")}>
+            {testimonial.author.name}
+          </p>
+          <p className={cn("text-gray-600", isMobile ? "text-xs" : "text-sm")}>
+            {testimonial.author.company}
+          </p>
         </div>
       </div>
     </div>
@@ -205,18 +350,18 @@ const TestimonialDialog = memo(function TestimonialDialog({
 
   return (
     <Dialog open={!!testimonial} onOpenChange={onClose}>
-      <DialogContent>
+      <DialogContent className="max-w-md">
         <DialogHeader>
           <DialogTitle>Testimonial from {testimonial.author.name}</DialogTitle>
         </DialogHeader>
         <div className="mt-4">
-          <p className="text-gray-600">{testimonial.text}</p>
+          <p className="text-gray-600">"{testimonial.text}"</p>
           <div className="mt-6 flex items-center gap-4">
             <Image
               src={testimonial.author.image || DEFAULT_IMAGE_URL}
               alt={testimonial.author.name}
-              width={64}
-              height={64}
+              width={48}
+              height={48}
               className="rounded-full"
             />
             <div>
