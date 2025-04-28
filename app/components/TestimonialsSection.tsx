@@ -123,12 +123,97 @@ const testimonials: Testimonial[] = [
 
 const DEFAULT_IMAGE_URL = "/placeholder.svg?height=64&width=64"
 
+const useCarouselAnimation = (
+  direction: "left" | "right",
+  scrollSpeed: number,
+  isPaused: boolean
+) => {
+  const rowRef = useRef<HTMLDivElement>(null);
+  const animationRef = useRef<number | null>(null);
+  const scrollPosition = useRef<number>(0);
+
+  const initializeScrollPosition = () => {
+    if (rowRef.current && direction === "right") {
+      scrollPosition.current = rowRef.current.scrollWidth / 2;
+      rowRef.current.scrollLeft = scrollPosition.current;
+    }
+  };
+
+  const animate = () => {
+    if (rowRef.current && !isPaused) {
+      const { scrollWidth } = rowRef.current;
+
+      if (direction === "left") {
+        scrollPosition.current += scrollSpeed;
+        if (scrollPosition.current >= scrollWidth / 2) {
+          scrollPosition.current = 0;
+        }
+      } else {
+        scrollPosition.current -= scrollSpeed;
+        if (scrollPosition.current <= 0) {
+          scrollPosition.current = scrollWidth / 2;
+        }
+      }
+
+      rowRef.current.scrollLeft = scrollPosition.current;
+    }
+
+    animationRef.current = requestAnimationFrame(animate);
+  };
+
+  useEffect(() => {
+    animationRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [isPaused]);
+
+  return {
+    rowRef,
+    initializeScrollPosition,
+  };
+};
+
 export function TestimonialsSection() {
   const [selectedTestimonial, setSelectedTestimonial] = useState<Testimonial | null>(null)
-  const [translateX, setTranslateX] = useState(0)
-  const [translateXMobileTop, setTranslateXMobileTop] = useState(0)
-  const [translateXMobileBottom, setTranslateXMobileBottom] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+  const scrollSpeed = 0.5; // pixels per frame
+
+  // Check for mobile view
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Animation hooks for desktop and mobile rows
+  const { rowRef: desktopRowRef, initializeScrollPosition: initDesktopRow } = 
+    useCarouselAnimation("left", scrollSpeed, isPaused);
+    
+  const { rowRef: mobileTopRowRef, initializeScrollPosition: initMobileTopRow } = 
+    useCarouselAnimation("left", scrollSpeed, isPaused);
+    
+  const { rowRef: mobileBottomRowRef, initializeScrollPosition: initMobileBottomRow } = 
+    useCarouselAnimation("right", scrollSpeed, isPaused);
+
+  // Initialize scroll positions
+  useEffect(() => {
+    if (isMobile) {
+      initMobileTopRow();
+      initMobileBottomRow();
+    } else {
+      initDesktopRow();
+    }
+  }, [isMobile, initDesktopRow, initMobileTopRow, initMobileBottomRow]);
 
   const handleOpenTestimonial = useCallback((testimonial: Testimonial) => {
     setSelectedTestimonial(testimonial)
@@ -142,65 +227,10 @@ export function TestimonialsSection() {
   const topRowTestimonials = testimonials.slice(0, Math.ceil(testimonials.length / 2))
   const bottomRowTestimonials = testimonials.slice(Math.ceil(testimonials.length / 2))
 
-  useEffect(() => {
-    if (isPaused) return;
-
-    // Desktop animation
-    const desktopAnimationFrame = () => {
-      setTranslateX(prev => prev - 0.5);
-    };
-
-    // Mobile animations
-    const mobileTopAnimationFrame = () => {
-      setTranslateXMobileTop(prev => prev - 0.5);
-    };
-
-    const mobileBottomAnimationFrame = () => {
-      setTranslateXMobileBottom(prev => prev + 0.5);
-    };
-
-    const desktopInterval = setInterval(desktopAnimationFrame, 20);
-    const mobileTopInterval = setInterval(mobileTopAnimationFrame, 20);
-    const mobileBottomInterval = setInterval(mobileBottomAnimationFrame, 20);
-
-    return () => {
-      clearInterval(desktopInterval);
-      clearInterval(mobileTopInterval);
-      clearInterval(mobileBottomInterval);
-    };
-  }, [isPaused]);
-
-  // Create an array with duplicated testimonials for continuous scrolling
-  const allDesktopTestimonials = [
-    ...testimonials,
-    ...testimonials, 
-    ...testimonials
-  ];
-  
-  const allMobileTopTestimonials = [
-    ...topRowTestimonials,
-    ...topRowTestimonials,
-    ...topRowTestimonials
-  ];
-  
-  const allMobileBottomTestimonials = [
-    ...bottomRowTestimonials,
-    ...bottomRowTestimonials,
-    ...bottomRowTestimonials
-  ];
-
-  // Reset animations when they reach the end
-  if (translateX <= -(testimonials.length * 566)) {
-    setTranslateX(0);
-  }
-  
-  if (translateXMobileTop <= -(topRowTestimonials.length * 284)) {
-    setTranslateXMobileTop(0);
-  }
-  
-  if (translateXMobileBottom >= (bottomRowTestimonials.length * 284)) {
-    setTranslateXMobileBottom(0);
-  }
+  // Create duplicated testimonials for continuous scrolling
+  const allDesktopTestimonials = [...testimonials, ...testimonials];
+  const allMobileTopTestimonials = [...topRowTestimonials, ...topRowTestimonials];
+  const allMobileBottomTestimonials = [...bottomRowTestimonials, ...bottomRowTestimonials];
 
   return (
     <section className="w-full my-20 px-4 md:px-8 lg:px-12 overflow-hidden">
@@ -209,19 +239,26 @@ export function TestimonialsSection() {
       {/* Desktop view */}
       <div className="hidden md:block overflow-hidden">
         <div 
+          ref={desktopRowRef}
           className="flex"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
-          style={{ transform: `translateX(${translateX}px)` }}
+          style={{ 
+            overflowX: "hidden", 
+            scrollbarWidth: "none",
+            msOverflowStyle: "none"
+          }}
         >
-          {allDesktopTestimonials.map((testimonial, idx) => (
-            <div key={`desktop-${testimonial.id}-${idx}`} className="inline-block px-3">
-              <TestimonialCard 
-                testimonial={testimonial} 
-                onReadMore={handleOpenTestimonial} 
-              />
-            </div>
-          ))}
+          <div className="inline-flex">
+            {allDesktopTestimonials.map((testimonial, idx) => (
+              <div key={`desktop-${testimonial.id}-${idx}`} className="inline-block px-3">
+                <TestimonialCard 
+                  testimonial={testimonial} 
+                  onReadMore={handleOpenTestimonial} 
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       
@@ -230,36 +267,48 @@ export function TestimonialsSection() {
         {/* Top row */}
         <div className="overflow-hidden mb-6">
           <div 
-            className="flex"
-            style={{ transform: `translateX(${translateXMobileTop}px)`}}
+            ref={mobileTopRowRef}
+            style={{ 
+              overflowX: "hidden", 
+              scrollbarWidth: "none",
+              msOverflowStyle: "none" 
+            }}
           >
-            {allMobileTopTestimonials.map((testimonial, idx) => (
-              <div key={`mobile-top-${testimonial.id}-${idx}`} className="inline-block px-2">
-                <TestimonialCard 
-                  testimonial={testimonial} 
-                  onReadMore={handleOpenTestimonial}
-                  isMobile={true}
-                />
-              </div>
-            ))}
+            <div className="inline-flex">
+              {allMobileTopTestimonials.map((testimonial, idx) => (
+                <div key={`mobile-top-${testimonial.id}-${idx}`} className="inline-block px-2">
+                  <TestimonialCard 
+                    testimonial={testimonial} 
+                    onReadMore={handleOpenTestimonial}
+                    isMobile={true}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
         
         {/* Bottom row */}
         <div className="overflow-hidden">
           <div 
-            className="flex"
-            style={{ transform: `translateX(${translateXMobileBottom}px)`}}
+            ref={mobileBottomRowRef}
+            style={{ 
+              overflowX: "hidden", 
+              scrollbarWidth: "none",
+              msOverflowStyle: "none"
+            }}
           >
-            {allMobileBottomTestimonials.map((testimonial, idx) => (
-              <div key={`mobile-bottom-${testimonial.id}-${idx}`} className="inline-block px-2">
-                <TestimonialCard 
-                  testimonial={testimonial} 
-                  onReadMore={handleOpenTestimonial}
-                  isMobile={true}
-                />
-              </div>
-            ))}
+            <div className="inline-flex">
+              {allMobileBottomTestimonials.map((testimonial, idx) => (
+                <div key={`mobile-bottom-${testimonial.id}-${idx}`} className="inline-block px-2">
+                  <TestimonialCard 
+                    testimonial={testimonial} 
+                    onReadMore={handleOpenTestimonial}
+                    isMobile={true}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -291,7 +340,7 @@ const TestimonialCard = memo(function TestimonialCard({
         "text-gray-700 mb-4 flex-grow overflow-hidden",
         isMobile ? "text-sm line-clamp-5" : "line-clamp-4"
       )}>
-        "{testimonial.text}"
+        {testimonial.text}
       </p>
       
       {testimonial.text.length > (isMobile ? 180 : 480) && (
