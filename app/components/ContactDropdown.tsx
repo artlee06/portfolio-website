@@ -20,7 +20,7 @@ export function ContactDropdown({ children, align = "end" }: ContactDropdownProp
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align={align}
-        className="bg-white rounded-lg shadow-lg border border-gray-200 p-1 min-w-[180px]"
+        className="bg-white rounded-lg shadow-lg border border-gray-200 p-2 min-w-[180px]"
       >
         <DropdownMenuItem asChild>
           <a

@@ -71,7 +71,7 @@ export function HeroSection() {
         </p>
       </motion.div>
 
-      {/* VR Headset with dotted outline */}
+      {/* VR Headset with outline */}
       <div className="absolute inset-0 flex flex-col items-center justify-center mt-24 md:mt-80">
         <motion.div
           className="relative w-full max-w-4xl mx-auto"
@@ -83,8 +83,8 @@ export function HeroSection() {
         >
           {/* VR Headset Cutout Container */}
           <div className="relative w-full aspect-[1.8/1] mx-auto">
-            {/* Dotted outline effect */}
-            <VRHeadsetDottedOutline scale={scale} />
+            {/* outline effect */}
+            <VRHeadsetOutline scale={scale} />
 
             {/* Video/GIF placeholder with mask */}
             <div
@@ -159,29 +159,25 @@ export function HeroSection() {
 }
 
 // VR Headset dotted outline with 8 radiating paths
-function VRHeadsetDottedOutline({ scale }: { scale: number }) {
+function VRHeadsetOutline({ scale }: { scale: number }) {
   // Base path that follows the VR headset shape
   const basePath =
     "M86.5,17.8 c4.2,4.4,8.4,11.5,9.3,26.7 c1.3,22.2,-3.6,45.9,-14.3,50.3 c-8.8,3.7,-16.1,0,-20.9,-9.7 c-5.7,-11.2,-15.1,-11.5,-21.5,0 c-5.2,9.4,-12.1,13.4,-20.9,9.7 c-10.7,-4.4,-15.6,-28.1,-14.3,-50.3 c0.9,-15.2,5.2,-21.8,9.3,-26.7 c14.7,-17.9,56.1,-18.3,73.4,0 Z"
 
-  // Create 8 paths with increasing scale and decreasing opacity
+  // Create paths with increasing scale and decreasing opacity
   const createRadiatingPaths = () => {
     const paths = []
-    const totalPaths = 5
+    const totalPaths = 3
 
     for (let i = 1; i < totalPaths + 1; i++) {
       // Calculate scale factor for each path (1.0 to 1.35)
-      const pathScale = 1 + i * 0.03
+      const pathScale = 1 + i * 0.04
 
       // Calculate opacity (from 0.9 to 0.1)
-      const opacity = 0.9 - i * 0.2
-
-      // Calculate dot spacing (increasing as we go outward)
-      const dotSpacing = 0.5 + i * 0.15
-      const gapSpacing = 0.8 + i * 0.2
+      const opacity = 0.9 - i * 0.4
 
       // Calculate dot size (decreasing as we go outward)
-      const dotSize = 0.15
+      const strokeWidth = 0.15
 
       paths.push(
         <path
@@ -189,8 +185,7 @@ function VRHeadsetDottedOutline({ scale }: { scale: number }) {
           d={basePath}
           fill="none"
           stroke="white"
-          strokeWidth={dotSize}
-          strokeDasharray={`${dotSpacing} ${gapSpacing}`}
+          strokeWidth={strokeWidth}
           strokeOpacity={opacity}
           style={{
             transform: `scale(${pathScale})`,
