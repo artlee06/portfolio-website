@@ -233,7 +233,7 @@ export function TestimonialsSection() {
   const allMobileBottomTestimonials = [...bottomRowTestimonials, ...bottomRowTestimonials];
 
   return (
-    <section className="w-full my-20 px-4 md:px-8 lg:px-12 overflow-hidden">
+    <section className="my-20 relative w-screen left-1/2 right-1/2 -mx-[50vw] overflow-hidden">
       <h2 className="text-4xl font-medium text-center mb-16">What others are saying</h2>
       
       {/* Desktop view */}
