@@ -233,8 +233,8 @@ export function TestimonialsSection() {
   const allMobileBottomTestimonials = [...bottomRowTestimonials, ...bottomRowTestimonials];
 
   return (
-    <section className="my-20 relative w-screen left-1/2 right-1/2 -mx-[50vw] overflow-hidden">
-      <h2 className="text-4xl font-medium text-center mb-16">What others are saying</h2>
+    <section className="mt-16 mb-32 relative w-screen left-1/2 right-1/2 -mx-[50vw] overflow-hidden">
+      <h2 className="text-2xl md:text-4xl font-medium text-center mb-16">What others are saying</h2>
       
       {/* Desktop view */}
       <div className="hidden md:block overflow-hidden">
@@ -337,7 +337,7 @@ const TestimonialCard = memo(function TestimonialCard({
       )}
     >
       <p className={cn(
-        "text-gray-700 mb-4 flex-grow overflow-hidden",
+        "text-gray-700 mb-4 flex-grow overflow-hidden prose prose-gray",
         isMobile ? "text-sm line-clamp-5" : "line-clamp-4"
       )}>
         {testimonial.text}
