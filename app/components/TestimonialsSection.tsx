@@ -1,10 +1,10 @@
 "use client"
 
-import { useState, useCallback, memo } from "react"
+import { useState, useCallback, memo, useRef, useEffect } from "react"
 import Image from "next/image"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
+import { cn } from "@/lib/utils"
 
 type Testimonial = {
   id: number
@@ -25,7 +25,7 @@ const testimonials: Testimonial[] = [
       name: "Ari Widjanarko",
       role: "Design Lead",
       company: "IBM iX",
-      image: "/testimonials/Ari Portfolio Image.webp", // Replace with actual image
+      image: "/testimonials/Ari Portfolio Image.webp",
     },
   },
   {
@@ -35,7 +35,7 @@ const testimonials: Testimonial[] = [
       name: "Todd Oquist",
       role: "Senior UX Developer",
       company: "Indeed.com",
-      image: "/testimonials/Todd.webp", // Replace with actual image
+      image: "/testimonials/Todd.webp",
     },
   },
   {
@@ -45,7 +45,7 @@ const testimonials: Testimonial[] = [
       name: "Yun Chuan Ngin",
       role: "Senior Software Engineer",
       company: "Indeed.com",
-      image: "/testimonials/YC.webp", // Replace with actual image
+      image: "/testimonials/YC.webp",
     },
   },
   {
@@ -55,7 +55,7 @@ const testimonials: Testimonial[] = [
       name: "Terezia Toth",
       role: "UX Content Designer",
       company: "Indeed.com",
-      image: "/testimonials/Terezia.webp", // Replace with actual image
+      image: "/testimonials/Terezia.webp",
     },
   },
   {
@@ -65,7 +65,7 @@ const testimonials: Testimonial[] = [
       name: "Chris Roper",
       role: "UX Director",
       company: "Indeed.com",
-      image: "/testimonials/Chris Portfolio Image.webp", // Replace with actual image
+      image: "/testimonials/Chris Portfolio Image.webp",
     },
   },
   {
@@ -75,7 +75,7 @@ const testimonials: Testimonial[] = [
       name: "Sara Koay",
       role: "Senior UX researcher",
       company: "Indeed.com",
-      image: "/testimonials/Sara.webp", // Replace with actual image
+      image: "/testimonials/Sara.webp",
     },
   },
   {
@@ -85,7 +85,7 @@ const testimonials: Testimonial[] = [
       name: "Konrad Marzec",
       role: "Senior Product designer",
       company: "Indeed.com",
-      image: "/testimonials/Konrad-Portfolio-Image.webp", // Replace with actual image
+      image: "/testimonials/Konrad-Portfolio-Image.webp",
     },
   },
   {
@@ -95,7 +95,7 @@ const testimonials: Testimonial[] = [
       name: "Jules Ang",
       role: "Produt Design Lead",
       company: "MoneySmart",
-      image: "/testimonials/Jules-Portfolio-Image.webp", // Replace with actual image
+      image: "/testimonials/Jules-Portfolio-Image.webp",
     },
   },
   {
@@ -105,17 +105,17 @@ const testimonials: Testimonial[] = [
       name: "Jeremy Hon",
       role: "CTO, cofounder",
       company: "StaffAny",
-      image: "/testimonials/Jeremy-Portfolio-Image.webp", // Replace with actual image
+      image: "/testimonials/Jeremy-Portfolio-Image.webp",
     },
   },
   {
     id: 10,
-    text: "Arthur is a fantastic software engineering intern with an eclectic combination of persistence, initiative and research skills. I had the pleasure of coaching and guiding Arthur for his internship in NodeFlair. During his short stint with us, he displayed exceptional creativity and competence in handling Reactjs. The forms logic that he was responsible for wasn’t trivial, yet he managed to complete it under pressure. Arthur also displayed teamwork and cooperation by helping other interns around him. On top of it, he is naturally curious about programming and software, which often prompted healthy technical conversations where everyone learns. I am proud of Arthur’s work and talent. He will certainly make a valuable addition to any technical team that values persistence and creativity.",
+    text: "Arthur is a fantastic software engineering intern with an eclectic combination of persistence, initiative and research skills. I had the pleasure of coaching and guiding Arthur for his internship in NodeFlair. During his short stint with us, he displayed exceptional creativity and competence in handling Reactjs. The forms logic that he was responsible for wasn't trivial, yet he managed to complete it under pressure. Arthur also displayed teamwork and cooperation by helping other interns around him. On top of it, he is naturally curious about programming and software, which often prompted healthy technical conversations where everyone learns. I am proud of Arthur's work and talent. He will certainly make a valuable addition to any technical team that values persistence and creativity.",
     author: {
       name: "Alvin Ng",
       role: "Lead Software Engineer",
       company: "BCG X",
-      image: "/testimonials/Alvin Portfolio Image.webp", // Replace with actual image
+      image: "/testimonials/Alvin Portfolio Image.webp",
     },
   },
   // Add more testimonials
@@ -123,8 +123,97 @@ const testimonials: Testimonial[] = [
 
 const DEFAULT_IMAGE_URL = "/placeholder.svg?height=64&width=64"
 
+const useCarouselAnimation = (
+  direction: "left" | "right",
+  scrollSpeed: number,
+  isPaused: boolean
+) => {
+  const rowRef = useRef<HTMLDivElement>(null);
+  const animationRef = useRef<number | null>(null);
+  const scrollPosition = useRef<number>(0);
+
+  const initializeScrollPosition = () => {
+    if (rowRef.current && direction === "right") {
+      scrollPosition.current = rowRef.current.scrollWidth / 2;
+      rowRef.current.scrollLeft = scrollPosition.current;
+    }
+  };
+
+  const animate = () => {
+    if (rowRef.current && !isPaused) {
+      const { scrollWidth } = rowRef.current;
+
+      if (direction === "left") {
+        scrollPosition.current += scrollSpeed;
+        if (scrollPosition.current >= scrollWidth / 2) {
+          scrollPosition.current = 0;
+        }
+      } else {
+        scrollPosition.current -= scrollSpeed;
+        if (scrollPosition.current <= 0) {
+          scrollPosition.current = scrollWidth / 2;
+        }
+      }
+
+      rowRef.current.scrollLeft = scrollPosition.current;
+    }
+
+    animationRef.current = requestAnimationFrame(animate);
+  };
+
+  useEffect(() => {
+    animationRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [isPaused]);
+
+  return {
+    rowRef,
+    initializeScrollPosition,
+  };
+};
+
 export function TestimonialsSection() {
   const [selectedTestimonial, setSelectedTestimonial] = useState<Testimonial | null>(null)
+  const [isPaused, setIsPaused] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+  const scrollSpeed = 0.5; // pixels per frame
+
+  // Check for mobile view
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Animation hooks for desktop and mobile rows
+  const { rowRef: desktopRowRef, initializeScrollPosition: initDesktopRow } = 
+    useCarouselAnimation("left", scrollSpeed, isPaused);
+    
+  const { rowRef: mobileTopRowRef, initializeScrollPosition: initMobileTopRow } = 
+    useCarouselAnimation("left", scrollSpeed, isPaused);
+    
+  const { rowRef: mobileBottomRowRef, initializeScrollPosition: initMobileBottomRow } = 
+    useCarouselAnimation("right", scrollSpeed, isPaused);
+
+  // Initialize scroll positions
+  useEffect(() => {
+    if (isMobile) {
+      initMobileTopRow();
+      initMobileBottomRow();
+    } else {
+      initDesktopRow();
+    }
+  }, [isMobile, initDesktopRow, initMobileTopRow, initMobileBottomRow]);
 
   const handleOpenTestimonial = useCallback((testimonial: Testimonial) => {
     setSelectedTestimonial(testimonial)
@@ -134,60 +223,151 @@ export function TestimonialsSection() {
     setSelectedTestimonial(null)
   }, [])
 
+  // Split testimonials into two rows for mobile view
+  const topRowTestimonials = testimonials.slice(0, Math.ceil(testimonials.length / 2))
+  const bottomRowTestimonials = testimonials.slice(Math.ceil(testimonials.length / 2))
+
+  // Create duplicated testimonials for continuous scrolling
+  const allDesktopTestimonials = [...testimonials, ...testimonials];
+  const allMobileTopTestimonials = [...topRowTestimonials, ...topRowTestimonials];
+  const allMobileBottomTestimonials = [...bottomRowTestimonials, ...bottomRowTestimonials];
+
   return (
-    <>
-      <div className="w-full max-w-[343px] mx-auto md:max-w-none">
-        <h2 className="text-xl md:text-2xl font-medium mb-6">What others say</h2>
-        <Carousel
-          opts={{
-            align: "start",
+    <section className="mt-16 mb-32 md:mb-44 relative w-screen left-1/2 right-1/2 -mx-[50vw] overflow-hidden">
+      <h2 className="text-2xl md:text-4xl font-medium text-center mb-16">What others are saying</h2>
+      
+      {/* Desktop view */}
+      <div className="hidden md:block overflow-hidden">
+        <div 
+          ref={desktopRowRef}
+          className="flex"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          style={{ 
+            overflowX: "hidden", 
+            scrollbarWidth: "none",
+            msOverflowStyle: "none"
           }}
-          className="w-full"
         >
-          <CarouselContent className="pl-4">
-            {testimonials.map((testimonial) => (
-              <CarouselItem key={testimonial.id} className="md:basis-auto lg:basis-auto">
-                <TestimonialCard testimonial={testimonial} onReadMore={handleOpenTestimonial} />
-              </CarouselItem>
+          <div className="inline-flex">
+            {allDesktopTestimonials.map((testimonial, idx) => (
+              <div key={`desktop-${testimonial.id}-${idx}`} className="inline-block px-3">
+                <TestimonialCard 
+                  testimonial={testimonial} 
+                  onReadMore={handleOpenTestimonial} 
+                />
+              </div>
             ))}
-          </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
-        </Carousel>
+          </div>
+        </div>
+      </div>
+      
+      {/* Mobile view */}
+      <div className="md:hidden">
+        {/* Top row */}
+        <div className="overflow-hidden mb-6">
+          <div 
+            ref={mobileTopRowRef}
+            style={{ 
+              overflowX: "hidden", 
+              scrollbarWidth: "none",
+              msOverflowStyle: "none" 
+            }}
+          >
+            <div className="inline-flex">
+              {allMobileTopTestimonials.map((testimonial, idx) => (
+                <div key={`mobile-top-${testimonial.id}-${idx}`} className="inline-block px-2">
+                  <TestimonialCard 
+                    testimonial={testimonial} 
+                    onReadMore={handleOpenTestimonial}
+                    isMobile={true}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        
+        {/* Bottom row */}
+        <div className="overflow-hidden">
+          <div 
+            ref={mobileBottomRowRef}
+            style={{ 
+              overflowX: "hidden", 
+              scrollbarWidth: "none",
+              msOverflowStyle: "none"
+            }}
+          >
+            <div className="inline-flex">
+              {allMobileBottomTestimonials.map((testimonial, idx) => (
+                <div key={`mobile-bottom-${testimonial.id}-${idx}`} className="inline-block px-2">
+                  <TestimonialCard 
+                    testimonial={testimonial} 
+                    onReadMore={handleOpenTestimonial}
+                    isMobile={true}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
 
       <TestimonialDialog testimonial={selectedTestimonial} onClose={handleCloseTestimonial} />
-    </>
+    </section>
   )
 }
 
 const TestimonialCard = memo(function TestimonialCard({
   testimonial,
   onReadMore,
-}: { testimonial: Testimonial; onReadMore: (testimonial: Testimonial) => void }) {
+  isMobile = false,
+}: { 
+  testimonial: Testimonial; 
+  onReadMore: (testimonial: Testimonial) => void;
+  isMobile?: boolean;
+}) {
   return (
-    <div className="w-[328px] h-[328px] md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px] bg-white rounded-none p-6 flex flex-col border border-gray-200 hover:border-gray-300 transition-colors">
-      <p className="text-gray-600 line-clamp-[8] mb-4 flex-grow min-h-[240px]">{testimonial.text}</p>
-      {testimonial.text.length > 300 && (
+    <div 
+      className={cn(
+        "bg-gray-100 rounded-xl flex flex-col transition-all duration-300 hover:shadow-md",
+        isMobile 
+          ? "w-[280px] h-[280px] p-4" 
+          : "w-[560px] h-[360px] p-6"
+      )}
+    >
+      <p className={cn(
+        "text-gray-700 mb-4 flex-grow overflow-hidden font-inter",
+        isMobile ? "text-sm line-clamp-5" : "line-clamp-4"
+      )}>
+        {testimonial.text}
+      </p>
+      
+      {testimonial.text.length > (isMobile ? 180 : 480) && (
         <Button
           variant="outline"
-          className="self-start mt-auto mb-[24px] rounded-full"
+          className="self-start mt-auto mb-4 rounded-full text-sm"
           onClick={() => onReadMore(testimonial)}
         >
           Read more
         </Button>
       )}
-      <div className="flex items-center gap-4">
+      
+      <div className="flex items-center gap-3 mt-auto">
         <Image
           src={testimonial.author.image || DEFAULT_IMAGE_URL}
           alt={testimonial.author.name}
-          width={64}
-          height={64}
+          width={isMobile ? 40 : 48}
+          height={isMobile ? 40 : 48}
           className="rounded-full"
         />
         <div>
-          <p className="font-medium">{testimonial.author.name}</p>
-          <p className="text-sm text-gray-600">{testimonial.author.company}</p>
+          <p className={cn("font-medium", isMobile ? "text-sm" : "text-base")}>
+            {testimonial.author.name}
+          </p>
+          <p className={cn("text-gray-600", isMobile ? "text-xs" : "text-sm")}>
+            {testimonial.author.company}
+          </p>
         </div>
       </div>
     </div>
@@ -205,18 +385,18 @@ const TestimonialDialog = memo(function TestimonialDialog({
 
   return (
     <Dialog open={!!testimonial} onOpenChange={onClose}>
-      <DialogContent>
+      <DialogContent className="max-w-md md:max-w-2xl bg-white">
         <DialogHeader>
           <DialogTitle>Testimonial from {testimonial.author.name}</DialogTitle>
         </DialogHeader>
         <div className="mt-4">
-          <p className="text-gray-600">{testimonial.text}</p>
+          <p className="text-gray-600 font-inter">{testimonial.text}</p>
           <div className="mt-6 flex items-center gap-4">
             <Image
               src={testimonial.author.image || DEFAULT_IMAGE_URL}
               alt={testimonial.author.name}
-              width={64}
-              height={64}
+              width={48}
+              height={48}
               className="rounded-full"
             />
             <div>

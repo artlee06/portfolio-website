@@ -1,6 +1,6 @@
 import Image from "next/image"
 import { ContactButton } from "../components/ContactButton"
-import { Footer } from "../components/Footer"
+import { Footer } from "@/components/Footer"
 import { ContactCTA } from "@/components/ContactCTA"
 import { AboutClientComponents } from "../components/AboutClientComponents"
 import { GridBackground } from "@/components/GridBackground"
@@ -56,29 +56,32 @@ export default function AboutPage() {
         <AboutClientComponents />
 
         {/* Experience Section */}
-        <div className="mt-16 md:mt-24">
-          <div className="md:flex md:justify-between">
-            <div className="md:w-1/3 space-y-2 mb-8 md:mb-0">
-              <h2 className="text-xl md:text-2xl lg:text-3xl">What I&apos;ve been up to</h2>
-              <p className="text-gray-600 text-base">Feel free to see my LinkedIn or CV for the nitty gritty.</p>
-            </div>
-            <div className="md:w-1/3">
-              <div className="space-y-8">
-                <ExperienceItem date="OCT 2023 - PRESENT" title="Product Designer" company="GovTech Singapore" />
-                <ExperienceItem date="MAY 2023 - OCT 2023" title="Associate Product Designer" company="IBM iX" />
-                <ExperienceItem date="JUN 2022 - MAR 2023" title="Associate Product Designer" company="Indeed.com" />
-                <ExperienceItem date="JUN 2022 - MAR 2023" title="Product Designer Intern" company="Indeed.com" />
-                <ExperienceItem date="JUN 2022 - MAR 2023" title="UX Research Intern" company="GovTech Singapore" />
-              </div>
-            </div>
+      <section className="w-full px-4 md:px-8 lg:px-12 mb-20 md:mb-48">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium md:text-center mb-4">What I&apos;ve been up to</h2>
+        <p className="text-gray-600 text-base md:text-center mb-12">
+          Feel free to check out my <a href="https://www.linkedin.com/in/arthur-lee-ying-kiu/" className="underline hover:text-gray-900 transition-colors">LinkedIn</a> or <a href="https://docs.google.com/document/d/10qsJp2QH7h2edsFe8jsu-SeaxIzKjpkWsQvCqNMaDSM/edit?usp=sharing" className="underline hover:text-gray-900 transition-colors">CV</a> for the nitty gritty details.
+        </p>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8 max-w-3xl mx-auto">
+          <div className="space-y-8 md:space-y-12">
+            <ExperienceItem date="OCT 2023 - PRESENT" title="Product Designer" company="GovTech Singapore" />
+            <ExperienceItem date="MAY 2023 - OCT 2023" title="Associate Product Designer" company="IBM iX" />
+            <ExperienceItem date="JUN 2022 - MAR 2023" title="Associate Product Designer" company="Indeed" />
+          </div>
+          <div className="space-y-8 md:space-y-12">
+            <ExperienceItem date="MAY 2021 - JUL 2021" title="Associate UX Designer Intern" company="Indeed" />
+            <ExperienceItem date="DEC 2020 - FEB 2021" title="UX Research Intern" company="Govtech" />
+            <ExperienceItem date="MAY 2020 - OCT 2020" title="Software Engineer Intern" company="StaffAny" />
           </div>
         </div>
+      </section>
 
         {/* Contact CTA */}
-        <div className="mt-24 md:mt-24">
+        <div className="mt-24 md:mt-24 md:mb-48">
           <ContactCTA />
         </div>
       </div>
+
 
       {/* Footer */}
       <Footer />

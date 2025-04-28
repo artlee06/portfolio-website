@@ -4,7 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { ContactDropdown } from "@/app/components/ContactDropdown"
 
 export function Navigation() {
   const pathname = usePathname()
@@ -51,43 +51,18 @@ export function Navigation() {
             </Link>
           </li>
           <li>
-            <DropdownMenu>
-              <DropdownMenuTrigger className="focus:outline-none">
-                <div
-                  className={cn(
-                    "transition-colors px-6 py-4 md:px-8 rounded-full text-sm md:text-base",
-                    activePath === "/contact"
-                      ? "text-black bg-gray-100"
-                      : "text-gray-500 hover:text-black hover:bg-gray-100",
-                  )}
-                >
-                  Contact
-                </div>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent
-                align="end"
-                className="bg-white rounded-lg shadow-lg border border-gray-200 p-1 min-w-[180px]"
+            <ContactDropdown>
+              <div
+                className={cn(
+                  "transition-colors px-6 py-4 md:px-8 rounded-full text-sm md:text-base",
+                  activePath === "/contact"
+                    ? "text-black bg-gray-100"
+                    : "text-gray-500 hover:text-black hover:bg-gray-100",
+                )}
               >
-                <DropdownMenuItem asChild>
-                  <a
-                    href="https://www.linkedin.com/in/arthur-lee-ying-kiu/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center px-4 py-2 rounded-md cursor-pointer hover:bg-gray-100 transition-colors"
-                  >
-                    LinkedIn Message
-                  </a>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <a
-                    href="mailto:ykarthurlee@gmail.com"
-                    className="flex items-center px-4 py-2 rounded-md cursor-pointer hover:bg-gray-100 transition-colors"
-                  >
-                    Email Me
-                  </a>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+                Contact
+              </div>
+            </ContactDropdown>
           </li>
         </ul>
       </nav>
