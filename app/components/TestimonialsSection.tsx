@@ -233,7 +233,7 @@ export function TestimonialsSection() {
   const allMobileBottomTestimonials = [...bottomRowTestimonials, ...bottomRowTestimonials];
 
   return (
-    <section className="mt-16 mb-32 relative w-screen left-1/2 right-1/2 -mx-[50vw] overflow-hidden">
+    <section className="mt-16 mb-32 md:mb-44 relative w-screen left-1/2 right-1/2 -mx-[50vw] overflow-hidden">
       <h2 className="text-2xl md:text-4xl font-medium text-center mb-16">What others are saying</h2>
       
       {/* Desktop view */}
@@ -337,7 +337,7 @@ const TestimonialCard = memo(function TestimonialCard({
       )}
     >
       <p className={cn(
-        "text-gray-700 mb-4 flex-grow overflow-hidden prose prose-gray",
+        "text-gray-700 mb-4 flex-grow overflow-hidden font-inter",
         isMobile ? "text-sm line-clamp-5" : "line-clamp-4"
       )}>
         {testimonial.text}
@@ -385,12 +385,12 @@ const TestimonialDialog = memo(function TestimonialDialog({
 
   return (
     <Dialog open={!!testimonial} onOpenChange={onClose}>
-      <DialogContent className="max-w-md bg-white">
+      <DialogContent className="max-w-md md:max-w-2xl bg-white">
         <DialogHeader>
           <DialogTitle>Testimonial from {testimonial.author.name}</DialogTitle>
         </DialogHeader>
         <div className="mt-4">
-          <p className="text-gray-600">{testimonial.text}</p>
+          <p className="text-gray-600 font-inter">{testimonial.text}</p>
           <div className="mt-6 flex items-center gap-4">
             <Image
               src={testimonial.author.image || DEFAULT_IMAGE_URL}
