@@ -1,6 +1,6 @@
 import Image from "next/image"
 import { ContactButton } from "../components/ContactButton"
-import { Footer } from "../components/Footer"
+import { Footer } from "@/components/Footer"
 import { ContactCTA } from "@/components/ContactCTA"
 import { AboutClientComponents } from "../components/AboutClientComponents"
 import { GridBackground } from "@/components/GridBackground"
