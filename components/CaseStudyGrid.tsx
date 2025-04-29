@@ -26,7 +26,7 @@ const caseStudies: CaseStudy[] = [
     imageUrl: "/case-studies/insight/Thumbnail.webp",
     videoUrl: "/case-studies/insight/Hero_square.mp4",
     slug: "insight",
-    thumbnailTextColor: "text-[#2e2e2e]",
+    thumbnailTextColor: "text-white",
     thumbnailTextColorOnHover: "text-white",
   },
   {
