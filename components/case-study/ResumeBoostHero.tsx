@@ -4,6 +4,8 @@ import { useRef } from "react"
 import { motion } from "framer-motion"
 import Image from "next/image"
 import { ArrowDownIcon } from "@heroicons/react/24/outline"
+import { GridBackground } from "../GridBackground"
+import GradientText from "./GradientText"
 
 export function ResumeBoostHero() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -71,7 +73,11 @@ export function ResumeBoostHero() {
   }
 
   return (
-    <div ref={containerRef} className="relative h-screen w-full overflow-hidden bg-white flex flex-col">
+    <div ref={containerRef} className="relative h-screen w-full overflow-hidden bg-gray-50 flex flex-col">
+      <GridBackground 
+        opacity={0.25}
+        direction="bottom-to-top"
+      />
       {/* Content Container - Title Section */}
       <div className="flex-grow flex flex-col items-center justify-center px-4 pt-16 md:pt-36">
         <motion.div className="text-center" initial="hidden" animate="visible" variants={containerVariants}>
@@ -79,7 +85,13 @@ export function ResumeBoostHero() {
             className="text-5xl md:text-7xl lg:text-8xl font-medium text-black mb-4 md:mb-6"
             variants={itemVariants}
           >
-            ResumeBoost
+            <GradientText
+              // colors={["#ff00cc", "#333399", "#ff00cc"]}
+              colors={["#8E2DE2", "#4A00E0", "#8E2DE2"]}
+              animationSpeed={8}
+            >
+              ResumeBoost
+            </GradientText>
           </motion.h1>
 
           <motion.p

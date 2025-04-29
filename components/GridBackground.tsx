@@ -4,9 +4,21 @@ interface GridBackgroundProps {
   opacity?: number;
   className?: string;
   color?: string;
+  direction?: 'top-to-bottom' | 'bottom-to-top';
 }
 
-export function GridBackground({ opacity = 0.4, className = '', color = '#2e2e2e' }: GridBackgroundProps) {
+export function GridBackground({ 
+  opacity = 0.4, 
+  className = '', 
+  color = '#2e2e2e',
+  direction = 'top-to-bottom' 
+}: GridBackgroundProps) {
+  
+  // Define gradient based on direction
+  const gradient = direction === 'top-to-bottom'
+    ? "linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 50%, transparent 100%)"
+    : "linear-gradient(to top, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 50%, transparent 100%)";
+  
   return (
     <div
       className={`fixed inset-0 w-screen h-screen pointer-events-none z-0 ${className}`}
@@ -17,8 +29,8 @@ export function GridBackground({ opacity = 0.4, className = '', color = '#2e2e2e
         `,
         backgroundSize: "40px 40px",
         opacity: opacity,
-        maskImage: "linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 50%, transparent 100%)",
-        WebkitMaskImage: "linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 50%, transparent 100%)",
+        maskImage: gradient,
+        WebkitMaskImage: gradient,
       }}
     />
   );
