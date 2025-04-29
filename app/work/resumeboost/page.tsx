@@ -62,7 +62,7 @@ export default function ResumeBoostCaseStudyPage() {
               description="Resumes processed daily after integration with MyCareersFuture"
             />
             <HighlightCard
-              number="3,500+"
+              number="20,000+"
               label="Total Resumes"
               description="Total resumes analyzed since launch, with continuous growth"
             />
@@ -310,13 +310,13 @@ export default function ResumeBoostCaseStudyPage() {
           <div className="prose prose-gray max-w-3xl mx-auto">
             <ul className="text-lg text-gray-600 list-disc pl-6 space-y-2 mt-4">
               <li>
-                <strong>800 resumes analyzed in the first 2–3 months</strong> with minimal marketing.
+                <strong>800 resumes analysed in the first 2–3 months</strong> with minimal marketing.
               </li>
               <li>
                 <strong>200+ resumes processed daily on MyCareersFuture</strong> after integration.
               </li>
               <li>
-                <strong>3,500+ total resumes analyzed</strong> since launch, with continuous growth.
+                <strong>3,500+ total resumes analysed</strong> since launch, with continuous growth.
               </li>
               <li>Improved user engagement and feedback loops, shaping future iterations.</li>
             </ul>

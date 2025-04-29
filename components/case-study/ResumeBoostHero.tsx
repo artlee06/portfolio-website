@@ -77,6 +77,7 @@ export function ResumeBoostHero() {
       <GridBackground 
         opacity={0.25}
         direction="bottom-to-top"
+        position="absolute"
       />
       {/* Content Container - Title Section */}
       <div className="flex-grow flex flex-col items-center justify-center px-4 pt-16 md:pt-36">
