@@ -1,7 +1,7 @@
 "use client"
 
-import { useRef } from "react"
-import { motion } from "framer-motion"
+import { useRef, useMemo } from "react"
+import { motion, useReducedMotion } from "framer-motion"
 import Image from "next/image"
 import { ArrowDownIcon } from "@heroicons/react/24/outline"
 import { GridBackground } from "../GridBackground"
@@ -9,68 +9,90 @@ import GradientText from "./GradientText"
 
 export function ResumeBoostHero() {
   const containerRef = useRef<HTMLDivElement>(null)
-
+  const prefersReducedMotion = useReducedMotion()
+  
   // Scroll to content when arrow is clicked
   const scrollToContent = () => {
     const sections = document.querySelectorAll("section, .max-w-7xl > div.grid")
     if (sections.length > 0) {
       const projectDetails = document.querySelector(".max-w-7xl > div.grid")
       if (projectDetails) {
-        projectDetails.scrollIntoView({ behavior: "smooth" })
+        projectDetails.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth" })
       } else {
-        sections[0].scrollIntoView({ behavior: "smooth" })
+        sections[0].scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth" })
       }
     }
   }
 
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3,
-        delayChildren: 0.5,
+  // Memoize animation variants to prevent recreating on every render
+  const animations = useMemo(() => {
+    // Animation variants
+    const containerVariants = {
+      hidden: { opacity: 0 },
+      visible: {
+        opacity: 1,
+        transition: {
+          staggerChildren: 0.3,
+          delayChildren: 0.5,
+        },
       },
-    },
-  }
+    }
 
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.8, ease: "easeOut" },
-    },
-  }
+    const itemVariants = {
+      hidden: { y: 20, opacity: 0 },
+      visible: {
+        y: 0,
+        opacity: 1,
+        transition: { duration: 0.8, ease: "easeOut" },
+      },
+    }
 
-  // Screen animation variants
-  const bottomScreenVariants = {
-    hidden: { y: 500, opacity: 0 },
-    visible: {
-      y: 200,
-      opacity: 1,
-      transition: { duration: 0.5, ease: "easeOut", delay: 0.3 },
-    },
-  }
+    // Screen animation variants
+    const bottomScreenVariants = {
+      hidden: { y: 500, opacity: 0 },
+      visible: {
+        y: 200,
+        opacity: 1,
+        transition: { duration: 0.5, ease: "easeOut", delay: 0.3 },
+      },
+    }
 
-  const middleScreenVariants = {
-    hidden: { y: 500, opacity: 0 },
-    visible: {
-      y: 150,
-      opacity: 1,
-      transition: { duration: 0.5, ease: "easeOut", delay: 0.6 },
-    },
-  }
+    const middleScreenVariants = {
+      hidden: { y: 500, opacity: 0 },
+      visible: {
+        y: 150,
+        opacity: 1,
+        transition: { duration: 0.5, ease: "easeOut", delay: 0.6 },
+      },
+    }
 
-  const topScreenVariants = {
-    hidden: { y: 500, opacity: 0 },
-    visible: {
-      y: 100,
-      opacity: 1,
-      transition: { duration: 0.5, ease: "easeOut", delay: 0.9 },
-    },
-  }
+    const topScreenVariants = {
+      hidden: { y: 500, opacity: 0 },
+      visible: {
+        y: 100,
+        opacity: 1,
+        transition: { duration: 0.5, ease: "easeOut", delay: 0.9 },
+      },
+    }
+
+    return {
+      containerVariants,
+      itemVariants,
+      bottomScreenVariants,
+      middleScreenVariants,
+      topScreenVariants
+    }
+  }, [])
+
+  // Optimize bounce animation
+  const bounceAnimation = useMemo(() => {
+    return prefersReducedMotion 
+      ? {} 
+      : { 
+          y: [0, 10, 0],
+          transition: { repeat: Number.POSITIVE_INFINITY, duration: 1.5 }
+        }
+  }, [prefersReducedMotion])
 
   return (
     <div ref={containerRef} className="relative h-screen w-full overflow-hidden bg-gray-50 flex flex-col">
@@ -81,15 +103,19 @@ export function ResumeBoostHero() {
       />
       {/* Content Container - Title Section */}
       <div className="flex-grow flex flex-col items-center justify-center px-4 pt-16 md:pt-36">
-        <motion.div className="text-center" initial="hidden" animate="visible" variants={containerVariants}>
+        <motion.div 
+          className="text-center" 
+          initial="hidden" 
+          animate="visible" 
+          variants={animations.containerVariants}
+        >
           <motion.h1
             className="text-5xl md:text-7xl lg:text-8xl font-medium text-black mb-4 md:mb-6"
-            variants={itemVariants}
+            variants={animations.itemVariants}
           >
             <GradientText
-              // colors={["#ff00cc", "#333399", "#ff00cc"]}
               colors={["#8E2DE2", "#4A00E0", "#8E2DE2"]}
-              animationSpeed={8}
+              animationSpeed={prefersReducedMotion ? 0 : 8}
             >
               ResumeBoost
             </GradientText>
@@ -97,16 +123,15 @@ export function ResumeBoostHero() {
 
           <motion.p
             className="text-xl md:text-3xl lg:text-4xl text-black font-medium max-w-4xl mx-auto"
-            variants={itemVariants}
+            variants={animations.itemVariants}
           >
             Helping jobseekers enhance their resumes with AI
           </motion.p>
 
           <motion.div
             className="mt-12"
-            variants={itemVariants}
-            animate={{ y: [0, 10, 0] }}
-            transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}
+            variants={animations.itemVariants}
+            animate={bounceAnimation}
           >
             <button
               onClick={scrollToContent}
@@ -125,7 +150,8 @@ export function ResumeBoostHero() {
           {/* Bottom Screen */}
           <motion.div
             className="absolute left-[-5%] transform -translate-x-1/2 translate-y-[25%] w-[100%]"
-            variants={bottomScreenVariants}
+            style={{ willChange: "transform, opacity" }}
+            variants={animations.bottomScreenVariants}
             initial="hidden"
             animate="visible"
           >
@@ -142,7 +168,8 @@ export function ResumeBoostHero() {
           {/* Middle Screen */}
           <motion.div
             className="absolute left-[0%] transform -translate-x-1/2 translate-y-[15%] w-[100%]"
-            variants={middleScreenVariants}
+            style={{ willChange: "transform, opacity" }}
+            variants={animations.middleScreenVariants}
             initial="hidden"
             animate="visible"
           >
@@ -151,7 +178,7 @@ export function ResumeBoostHero() {
               alt="ResumeBoost middle interface"
               width={1100}
               height={800}
-              priority
+              loading="eager"
               className="w-full h-auto object-contain drop-shadow-xl"
             />
           </motion.div>
@@ -159,7 +186,8 @@ export function ResumeBoostHero() {
           {/* Top Screen */}
           <motion.div
             className="absolute left-[5%] transform -translate-x-1/2 translate-y-[5%] w-[100%]"
-            variants={topScreenVariants}
+            style={{ willChange: "transform, opacity" }}
+            variants={animations.topScreenVariants}
             initial="hidden"
             animate="visible"
           >
@@ -168,7 +196,7 @@ export function ResumeBoostHero() {
               alt="ResumeBoost top interface"
               width={1100}
               height={800}
-              priority
+              loading="eager"
               className="w-full h-auto object-contain drop-shadow-xl"
             />
           </motion.div>
