@@ -122,6 +122,8 @@ export function ExperimentCard({ experiment, isHovered, isAnyHovered, onHover, o
                 rotate: isHovered ? 45 : 0,
               }}
               transition={{ duration: 0.2 }}
+              style={{ transformOrigin: "center" }}
+              className="w-5 h-5 flex items-center justify-center"
             >
               <ArrowUpRight className="w-5 h-5 text-[#00ffbfe6]" />
             </motion.div>
