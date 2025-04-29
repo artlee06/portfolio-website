@@ -42,71 +42,38 @@ export function ResumeBoostHero() {
     },
   }
 
-  const uiElementVariants = {
-    hidden: { opacity: 0, scale: 0.9 },
+  // Screen animation variants
+  const bottomScreenVariants = {
+    hidden: { y: 500, opacity: 0 },
     visible: {
+      y: 200,
       opacity: 1,
-      scale: 1,
-      transition: { duration: 0.8, ease: "easeOut", delay: 0.3 },
+      transition: { duration: 0.5, ease: "easeOut", delay: 0.3 },
+    },
+  }
+
+  const middleScreenVariants = {
+    hidden: { y: 500, opacity: 0 },
+    visible: {
+      y: 150,
+      opacity: 1,
+      transition: { duration: 0.5, ease: "easeOut", delay: 0.6 },
+    },
+  }
+
+  const topScreenVariants = {
+    hidden: { y: 500, opacity: 0 },
+    visible: {
+      y: 100,
+      opacity: 1,
+      transition: { duration: 0.5, ease: "easeOut", delay: 0.9 },
     },
   }
 
   return (
-    <div ref={containerRef} className="relative h-screen w-full overflow-hidden bg-white">
-      {/* Background UI Image - 90% width, maintaining aspect ratio */}
-      <div className="absolute inset-0 w-full h-full flex items-center justify-center">
-        <div className="relative w-[90%] h-auto max-w-6xl mx-auto">
-          <Image
-            src="/case-studies/resumeboost/resumeboost-hero.png"
-            alt="ResumeBoost interface showing resume analysis"
-            width={1200}
-            height={675}
-            priority
-            className="w-full h-auto object-contain"
-          />
-
-          {/* UI Element 1 - Top Right */}
-          <motion.div
-            className="absolute -top-10 -right-10 md:top-0 md:-right-20 lg:-right-32 w-[280px] md:w-[320px] lg:w-[380px] transform rotate-6"
-            variants={uiElementVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            <Image
-              src="/case-studies/resumeboost/resumeboost-feedback-card.png"
-              alt="ResumeBoost feedback card showing suggested improvements"
-              width={450}
-              height={350}
-              className="w-full h-auto drop-shadow-xl"
-            />
-          </motion.div>
-
-          {/* UI Element 2 - Bottom Left */}
-          <motion.div
-            className="absolute -bottom-10 -left-10 md:bottom-0 md:-left-20 lg:-left-32 w-[280px] md:w-[320px] lg:w-[380px] transform -rotate-6"
-            variants={uiElementVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            <Image
-              src="/case-studies/resumeboost/resumeboost-resume-template.png"
-              alt="Resume template example"
-              width={450}
-              height={600}
-              className="w-full h-auto drop-shadow-xl"
-            />
-          </motion.div>
-        </div>
-      </div>
-
-      {/* White overlay with blur effect - positioned above the UI elements */}
-      <div
-        className="absolute inset-0 bg-white/85 backdrop-filter backdrop-blur-[8px] z-10"
-        style={{ backdropFilter: "blur(8px)" }}
-      ></div>
-
-      {/* Content Container - centered text - highest z-index */}
-      <div className="absolute inset-0 z-20 flex flex-col items-center justify-center px-4">
+    <div ref={containerRef} className="relative h-screen w-full overflow-hidden bg-white flex flex-col">
+      {/* Content Container - Title Section */}
+      <div className="flex-grow flex flex-col items-center justify-center px-4 pt-16 md:pt-36">
         <motion.div className="text-center" initial="hidden" animate="visible" variants={containerVariants}>
           <motion.h1
             className="text-5xl md:text-7xl lg:text-8xl font-medium text-black mb-4 md:mb-6"
@@ -137,6 +104,62 @@ export function ResumeBoostHero() {
             </button>
           </motion.div>
         </motion.div>
+      </div>
+
+      {/* Slanted Screens Container */}
+      <div className="relative w-full p-8 md:p-0 h-[65vh] pointer-events-none">
+        <div className="relative w-full max-w-6xl mx-auto h-full">
+          {/* Bottom Screen */}
+          <motion.div
+            className="absolute left-[-5%] transform -translate-x-1/2 translate-y-[25%] w-[100%]"
+            variants={bottomScreenVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <Image
+              src="/case-studies/resumeboost/hero/Bottom_slant_hero.png"
+              alt="ResumeBoost bottom interface"
+              width={1100}
+              height={800}
+              priority
+              className="w-full h-auto object-contain drop-shadow-xl"
+            />
+          </motion.div>
+
+          {/* Middle Screen */}
+          <motion.div
+            className="absolute left-[0%] transform -translate-x-1/2 translate-y-[15%] w-[100%]"
+            variants={middleScreenVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <Image
+              src="/case-studies/resumeboost/hero/Middle_slant_hero.png"
+              alt="ResumeBoost middle interface"
+              width={1100}
+              height={800}
+              priority
+              className="w-full h-auto object-contain drop-shadow-xl"
+            />
+          </motion.div>
+
+          {/* Top Screen */}
+          <motion.div
+            className="absolute left-[5%] transform -translate-x-1/2 translate-y-[5%] w-[100%]"
+            variants={topScreenVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <Image
+              src="/case-studies/resumeboost/hero/Top_slant_hero.png"
+              alt="ResumeBoost top interface"
+              width={1100}
+              height={800}
+              priority
+              className="w-full h-auto object-contain drop-shadow-xl"
+            />
+          </motion.div>
+        </div>
       </div>
     </div>
   )
