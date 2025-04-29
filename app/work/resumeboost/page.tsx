@@ -53,7 +53,7 @@ export default function ResumeBoostCaseStudyPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <HighlightCard
               number="800+"
-              label="Resumes Analyzed"
+              label="Resumes Analysed"
               description="Strong early traction with minimal marketing in first 2-3 months"
             />
             <HighlightCard
@@ -62,9 +62,9 @@ export default function ResumeBoostCaseStudyPage() {
               description="Resumes processed daily after integration with MyCareersFuture"
             />
             <HighlightCard
-              number="3,500+"
+              number="20,000+"
               label="Total Resumes"
-              description="Total resumes analyzed since launch, with continuous growth"
+              description="Total resumes analysed since launch, with continuous growth"
             />
           </div>
         </ContentSection>
@@ -310,15 +310,15 @@ export default function ResumeBoostCaseStudyPage() {
           <div className="prose prose-gray max-w-3xl mx-auto">
             <ul className="text-lg text-gray-600 list-disc pl-6 space-y-2 mt-4">
               <li>
-                <strong>800 resumes analyzed in the first 2–3 months</strong> with minimal marketing.
+                <strong>800 resumes analysed in the first 2–3 months</strong> with minimal marketing.
               </li>
               <li>
                 <strong>200+ resumes processed daily on MyCareersFuture</strong> after integration.
               </li>
               <li>
-                <strong>3,500+ total resumes analyzed</strong> since launch, with continuous growth.
+                <strong>20,000+ total resumes analysed</strong> since launch, with continuous growth.
               </li>
-              <li>Improved user engagement and feedback loops, shaping future iterations.</li>
+              <li>Improved user engagement and feedback loops, <strong>shaping future iterations</strong>.</li>
             </ul>
           </div>
 
@@ -368,7 +368,7 @@ export default function ResumeBoostCaseStudyPage() {
               <Subheader>1. Start Research Earlier</Subheader>
               <div className="space-y-4 text-gray-600">
                 <p className="text-base">
-                  Initially, we spent a lot of time havingcasual conversations with potential stakeholders and user
+                  Initially, we spent a lot of time having casual conversations with potential stakeholders and user
                   groups but it went nowhere. We then took stock of our research and had issues defining what problem to
                   solve. Only after doing that step did we decide a direction for the research. Immediately taking stock
                   of the existing research and then executing on that earlier would have helped validate key assumptions

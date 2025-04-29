@@ -330,7 +330,7 @@ const TestimonialCard = memo(function TestimonialCard({
   return (
     <div 
       className={cn(
-        "bg-gray-100 rounded-xl flex flex-col transition-all duration-300 hover:shadow-md",
+        "bg-gray-100 flex flex-col transition-all duration-300 hover:shadow-md",
         isMobile 
           ? "w-[280px] h-[280px] p-4" 
           : "w-[560px] h-[360px] p-6"

@@ -62,7 +62,7 @@ export function Footer() {
             <div className="flex flex-col items-start md:items-end">
               <p className="text-sm md:text-base mb-2">Need details in a PDF?</p>
               <a
-                href="/cv.pdf"
+                href="https://docs.google.com/document/d/10qsJp2QH7h2edsFe8jsu-SeaxIzKjpkWsQvCqNMaDSM/edit?usp=sharing"
                 className="inline-block px-6 py-3 rounded-full bg-[#434343] hover:bg-[#5c5c5c] transition-colors"
               >
                 Read my CV
@@ -79,7 +79,7 @@ export function Footer() {
 
       {/* Copyright */}
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16">
-        <div className="text-sm text-gray-400 text-center">© Arthur Lee 2024. Made with lots of ☕️</div>
+        <div className="text-sm text-gray-400 text-center">© Arthur Lee 2025. Made with lots of ☕️</div>
       </div>
     </footer>
   )
