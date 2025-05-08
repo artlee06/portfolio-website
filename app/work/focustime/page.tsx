@@ -83,6 +83,9 @@ export default function FocusTimeCaseStudyPage() {
               <li>Flipping back to pause the session</li>
             </ul>
           </div>
+          <BentoGrid className="mb-8 mt-8">
+            <BentoGridItem videoUrl="https://vimeo.com/972085385" colSpan={4} /> 
+          </BentoGrid>
         </ContentSection>
 
         <ContentSection id="iterations" title="Key Iterations" className="text-center">
@@ -90,7 +93,7 @@ export default function FocusTimeCaseStudyPage() {
             {/* Early Design Critique Section */}
             <IterationSection
               title="Early Design Critique"
-              videoSrc="/case-studies/focustime/early-design-critique.mp4"
+              videoSrc="https://youtu.be/khm3cRoOjQE?t=144"
             >
               <ul className="text-lg text-gray-600 list-disc pl-6 space-y-2">
                 <li>Received feedback during a formal critique session.</li>
@@ -123,7 +126,7 @@ export default function FocusTimeCaseStudyPage() {
             {/* Animations and Quality of Life Features Section */}
             <IterationSection
               title="Animations and Quality of Life Features"
-              videoSrc="/case-studies/focustime/animations.mp4"
+              videoSrc="https://vimeo.com/1013962460"
             >
               <p className="text-lg text-gray-600">Post competition, I made several refinements:</p>
               <ul className="text-lg text-gray-600 list-disc pl-6 space-y-2 mt-4">
