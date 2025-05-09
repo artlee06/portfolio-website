@@ -84,7 +84,7 @@ export default function FocusTimeCaseStudyPage() {
             </ul>
           </div>
           <BentoGrid className="mb-8 mt-8">
-            <BentoGridItem videoUrl="https://vimeo.com/972085385" colSpan={3} /> 
+            <BentoGridItem videoUrl="https://vimeo.com/972085385" colSpan={4} /> 
           </BentoGrid>
         </ContentSection>
 
