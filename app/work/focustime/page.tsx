@@ -44,7 +44,7 @@ export default function FocusTimeCaseStudyPage() {
 
         <ContentSection id="highlights" title="Project Highlights">
           <BentoGrid className="mb-8">
-            <BentoGridItem videoUrl="https://vimeo.com/972083852?share=copy" colSpan={4} /> 
+            <BentoGridItem videoUrl="https://vimeo.com/1082958852" colSpan={4} /> 
           </BentoGrid>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <HighlightCard
@@ -105,7 +105,7 @@ export default function FocusTimeCaseStudyPage() {
             {/* Rotation States and Design Improvements Section */}
             <IterationSection
               title="Rotation States and Design Improvements"
-              videoSrc="/case-studies/focustime/rotation-states.mp4"
+              videoSrc="/case-studies/focustime/RotationStatesVideo.mp4"
               isReversed={true}
             >
               <ul className="text-lg text-gray-600 list-disc pl-6 space-y-2">
@@ -126,7 +126,7 @@ export default function FocusTimeCaseStudyPage() {
             {/* Animations and Quality of Life Features Section */}
             <IterationSection
               title="Animations and Quality of Life Features"
-              videoSrc="https://vimeo.com/1013962460"
+              videoSrc="/case-studies/focustime/AnimationsVideo.mp4"
             >
               <p className="text-lg text-gray-600">Post competition, I made several refinements:</p>
               <ul className="text-lg text-gray-600 list-disc pl-6 space-y-2 mt-4">
@@ -139,7 +139,7 @@ export default function FocusTimeCaseStudyPage() {
         </ContentSection>
 
         <ContentSection id="solution" title="Final Solution" className="bg-gray-50">
-          <div className="prose prose-gray max-w-3xl mx-auto">
+          <div className="prose prose-gray max-w-3xl mx-auto mb-8">
             <p className="text-lg text-gray-600">FocusTime is an XR Pomodoro timer where:</p>
             <ul className="text-lg text-gray-600 list-disc pl-6 space-y-2 mt-4">
               <li>Flipping the hourglass starts a Pomodoro session.</li>
@@ -147,6 +147,32 @@ export default function FocusTimeCaseStudyPage() {
               <li>Natural gestures and interactions are central—no floating menus or UI panels.</li>
             </ul>
           </div>
+          <BentoGrid variant="solution">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <BentoGridItem
+                imageUrl="/case-studies/focustime/StartingScreen.webp"
+                alt="Starting screen showing menu to start a timer"
+                aspectRatio="16:9"
+              />
+              <BentoGridItem
+                imageUrl="/case-studies/focustime/FocusScreen.webp"
+                alt="Focus screen showing a screen with a timer and hourglass"
+                aspectRatio="16:9"
+              />
+            </div>
+
+            <BentoGridItem
+              videoUrl="/case-studies/focustime/RotateToStart.mp4"
+              alt="Demo of the hourglass object being rotated to start a timer"
+              aspectRatio="square"
+            />
+
+            <BentoGridItem
+              imageUrl="/case-studies/focustime/AnimationScreens.webp"
+              alt="Screenshots of the animation of the hourglass object"
+              aspectRatio="16:9"
+            />
+          </BentoGrid>
         </ContentSection>
 
         <ContentSection id="outcomes" title="Outcomes">
