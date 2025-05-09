@@ -44,7 +44,7 @@ export default function FocusTimeCaseStudyPage() {
 
         <ContentSection id="highlights" title="Project Highlights">
           <BentoGrid className="mb-8">
-            <BentoGridItem videoUrl="https://vimeo.com/1082958852" colSpan={4} /> 
+            <BentoGridItem aspectRatio="square" videoUrl="https://vimeo.com/1082958852" colSpan={4} /> 
           </BentoGrid>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <HighlightCard
@@ -84,7 +84,7 @@ export default function FocusTimeCaseStudyPage() {
             </ul>
           </div>
           <BentoGrid className="mb-8 mt-8">
-            <BentoGridItem videoUrl="https://vimeo.com/972085385" colSpan={4} /> 
+            <BentoGridItem videoUrl="https://vimeo.com/972085385" colSpan={3} /> 
           </BentoGrid>
         </ContentSection>
 
