@@ -53,28 +53,56 @@ export const BentoGridItem = React.memo(function BentoGridItem({
       transition={{ duration: 0.5 }}
     >
       {videoUrl ? (
-        <div className={`relative w-full h-0 ${aspectRatioClass}`}>
-          {videoUrl.includes("vimeo.com") ? (
-            <iframe
-              src={videoUrl.replace("vimeo.com", "player.vimeo.com/video").replace("?share=copy", "")}
-              className="absolute top-0 left-0 w-full h-full"
-              frameBorder="0"
-              loading="lazy"
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
-              title="Video content"
-              allowFullScreen
-            ></iframe>
-          ) : (
-            <video
-              src={videoUrl}
-              className="absolute top-0 left-0 w-full h-full object-cover"
-              autoPlay
-              loop
-              muted
-              playsInline
-            />
-          )}
-        </div>
+        aspectRatio === "square" ? (
+          <div
+            className="relative w-full aspect-square"
+            style={{ aspectRatio: "1 / 1" }}
+          >
+            {videoUrl.includes("vimeo.com") ? (
+              <iframe
+                src={videoUrl.replace("vimeo.com", "player.vimeo.com/video").replace("?share=copy", "")}
+                className="absolute top-0 left-0 w-full h-full"
+                frameBorder="0"
+                loading="lazy"
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                title="Video content"
+                allowFullScreen
+              ></iframe>
+            ) : (
+              <video
+                src={videoUrl}
+                className="absolute top-0 left-0 w-full h-full object-cover"
+                autoPlay
+                loop
+                muted
+                playsInline
+              />
+            )}
+          </div>
+        ) : (
+          <div className={`relative w-full h-0 ${aspectRatioClass}`}>
+            {videoUrl.includes("vimeo.com") ? (
+              <iframe
+                src={videoUrl.replace("vimeo.com", "player.vimeo.com/video").replace("?share=copy", "")}
+                className="absolute top-0 left-0 w-full h-full"
+                frameBorder="0"
+                loading="lazy"
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                title="Video content"
+                allowFullScreen
+              ></iframe>
+            ) : (
+              <video
+                src={videoUrl}
+                className="absolute top-0 left-0 w-full h-full object-cover"
+                autoPlay
+                loop
+                muted
+                playsInline
+              />
+            )}
+          </div>
+        )
       ) : imageUrl ? (
         <div className={`relative w-full h-0 ${aspectRatioClass}`}>
           <Image
