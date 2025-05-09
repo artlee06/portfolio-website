@@ -32,7 +32,7 @@ const caseStudies = [
   {
     id: "project-3",
     title: "FocusTime",
-    description: "(Coming soon) The pomodoro technique reimagined for XR. Clinched runner up at XR Design Challenge 2024",
+    description: "The pomodoro technique reimagined for XR. Clinched runner up at XR Design Challenge 2024",
     imageUrl: "/case-studies/focustime/thumbnail.webp",
     videoUrl: "/case-studies/focustime/RotateToStart.mp4",
     slug: "focustime",
