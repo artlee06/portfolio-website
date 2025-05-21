@@ -115,6 +115,17 @@ export default function NursingRegistrationCaseStudyPage() {
 
             {/* Progressive disclosure Section */}
             <IterationSection
+              title="Step-by-Step vs. Hub-and-Spoke Navigation"
+              videoSrc="/case-studies/nursingregistration/progressive-disclosure.mp4"
+              isReversed={true}
+            >
+              <p className="text-lg text-gray-600 mb-4">
+              We debated between a sequential step-by-step flow and a flexible hub-and-spoke pattern. After researching both, we chose the step-by-step approach—it was simpler to understand and ensured users completed sections in the correct order, which was necessary due to form dependencies.
+              </p>
+            </IterationSection>
+
+            {/* Progressive disclosure Section */}
+            <IterationSection
               title="Progressive Disclosure"
               videoSrc="/case-studies/nursingregistration/progressive-disclosure.mp4"
             >

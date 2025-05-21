@@ -38,7 +38,7 @@ export function IterationSection({ title, children, videoSrc, imageSrc, isRevers
         <h3 className="text-2xl font-medium mb-6">{title}</h3>
         {children}
       </div>
-      <div className={cn("order-1 col-span-2 aspect-video relative overflow-hidden rounded-lg", isReversed ? "md:order-2" : "md:order-1")}>
+      <div className={cn("order-1 col-span-2 aspect-video relative overflow-hidden rounded-lg border border-gray-200", isReversed ? "md:order-2" : "md:order-1")}>
         {videoSrc ? (
           isExternalVideo(videoSrc) ? (
             <iframe
