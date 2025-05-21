@@ -3,11 +3,13 @@
 import type { ReactNode } from "react"
 import { Subheader } from "./Typography"
 import { cn } from "@/lib/utils"
+import Image from "next/image"
 
 interface IterationSectionProps {
   title: string
   children: ReactNode
-  videoSrc: string
+  videoSrc?: string
+  imageSrc?: string
   isReversed?: boolean
 }
 
@@ -29,7 +31,7 @@ const getVideoEmbedUrl = (url: string) => {
   return url
 }
 
-export function IterationSection({ title, children, videoSrc, isReversed = false }: IterationSectionProps) {
+export function IterationSection({ title, children, videoSrc, imageSrc, isReversed = false }: IterationSectionProps) {
   return (
     <div className={cn("grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 items-center", isReversed && "md:flex-row-reverse")}>
       <div className={cn("order-2", isReversed ? "md:order-1" : "md:order-2")}>
@@ -37,23 +39,32 @@ export function IterationSection({ title, children, videoSrc, isReversed = false
         {children}
       </div>
       <div className={cn("order-1 col-span-2 aspect-video relative overflow-hidden rounded-lg", isReversed ? "md:order-2" : "md:order-1")}>
-        {isExternalVideo(videoSrc) ? (
-          <iframe
-            src={getVideoEmbedUrl(videoSrc)}
-            className="absolute top-0 left-0 w-full h-full"
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowFullScreen
+        {videoSrc ? (
+          isExternalVideo(videoSrc) ? (
+            <iframe
+              src={getVideoEmbedUrl(videoSrc)}
+              className="absolute top-0 left-0 w-full h-full"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+            />
+          ) : (
+            <video 
+              src={videoSrc} 
+              autoPlay 
+              loop 
+              muted 
+              playsInline 
+              className="w-full h-full object-cover" 
+            />
+          )
+        ) : imageSrc ? (
+          <Image
+            src={imageSrc}
+            alt={title}
+            fill
+            className="object-cover"
           />
-        ) : (
-          <video 
-            src={videoSrc} 
-            autoPlay 
-            loop 
-            muted 
-            playsInline 
-            className="w-full h-full object-cover" 
-          />
-        )}
+        ) : null}
       </div>
     </div>
   )

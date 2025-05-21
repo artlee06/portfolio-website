@@ -106,56 +106,21 @@ export default function NursingRegistrationCaseStudyPage() {
             {/* Content Blocks Section */}
             <IterationSection
               title="Early Alignment with Content Blocks"
-              videoSrc="/case-studies/nursingregistration/content-blocks.mp4"
+              imageSrc="/case-studies/prs/ContentBlockHighFi.webp"
             >
               <p className="text-lg text-gray-600 mb-4">
-                Given the form's complexity and dependencies on legacy systems, we initially aligned internally using <strong>content blocks</strong> to organize and prioritize information. This helped the team agree on structure before investing in detailed designs.
+              To manage the form’s complexity and legacy system constraints, we first used content blocks to agree on structure and flow. This set the stage for moving quickly into high-fidelity mockups, which enabled focused discussions and fast iterations with stakeholders, balancing usability with technical limitations due to dealing with a legacy system.
               </p>
             </IterationSection>
 
-            {/* High-Fidelity Section */}
+            {/* Progressive disclosure Section */}
             <IterationSection
-              title="Transition to High-Fidelity Design"
-              videoSrc="/case-studies/nursingregistration/high-fidelity.mp4"
-              isReversed={true}
+              title="Progressive Disclosure"
+              videoSrc="/case-studies/nursingregistration/progressive-disclosure.mp4"
             >
               <p className="text-lg text-gray-600 mb-4">
-                Once content was agreed upon:
+              Several sections of the form required users to input repeated information, such as qualifications or gap periods. We used progressive disclosure to hide these fields until they were needed, implementing this behavior with bottom sheets. 
               </p>
-              <ul className="text-lg text-gray-600 list-disc pl-6 space-y-2">
-                <li>
-                  Created <strong>high-fidelity mockups</strong> early to facilitate clearer discussions both within the design team and with cross-functional partners.
-                </li>
-                <li>
-                  Iterated quickly based on feedback from engineering, product, and operations teams.
-                </li>
-              </ul>
-            </IterationSection>
-
-            {/* Legacy System Section */}
-            <IterationSection
-              title="Supporting an Old System"
-              videoSrc="/case-studies/nursingregistration/legacy-system.mp4"
-            >
-              <p className="text-lg text-gray-600 mb-4">
-                We had to design within the constraints of an <strong>older backend system</strong>, which limited some modern UX patterns. Careful negotiation and creative compromises were needed to preserve usability while meeting technical requirements.
-              </p>
-            </IterationSection>
-
-            {/* Collaboration Section */}
-            <IterationSection
-              title="Collaboration and Handover"
-              videoSrc="/case-studies/nursingregistration/collaboration.mp4"
-              isReversed={true}
-            >
-              <ul className="text-lg text-gray-600 list-disc pl-6 space-y-2">
-                <li>
-                  <strong>Clear documentation</strong> and <strong>responsive support</strong> during handover ensured a smooth transition into development.
-                </li>
-                <li>
-                  Proactively answered questions and updated designs as development surfaced edge cases.
-                </li>
-              </ul>
             </IterationSection>
           </div>
         </ContentSection>
