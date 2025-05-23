@@ -116,7 +116,7 @@ export default function NursingRegistrationCaseStudyPage() {
             {/* Progressive disclosure Section */}
             <IterationSection
               title="Step-by-Step vs. Hub-and-Spoke Navigation"
-              videoSrc="/case-studies/nursingregistration/progressive-disclosure.mp4"
+              imageSrc="/case-studies/prs/Progressive_disclosure.webp"
               isReversed={true}
             >
               <p className="text-lg text-gray-600 mb-4">
@@ -127,8 +127,7 @@ export default function NursingRegistrationCaseStudyPage() {
             {/* Progressive disclosure Section */}
             <IterationSection
               title="Progressive Disclosure"
-              videoSrc="/case-studies/nursingregistration/progressive-disclosure.mp4"
-            >
+              imageSrc="/case-studies/prs/StepByStep.webp"            >
               <p className="text-lg text-gray-600 mb-4">
               Several sections of the form required users to input repeated information, such as qualifications or gap periods. We used progressive disclosure to hide these fields until they were needed, implementing this behavior with bottom sheets. 
               </p>
