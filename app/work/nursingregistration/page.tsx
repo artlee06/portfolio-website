@@ -201,30 +201,30 @@ export default function NursingRegistrationCaseStudyPage() {
                 {/* 1. Top left (square) */}
                 <BentoGridItem
                   imageUrl="/case-studies/prs/Bento_Confirm.webp"
-                  alt="Step-by-step form with progressive disclosure"
+                  alt="Confirmation page screenshot"
                   aspectRatio="square"
                   className="row-start-1 col-start-1"
                 />
                 {/* 2. Below top left (square) */}
                 <BentoGridItem
                   imageUrl="/case-studies/prs/Bento_submission.webp"
-                  alt="Save and resume functionality interface"
+                  alt="Submission success screenshot"
                   aspectRatio="square"
                   className="row-start-2 col-start-1"
                 />
                 {/* 3. Right side, spanning two rows */}
                 <BentoGridItem
                   videoUrl="/case-studies/prs/Bento_video_tall.mp4"
-                  alt="Demonstration of the complete form filling process"
+                  alt="Snippet of form filling process"
                   aspectRatio="fit"
-                  className="row-start-1 row-span-2 col-start-2"
+                  className="row-start-3 col-start-1 md:row-span-2 md:col-start-2"
                 />
                 {/* 4. Bottom, spanning both columns */}
                 <BentoGridItem
                   imageUrl="/case-studies/prs/Bento_Bottom.webp"
-                  alt="Clear guidance and examples for foreign terminology"
+                  alt="Hero image"
                   aspectRatio="16:9"
-                  className="row-start-3 col-span-2"
+                  className="row-start-4 md:row-start-3 col-span-2"
                 />
               </BentoGrid>
             </ContentSection>

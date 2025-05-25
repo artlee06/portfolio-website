@@ -82,7 +82,7 @@ export const BentoGridItem = React.memo(function BentoGridItem({
             )}
           </div>
         ) : aspectRatio === "fit" ? (
-          <div className="relative w-full h-full">
+          <div className="relative w-full h-[750px] md:h-full">
             {videoUrl.includes("vimeo.com") ? (
               <iframe
                 src={videoUrl.replace("vimeo.com", "player.vimeo.com/video").replace("?share=copy", "")}
@@ -160,7 +160,7 @@ export const BentoGrid = React.memo(function BentoGrid({
   const gridClasses = {
     highlights: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4",
     solution: "grid grid-cols-1 gap-6",
-    mobileDesign: "grid grid-cols-1 md:grid-cols-2 grid-rows-2 gap-4",
+    mobileDesign: "grid grid-cols-1 md:grid-cols-2 gap-4",
   }
 
   return <div className={`${gridClasses[variant]} ${className}`}>{children}</div>
