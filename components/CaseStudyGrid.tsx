@@ -11,6 +11,7 @@ type CaseStudy = {
   title: string
   description: string
   imageUrl?: string
+  mobileImageUrl?: string
   videoUrl?: string
   slug: string
   comingSoon?: boolean
@@ -32,10 +33,10 @@ const caseStudies: CaseStudy[] = [
   {
     id: "project-2",
     title: "Nursing Registration",
-    description: "(Coming soon) Designing user-friendly and efficient registration for foreign nurses in Singapore",
-    imageUrl: "/case-studies/prs/thumbnail.webp",
-    slug: "coming-soon",
-    comingSoon: true,
+    description: "Designing user-friendly and efficient registration for foreign nurses in Singapore",
+    imageUrl: "/case-studies/prs/thumbnail_alt.webp",
+    mobileImageUrl: "/case-studies/prs/thumbnail.webp",
+    slug: "nursingregistration",
     thumbnailTextColor: "text-[#2e2e2e]",
     thumbnailTextColorOnHover: "text-[#2e2e2e]",
   },
@@ -186,7 +187,7 @@ function CaseStudyCard({
               />
             ) : (
               <Image
-                src={caseStudy.imageUrl || "/placeholder.svg"}
+                src={isMobile && caseStudy.mobileImageUrl ? caseStudy.mobileImageUrl : caseStudy.imageUrl || "/placeholder.svg"}
                 alt={caseStudy.title}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

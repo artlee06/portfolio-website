@@ -12,7 +12,7 @@ interface BentoGridItemProps {
   alt?: string
   colSpan?: number
   rowSpan?: number
-  aspectRatio?: "16:9" | "square" | string
+  aspectRatio?: "16:9" | "square" | "fit" | string
 }
 
 export const BentoGridItem = React.memo(function BentoGridItem({
@@ -39,6 +39,8 @@ export const BentoGridItem = React.memo(function BentoGridItem({
   let aspectRatioClass = "pb-[56.25%]" // Default 16:9
   if (aspectRatio === "square") {
     aspectRatioClass = "pb-[100%]"
+  } else if (aspectRatio === "fit") {
+    aspectRatioClass = "w-full h-full" // No padding, let media fill naturally
   } else if (aspectRatio !== "16:9") {
     // Custom aspect ratio if provided
     aspectRatioClass = `pb-[${aspectRatio}]`
@@ -79,6 +81,29 @@ export const BentoGridItem = React.memo(function BentoGridItem({
               />
             )}
           </div>
+        ) : aspectRatio === "fit" ? (
+          <div className="relative w-full h-[750px] md:h-full">
+            {videoUrl.includes("vimeo.com") ? (
+              <iframe
+                src={videoUrl.replace("vimeo.com", "player.vimeo.com/video").replace("?share=copy", "")}
+                className="absolute top-0 left-0 w-full h-full"
+                frameBorder="0"
+                loading="lazy"
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                title="Video content"
+                allowFullScreen
+              ></iframe>
+            ) : (
+              <video
+                src={videoUrl}
+                className="absolute top-0 left-0 w-full h-full object-contain"
+                autoPlay
+                loop
+                muted
+                playsInline
+              />
+            )}
+          </div>
         ) : (
           <div className={`relative w-full h-0 ${aspectRatioClass}`}>
             {videoUrl.includes("vimeo.com") ? (
@@ -104,13 +129,13 @@ export const BentoGridItem = React.memo(function BentoGridItem({
           </div>
         )
       ) : imageUrl ? (
-        <div className={`relative w-full h-0 ${aspectRatioClass}`}>
+        <div className={`relative ${aspectRatio === "fit" ? "w-full h-full" : "w-full h-0 " + aspectRatioClass}`}>
           <Image
             src={imageUrl || "/placeholder.svg"}
             alt={alt}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
-            className="object-cover"
+            className={aspectRatio === "fit" ? "object-contain" : "object-cover"}
           />
         </div>
       ) : (
@@ -123,7 +148,7 @@ export const BentoGridItem = React.memo(function BentoGridItem({
 interface BentoGridProps {
   children: ReactNode
   className?: string
-  variant?: "highlights" | "solution"
+  variant?: "highlights" | "solution" | "mobileDesign"
 }
 
 export const BentoGrid = React.memo(function BentoGrid({
@@ -135,6 +160,7 @@ export const BentoGrid = React.memo(function BentoGrid({
   const gridClasses = {
     highlights: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4",
     solution: "grid grid-cols-1 gap-6",
+    mobileDesign: "grid grid-cols-1 md:grid-cols-2 gap-4",
   }
 
   return <div className={`${gridClasses[variant]} ${className}`}>{children}</div>
