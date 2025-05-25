@@ -109,14 +109,14 @@ export default function NursingRegistrationCaseStudyPage() {
               imageSrc="/case-studies/prs/ContentBlockHighFi.webp"
             >
               <p className="text-lg text-gray-600 mb-4">
-              To manage the form’s complexity and legacy system constraints, we first used content blocks to agree on structure and flow. This set the stage for moving quickly into high-fidelity mockups, which enabled focused discussions and fast iterations with stakeholders, balancing usability with technical limitations due to dealing with a legacy system.
+              To manage the form's complexity and legacy system constraints, we first used content blocks to agree on structure and flow. This set the stage for moving quickly into high-fidelity mockups, which enabled focused discussions and fast iterations with stakeholders, balancing usability with technical limitations due to dealing with a legacy system.
               </p>
             </IterationSection>
 
-            {/* Progressive disclosure Section */}
+            {/* Step by step vs hub and spoke Section */}
             <IterationSection
-              title="Step-by-Step vs. Hub-and-Spoke Navigation"
-              imageSrc="/case-studies/prs/Progressive_disclosure.webp"
+              title="Step-by-Step vs. Hub-and-Spoke Navigation"              
+              imageSrc="/case-studies/prs/StepByStep.webp"
               isReversed={true}
             >
               <p className="text-lg text-gray-600 mb-4">
@@ -127,7 +127,8 @@ export default function NursingRegistrationCaseStudyPage() {
             {/* Progressive disclosure Section */}
             <IterationSection
               title="Progressive Disclosure"
-              imageSrc="/case-studies/prs/StepByStep.webp"            >
+              imageSrc="/case-studies/prs/Progressive_disclosure.webp"            
+              >
               <p className="text-lg text-gray-600 mb-4">
               Several sections of the form required users to input repeated information, such as qualifications or gap periods. We used progressive disclosure to hide these fields until they were needed, implementing this behavior with bottom sheets. 
               </p>
@@ -149,30 +150,34 @@ export default function NursingRegistrationCaseStudyPage() {
               This resulted in a form that was significantly easier to complete, reducing friction in the nurse registration process.
             </p>
           </div>
-          <BentoGrid variant="solution">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <BentoGridItem
-                imageUrl="/case-studies/nursingregistration/solution1.webp"
-                alt="Step-by-step form with progressive disclosure"
-                aspectRatio="16:9"
-              />
-              <BentoGridItem
-                imageUrl="/case-studies/nursingregistration/solution2.webp"
-                alt="Save and resume functionality interface"
-                aspectRatio="16:9"
-              />
-            </div>
-
+          <BentoGrid variant="mobileDesign">
+            {/* 1. Top left (square) */}
             <BentoGridItem
-              videoUrl="/case-studies/nursingregistration/solution-demo.mp4"
-              alt="Demonstration of the complete form filling process"
-              aspectRatio="16:9"
+              imageUrl="/case-studies/prs/Bento_Confirm.webp"
+              alt="Step-by-step form with progressive disclosure"
+              aspectRatio="square"
+              className="row-start-1 col-start-1"
             />
-
+            {/* 2. Below top left (square) */}
             <BentoGridItem
-              imageUrl="/case-studies/nursingregistration/solution3.webp"
+              imageUrl="/case-studies/prs/Bento_submission.webp"
+              alt="Save and resume functionality interface"
+              aspectRatio="square"
+              className="row-start-2 col-start-1"
+            />
+            {/* 3. Right side, spanning two rows */}
+            <BentoGridItem
+              videoUrl="/case-studies/prs/Bento_video_tall.mp4"
+              alt="Demonstration of the complete form filling process"
+              aspectRatio="fit"
+              className="row-start-1 row-span-2 col-start-2"
+            />
+            {/* 4. Bottom, spanning both columns */}
+            <BentoGridItem
+              imageUrl="/case-studies/prs/Bento_Bottom.webp"
               alt="Clear guidance and examples for foreign terminology"
               aspectRatio="16:9"
+              className="row-start-3 col-span-2"
             />
           </BentoGrid>
         </ContentSection>
