@@ -53,6 +53,16 @@ const caseStudies = [
 const experiments = [
   {
     id: "exp-1",
+    title: "Vibe-Coding for Production as a Designer",
+    description: "Sharing how I vibe-coded the new landing page for ResumeBoostSG. Done in a more pragmatic way for production.",
+    imageUrl: "/experiments/vibecode_rbsg.png",
+    platform: "LinkedIn",
+    date: "May 15, 2025",
+    link: "https://www.linkedin.com/posts/arthur-lee-ying-kiu_vibecoding-productdesign-designengineering-activity-7328622686916530176-Qxk1?utm_source=share&utm_medium=member_desktop&rcm=ACoAACOPSTsBDh40JZvGrJ30ozrwMWN42LFq1Xc",
+    aspectRatio: "square",
+  },
+  {
+    id: "exp-2",
     title: "Building My Portfolio Website in Public",
     description: "Sharing my journey of creating a personal portfolio website using v0.dev, Next.js and Tailwind CSS.",
     imageUrl: "/experiments/portfoliowebsite_thumbnail_experiments.webp",
@@ -62,7 +72,7 @@ const experiments = [
     aspectRatio: "square",
   },
   {
-    id: "exp-2",
+    id: "exp-3",
     title: "2024 Wrap Up: XR projects throughout the year",
     description: "Reflecting on 2024, I managed to stay consistent in creating XR projects and learning new things.",
     imageUrl: "/experiments/2024_wrapup_thumbnail.webp",
