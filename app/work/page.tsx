@@ -22,10 +22,9 @@ const caseStudies = [
   {
     id: "project-2",
     title: "Nursing Registration",
-    description: "(Coming soon) Designing user-friendly and efficient registration for foreign nurses in Singapore",
+    description: "Designing user-friendly and efficient registration for foreign nurses in Singapore",
     imageUrl: "/case-studies/prs/thumbnail.webp",
-    slug: "coming-soon",
-    comingSoon: true,
+    slug: "nursingregistration",
     thumbnailTextColor: "text-[#2e2e2e]",
     thumbnailTextColorOnHover: "text-[#2e2e2e]",
   },
