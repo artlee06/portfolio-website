@@ -54,7 +54,7 @@ export function CaseStudyLayout({ children, title, subtitle, role, duration, res
       </nav>
 
       {/* Hero Section */}
-      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 pt-32">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 pt-12 md:pt-32">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
