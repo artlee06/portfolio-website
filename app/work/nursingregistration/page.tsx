@@ -53,9 +53,9 @@ export default function NursingRegistrationCaseStudyPage() {
               description="from WOGGA (feedback widget for government products)"
             />
             <HighlightCard
-              number="30%"
-              label="Reduction"
-              description="in time completion compared to a paper form"
+              number={"15 min"}
+              label="Median time"
+              description="to complete the form compared to hours on equivalent paper form"
             />
             <HighlightCard 
               number="1" 
@@ -184,8 +184,16 @@ export default function NursingRegistrationCaseStudyPage() {
 
         <ContentSection id="impact" title="Outcomes">
           <div className="prose prose-gray max-w-3xl mx-auto">
-            <p className="text-lg text-gray-600 italic">
-              Metrics to be confirmed after checking with project leads.
+            <p className="text-lg text-gray-600">
+              During the initial launch to 150 foreign nurses, it resulted in a much better experience as compared to paper forms:
+            </p>
+            <ul className="text-lg text-gray-600 list-disc pl-6 space-y-2 mt-4">
+              <li>6/6 feedback rating from 10 WOGGA ratings (government rating system)</li>
+              <li>15 min median time to complete the application</li>
+              <li>88 foreign nurses completed the form smoothly</li>
+            </ul>
+            <p className="text-lg text-gray-600 mt-4">
+              These are just the metrics from the initial launch, by now it would have much larger impact across the board.
             </p>
           </div>
         </ContentSection>
