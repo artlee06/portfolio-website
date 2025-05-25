@@ -11,6 +11,7 @@ import { IterationSection } from "@/components/case-study/IterationSection"
 import Image from "next/image"
 import { Input } from "@/components/ui/input"
 import { useState } from "react"
+import { Eye, EyeOff } from "lucide-react"
 
 
 
@@ -18,6 +19,7 @@ export default function NursingRegistrationCaseStudyPage() {
   const [isUnlocked, setIsUnlocked] = useState(false)
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
+  const [showPassword, setShowPassword] = useState(false)
 
   const handlePasswordSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -92,13 +94,26 @@ export default function NursingRegistrationCaseStudyPage() {
               </p>
               <form onSubmit={handlePasswordSubmit} className="flex flex-col gap-4 max-w-md">
                 <div className="flex gap-4">
-                  <Input
-                    type="password"
-                    placeholder="Enter password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className="w-full"
-                  />
+                  <div className="relative w-full">
+                    <Input
+                      type={showPassword ? "text" : "password"}
+                      placeholder="Enter password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      className="w-full pr-10"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                    >
+                      {showPassword ? (
+                        <EyeOff className="h-4 w-4" />
+                      ) : (
+                        <Eye className="h-4 w-4" />
+                      )}
+                    </button>
+                  </div>
                   <button
                     type="submit"
                     className="px-4 py-2 bg-gray-900 text-white rounded-md hover:bg-gray-800 transition-colors whitespace-nowrap"
