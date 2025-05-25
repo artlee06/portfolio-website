@@ -43,25 +43,36 @@ export default function FocusTimeCaseStudyPage() {
         </ContentSection>
 
         <ContentSection id="highlights" title="Project Highlights">
-          <BentoGrid className="mb-8">
-            <BentoGridItem aspectRatio="square" videoUrl="https://vimeo.com/1082958852" colSpan={4} /> 
-          </BentoGrid>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <HighlightCard
-              number="2nd"
-              label="Place"
-              description="Runner-up in the XR Design Competition"
-            />
-            <HighlightCard
-              number="1"
-              label="Month"
-              description="To build the fully interactive Unity prototype"
-            />
-            <HighlightCard 
-              number="1" 
-              label="Demo" 
-              description="Video showcased to judges and community" 
-            />
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="md:col-span-3">
+              <BentoGridItem 
+                aspectRatio="square" 
+                videoUrl="https://vimeo.com/1082958852"
+                className="w-full h-full border-none"
+              />
+            </div>
+            <div className="flex flex-col gap-6">
+              <HighlightCard
+                number="2nd"
+                label="Place"
+                description="Runner-up in the XR Design Competition"
+              />
+              <HighlightCard
+                number="1"
+                label="Month"
+                description="To build the fully interactive Unity prototype"
+              />
+              <HighlightCard 
+                number="1" 
+                label="Critique session" 
+                description="To hone our XR design sensibilities halfway through the competition" 
+              />
+              <HighlightCard 
+                number="1" 
+                label="Demo" 
+                description="Video showcased to judges and community" 
+              />
+            </div>
           </div>
         </ContentSection>
 

@@ -31,10 +31,10 @@ const caseStudies = [
   {
     id: "project-3",
     title: "FocusTime",
-    description: "(Coming soon) The pomodoro technique reimagined for XR. Clinched runner up at XR Design Challenge 2024",
+    description: "The pomodoro technique reimagined for XR. Clinched runner up at XR Design Challenge 2024",
     imageUrl: "/case-studies/focustime/thumbnail.webp",
-    slug: "coming-soon",
-    comingSoon: true,
+    videoUrl: "/case-studies/focustime/RotateToStart.mp4",
+    slug: "focustime",
     thumbnailTextColor: "text-white",
     thumbnailTextColorOnHover: "text-white",
   },
@@ -50,10 +50,17 @@ const caseStudies = [
   },
 ]
 
-// Sample experiments data - now in chronological order with mixed aspect ratios
 const experiments = [
   {
-    id: "exp-1",
+    title: "Vibe-Coding for Production as a Designer",
+    description: "Sharing how I vibe-coded the new landing page for ResumeBoostSG. Done in a more pragmatic way for production.",
+    imageUrl: "/experiments/vibecode_rbsg.png",
+    platform: "LinkedIn",
+    date: "May 15, 2025",
+    link: "https://www.linkedin.com/posts/arthur-lee-ying-kiu_vibecoding-productdesign-designengineering-activity-7328622686916530176-Qxk1?utm_source=share&utm_medium=member_desktop&rcm=ACoAACOPSTsBDh40JZvGrJ30ozrwMWN42LFq1Xc",
+    aspectRatio: "square",
+  },
+  {
     title: "Building My Portfolio Website in Public",
     description: "Sharing my journey of creating a personal portfolio website using v0.dev, Next.js and Tailwind CSS.",
     imageUrl: "/experiments/portfoliowebsite_thumbnail_experiments.webp",
@@ -63,7 +70,6 @@ const experiments = [
     aspectRatio: "square",
   },
   {
-    id: "exp-2",
     title: "2024 Wrap Up: XR projects throughout the year",
     description: "Reflecting on 2024, I managed to stay consistent in creating XR projects and learning new things.",
     imageUrl: "/experiments/2024_wrapup_thumbnail.webp",
@@ -73,7 +79,6 @@ const experiments = [
     aspectRatio: "square",
   },
   {
-    id: "exp-3",
     title: "XR Apartment Visualizer: Prototype Club Project",
     description: "Shared an early version of Insight, an XR apartment visualizer, at Prototype Club.",
     imageUrl: "/experiments/prototypeclub_XR_apartment_visualiser.webp",
@@ -83,7 +88,6 @@ const experiments = [
     aspectRatio: "square",
   },
   {
-    id: "exp-4",
     title: "My First UX Talk at Friends of Figma Singapore",
     description: "Reflections on delivering my first UX presentation at Friends of Figma Singapore, sharing insights on tinkering and prototyping.",
     imageUrl: "/experiments/Tinkering_Sharing_work.webp",
@@ -93,7 +97,6 @@ const experiments = [
     aspectRatio: "square",
   },
   {
-    id: "exp-5",
     title: "New Iteration of FocusTime: Enhanced Productivity App",
     description: "Updates on the latest version of FocusTime, featuring improved user experience and quality of life features.",
     imageUrl: "/experiments/focusTime_update.webp",
@@ -103,7 +106,6 @@ const experiments = [
     aspectRatio: "square",
   },
   {
-    id: "exp-6",
     title: "Runner up of the XR Design Challenge 2024",
     description: "Celebrating a win in the first XR Design challenge with FocusTime, a productivity app for XR.",
     imageUrl: "/experiments/XRDC_runnerup.webp",
@@ -113,7 +115,6 @@ const experiments = [
     aspectRatio: "square",
   },
   {
-    id: "exp-7",
     title: "Creating a Unity Prototype for XR Design",
     description: "A detailed look at my process of building a functional XR prototype in Unity for the first time.",
     imageUrl: "/experiments/UnityProtoMedium.webp",
@@ -123,7 +124,6 @@ const experiments = [
     aspectRatio: "square",
   },
   {
-    id: "exp-8",
     title: "Envision: Interior Design App for Spatial Computing",
     description: "Designing an interior design application to empower interior designers leveraging extended reality.",
     imageUrl: "/experiments/XRID_hero_image_mobile.webp",
@@ -133,7 +133,6 @@ const experiments = [
     aspectRatio: "square",
   },
   {
-    id: "exp-9",
     title: "Research: Emerging Technologies in Interior Design",
     description: "Exploring how XR could transform the interior design industry through user research.",
     imageUrl: "/experiments/envision_research.webp",
@@ -143,7 +142,6 @@ const experiments = [
     aspectRatio: "square",
   },
   {
-    id: "exp-10",
     title: "Creating an XR Prototype with Figma and Bezel",
     description: "A walkthrough of my process creating a Spotify Karaoke XR experience using Figma and Bezel.",
     imageUrl: "/experiments/spotify_karaoke_bezi.webp",
@@ -153,7 +151,6 @@ const experiments = [
     aspectRatio: "square",
   },
   {
-    id: "exp-11",
     title: "3D Donut Animation in Blender",
     description: "My journey learning 3D modeling and animation in Blender by creating a stylized donut scene.",
     imageUrl: "/experiments/Blender_donut.webp",
@@ -163,7 +160,6 @@ const experiments = [
     aspectRatio: "square",
   },
   {
-    id: "exp-12",
     title: "Designing a Karaoke Experience for Apple Vision Pro",
     description: "A case study on designing an immersive karaoke application for Apple's spatial computing platform.",
     imageUrl: "/experiments/immersion mode with friends small.webp",
@@ -172,7 +168,10 @@ const experiments = [
     link: "https://medium.com/design-bootcamp/designing-a-karaoke-experience-for-apple-vision-pro-c5b7e2b0b776",
     aspectRatio: "square",
   },
-]
+].map((experiment, index) => ({
+  ...experiment,
+  id: `exp-${index + 1}`
+}))
 
 export default function WorkPage() {
   const [activeTab, setActiveTab] = useState<"case-studies" | "experiments">("case-studies")
