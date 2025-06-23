@@ -62,7 +62,7 @@ export function Footer() {
             <div className="flex flex-col items-start md:items-end">
               <p className="text-sm md:text-base mb-2">Need details in a PDF?</p>
               <a
-                href="https://docs.google.com/document/d/10qsJp2QH7h2edsFe8jsu-SeaxIzKjpkWsQvCqNMaDSM/edit?usp=sharing"
+                href="https://drive.google.com/file/d/1681POt7N9ts7Bb2mqxO7Lm7fOcu2odMl/view?usp=drive_link"
                 className="inline-block px-6 py-3 rounded-full bg-[#434343] hover:bg-[#5c5c5c] transition-colors"
               >
                 Read my CV

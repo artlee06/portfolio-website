@@ -43,7 +43,7 @@ export default function AboutPage() {
                 products. I also love tinkering and creating for extended reality (XR).
               </p>
               <a
-                href="https://docs.google.com/document/d/10qsJp2QH7h2edsFe8jsu-SeaxIzKjpkWsQvCqNMaDSM/edit?usp=sharing"
+                href="https://drive.google.com/file/d/1681POt7N9ts7Bb2mqxO7Lm7fOcu2odMl/view?usp=drive_link"
                 className="inline-block px-4 py-2 rounded-full bg-[#2e2e2e] text-white hover:bg-[#2e2e2e]/50 transition-colors"
               >
                 View my CV
@@ -59,7 +59,7 @@ export default function AboutPage() {
       <section className="w-full px-4 md:px-8 lg:px-12 mb-20 md:mb-48">
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium md:text-center mb-4">What I&apos;ve been up to</h2>
         <p className="text-gray-600 text-base md:text-center mb-12">
-          Feel free to check out my <a href="https://www.linkedin.com/in/arthur-lee-ying-kiu/" className="underline hover:text-gray-900 transition-colors">LinkedIn</a> or <a href="https://docs.google.com/document/d/10qsJp2QH7h2edsFe8jsu-SeaxIzKjpkWsQvCqNMaDSM/edit?usp=sharing" className="underline hover:text-gray-900 transition-colors">CV</a> for the nitty gritty details.
+          Feel free to check out my <a href="https://www.linkedin.com/in/arthur-lee-ying-kiu/" className="underline hover:text-gray-900 transition-colors">LinkedIn</a> or <a href="https://drive.google.com/file/d/1681POt7N9ts7Bb2mqxO7Lm7fOcu2odMl/view?usp=drive_link" className="underline hover:text-gray-900 transition-colors">CV</a> for the nitty gritty details.
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8 max-w-3xl mx-auto">
